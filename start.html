@@ -74,22 +74,42 @@
         }
     </script>
     <style>
+        :root {
+            --bg-tan-hex: #2d241e;
+            --card-tan-hex: #3d3228;
+            --light-tan-hex: #f5e6d3;
+            --border-tan-hex: #5c4a3c;
+            --bg-tan: 45 36 30;
+            --card-tan: 61 50 40;
+            --light-tan: 245 230 211;
+            --border-tan: 92 74 60;
+            --font-body: system-ui, sans-serif;
+            --size-body: 16px;
+            --font-headers: system-ui, sans-serif;
+            --size-headers: 24px;
+            --font-report-body: Arial, sans-serif;
+            --size-report-body: 16px;
+            --font-report-headers: Arial, sans-serif;
+            --size-report-headers: 24px;
+            --dx: 0px;
+            --dy: 0px;
+        }
         [x-cloak] { display: none !important; }
-        body { background-color: var(--bg-tan-hex); color: var(--light-tan-hex); font-family: var(--font-body, system-ui); }
+        body { background-color: var(--bg-tan-hex); color: var(--light-tan-hex); font-family: var(--font-body, system-ui), sans-serif; }
         :root[style*="--size-body"] body { font-size: var(--size-body) !important; }
         
-        h1, h2, h3, h4, h5, h6 { font-family: var(--font-headers, inherit); }
+        h1, h2, h3, h4, h5, h6 { font-family: var(--font-headers, system-ui), sans-serif; }
         :root[style*="--size-headers"] h1, :root[style*="--size-headers"] h2, :root[style*="--size-headers"] h3, :root[style*="--size-headers"] h4, :root[style*="--size-headers"] h5, :root[style*="--size-headers"] h6 {
             font-size: var(--size-headers) !important;
         }
 
-        .report-pages { font-family: var(--font-report-body, Arial, sans-serif) !important; }
+        .report-pages { font-family: var(--font-report-body, Arial), sans-serif !important; }
         :root[style*="--size-report-body"] .report-pages {
             font-size: var(--size-report-body) !important;
         }
 
         .report-pages h1, .report-pages h2, .report-pages h3, .report-pages h4, .report-pages h5, .report-pages h6 {
-            font-family: var(--font-report-headers, inherit) !important;
+            font-family: var(--font-report-headers, Arial), sans-serif !important;
         }
         :root[style*="--size-report-headers"] .report-pages h1, :root[style*="--size-report-headers"] .report-pages h2, :root[style*="--size-report-headers"] .report-pages h3, :root[style*="--size-report-headers"] .report-pages h4, :root[style*="--size-report-headers"] .report-pages h5, :root[style*="--size-report-headers"] .report-pages h6 {
             font-size: var(--size-report-headers) !important;
@@ -195,6 +215,7 @@
             0% { background-color: rgba(var(--light-tan), 0.4); }
             100% { background-color: transparent; }
         }
+        /* noinspection CssUnusedSymbol */
         .flash-item {
             animation: flash 2s ease-out forwards;
         }
@@ -210,6 +231,7 @@
             }
         }
 
+        /* noinspection CssUnusedSymbol */
         .coin {
             position: fixed;
             width: 24px;
