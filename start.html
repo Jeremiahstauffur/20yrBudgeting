@@ -1143,11 +1143,11 @@
                     <h2 class="text-xl font-bold mb-6">Bank Reconciliation</h2>
                     
                     <div class="mb-4 text-lg">
-                        <span class="font-bold">Current Bank Balance Sum: </span>
-                        <span x-text="formatCurrency(r?.currentBankBalance)"></span>
+                        <span class="font-bold">Actual Bank Balance: </span>
+                        <span x-text="formatCurrency(r?.actualBankBalance)"></span>
                     </div>
 
-                    <h3 class="text-lg font-bold mt-6 mb-2">Unreconciled Transactions</h3>
+                    <h3 class="text-lg font-bold mt-6 mb-2">Outstanding Transactions</h3>
                     <template x-for="bank in Object.keys(r?.unreconciledByBank || {})" :key="bank">
                         <div class="mb-4">
                             <h4 class="font-bold text-md mb-2" x-text="bank"></h4>
@@ -1174,7 +1174,7 @@
                         </div>
                     </template>
                     <div x-show="Object.keys(r?.unreconciledByBank || {}).length === 0" class="italic text-gray-500 mb-6">
-                        No unreconciled transactions found.
+                        No outstanding transactions found.
                     </div>
 
                     <table class="report-table mt-8">
@@ -1184,7 +1184,7 @@
                                 <td class="text-right" x-text="formatCurrency(r?.totalUnreconciled)"></td>
                             </tr>
                             <tr class="bg-gray-100">
-                                <td class="font-bold">Expected Budget Total <span class="font-normal text-xs">(Bank Balance - Outstanding)</span></td>
+                                <td class="font-bold">Expected Budget Total <span class="font-normal text-xs">(Actual Bank Balance + Outstanding)</span></td>
                                 <td class="text-right font-bold" x-text="formatCurrency(r?.expectedBudgetTotal)"></td>
                             </tr>
                             <tr>
@@ -1192,7 +1192,7 @@
                                 <td class="text-right font-bold" x-text="formatCurrency(r?.actualBudgetTotal)"></td>
                             </tr>
                             <tr :class="r?.discrepancy !== 0 ? 'text-red-600 bg-red-50' : 'text-green-600'">
-                                <td class="font-bold">Discrepancy <span class="font-normal text-xs">(Actual - Expected)</span></td>
+                                <td class="font-bold">Discrepancy <span class="font-normal text-xs">(Expected - Actual)</span></td>
                                 <td class="text-right font-bold" x-text="formatCurrency(r?.discrepancy)"></td>
                             </tr>
                         </tbody>

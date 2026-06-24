@@ -593,32 +593,47 @@ document.addEventListener('alpine:init', () => {
             
             let unreconciledByBank = {};
             let totalUnreconciled = 0;
-            let currentBankBalance = this.getTotalBankBalance();
+            let actualBankBalance = 0;
+            let actualBudgetTotal = 0;
             
             for (const budget of this.budgets) {
+                const isBudgetAccount = budget.name !== 'Unlinked';
                 for (const sub of budget.subBudgets) {
                     for (const tx of sub.transactions) {
                         if (tx.planned) continue;
-                        if (!tx.reconciled) {
-                            const bank = (tx.bank || '').trim();
-                            if (!bank) continue; // consider no bank transactions to be reconciled
+                        
+                        const amt = parseFloat(tx.amount || 0);
 
-                            if (!unreconciledByBank[bank]) unreconciledByBank[bank] = [];
-                            unreconciledByBank[bank].push({
-                                ...tx,
-                                subBudget: sub.name,
-                                subBudgetId: sub.id,
-                                budgetId: budget.id
-                            });
-                            totalUnreconciled += parseFloat(tx.amount || 0);
+                        // Actual Budget Total (up to end date, excluding Unlinked)
+                        if (tx.date <= end && isBudgetAccount) {
+                            actualBudgetTotal += amt;
+                        }
+                        
+                        // Bank calculations
+                        const bank = (tx.bank || '').trim();
+                        if (bank && tx.date <= end) {
+                            const isReconciledByEnd = tx.reconciled && tx.reconciled <= end;
+                            
+                            if (isReconciledByEnd) {
+                                actualBankBalance += amt;
+                            } else {
+                                if (!unreconciledByBank[bank]) unreconciledByBank[bank] = [];
+                                unreconciledByBank[bank].push({
+                                    ...tx,
+                                    subBudget: sub.name,
+                                    subBudgetId: sub.id,
+                                    budgetId: budget.id,
+                                    budgetName: budget.name
+                                });
+                                totalUnreconciled += amt;
+                            }
                         }
                     }
                 }
             }
             
-            const expectedBudgetTotal = currentBankBalance - totalUnreconciled;
-            const actualBudgetTotal = this.budgets.reduce((sum, budget) => sum + this.getDisplayedBudgetTotal(budget), 0);
-            const discrepancy = actualBudgetTotal - expectedBudgetTotal;
+            const expectedBudgetTotal = actualBankBalance + totalUnreconciled;
+            const discrepancy = expectedBudgetTotal - actualBudgetTotal;
 
             return {
                 year,
@@ -631,7 +646,7 @@ document.addEventListener('alpine:init', () => {
                 periodBudgets,
                 unreconciledByBank,
                 totalUnreconciled,
-                currentBankBalance,
+                actualBankBalance,
                 expectedBudgetTotal,
                 actualBudgetTotal,
                 discrepancy
