@@ -1,0 +1,5390 @@
+[
+  {
+    "id": "a8649a76-d972-4376-a5c7-b216389cf215",
+    "name": "1 - Tithe",
+    "subBudgets": [
+      {
+        "id": "d3668d97-087d-4492-a5d0-b9ba8dc9fffb",
+        "name": "General",
+        "transactions": [
+          {
+            "id": "b9fc273e-3da3-4f65-8603-90fd60ffa665",
+            "date": "2026-05-01",
+            "bank": "",
+            "amount": "65.31",
+            "note": "beginning balance",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "f537c19c-382c-4451-8728-129e7527df44",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "050",
+            "note": "",
+            "planned": true,
+            "recurring": true
+          },
+          {
+            "id": "a906b2c4-0a36-4f43-aa9f-977b09594b0b",
+            "date": "2026-05-06",
+            "bank": "",
+            "amount": "050",
+            "note": "",
+            "tags": [
+              "PYCH0001"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "50029bce-caf6-48cb-8846-b729fcc5dce2",
+            "date": "2026-05-15",
+            "bank": "Transfers",
+            "amount": -119.42,
+            "note": "Transfer of 119.42 from 1 - Tithe:General to 1 - Tithe:Disciples of Christ",
+            "reconciled": "2026-05-15",
+            "planned": false
+          },
+          {
+            "id": "74b3192b-4365-4b4d-9df4-f2dc9774fff8",
+            "date": "2026-05-15",
+            "bank": "Transfers",
+            "amount": 4.11,
+            "note": "Transfer of 4.11 from 1 - Tithe:Disciples of Christ to 1 - Tithe:General",
+            "reconciled": "2026-06-09",
+            "planned": false
+          },
+          {
+            "id": "d4916f5f-c673-4786-9f99-95bbc5639791",
+            "date": "2026-05-20",
+            "bank": "",
+            "amount": "050",
+            "note": "",
+            "tags": [
+              "PYCH0002"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "7fc8ffe5-429a-48df-8064-13827cc2a5cd",
+            "date": "2026-06-02",
+            "bank": "",
+            "amount": 31.26,
+            "note": "",
+            "tags": [
+              "PYCH0003"
+            ],
+            "reconciled": null,
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "7f0192e8-981d-4db7-86f7-4755635b925a",
+            "date": "2026-06-20",
+            "bank": "",
+            "amount": 7.4,
+            "note": "tithe of our 1 share out of 5 shares",
+            "tags": [
+              "PLF-SALE-250619-Chadwick"
+            ],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "a8649a76-d972-4376-a5c7-b216389cf215",
+            "subBudgetId": "d3668d97-087d-4492-a5d0-b9ba8dc9fffb"
+          }
+        ]
+      },
+      {
+        "id": "5b3bd0b7-9ac9-49d3-9b5b-42fdce47b347",
+        "name": "Disciples of Christ",
+        "transactions": [
+          {
+            "id": "45c50064-bed2-4db9-8574-1a933d347e33",
+            "date": "2026-05-01",
+            "bank": "",
+            "amount": "239.4",
+            "note": "beginning balance",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "5b9443d3-9c17-4e7e-82e5-45fd455cbbbe",
+            "date": "2026-05-03",
+            "bank": "FNB - PERSONAL",
+            "amount": "-50",
+            "note": "#1537",
+            "planned": false,
+            "recurring": false,
+            "reconciled": "2026-05-15"
+          },
+          {
+            "id": "19cff842-70d9-48fb-9ed6-53245a930b74",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "150",
+            "note": "",
+            "planned": true,
+            "recurring": true
+          },
+          {
+            "id": "9bf4c11d-09e3-4ad5-8ff9-017e61726db3",
+            "date": "2026-05-06",
+            "bank": "",
+            "amount": "150",
+            "note": "",
+            "tags": [
+              "PYCH0001"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "c02f7d52-d430-45a4-8a38-fc1224c18732",
+            "date": "2026-05-06",
+            "bank": "",
+            "amount": 50,
+            "note": "",
+            "tags": [
+              "PYCH0001"
+            ],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "a8649a76-d972-4376-a5c7-b216389cf215",
+            "subBudgetId": "5b3bd0b7-9ac9-49d3-9b5b-42fdce47b347"
+          },
+          {
+            "id": "9bac23b7-7c08-4367-9842-d0035ec460ad",
+            "date": "2026-05-10",
+            "bank": "FNB - PERSONAL",
+            "amount": -200,
+            "note": "#1572 - benevolence",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "a8649a76-d972-4376-a5c7-b216389cf215",
+            "subBudgetId": "5b3bd0b7-9ac9-49d3-9b5b-42fdce47b347",
+            "reconciled": "2026-05-15"
+          },
+          {
+            "id": "974f333b-a15a-4e4e-b8b7-0e4940f3ae60",
+            "date": "2026-05-15",
+            "bank": "",
+            "amount": 5.5,
+            "note": "",
+            "tags": [
+              "CRDT0001"
+            ],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "a8649a76-d972-4376-a5c7-b216389cf215",
+            "subBudgetId": "5b3bd0b7-9ac9-49d3-9b5b-42fdce47b347"
+          },
+          {
+            "id": "0e50fc59-bf76-4c95-8849-0a9dc0eb4277",
+            "date": "2026-05-15",
+            "bank": "",
+            "amount": 5.5,
+            "note": "",
+            "tags": [
+              "VB2026-05-04"
+            ],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "a8649a76-d972-4376-a5c7-b216389cf215",
+            "subBudgetId": "5b3bd0b7-9ac9-49d3-9b5b-42fdce47b347"
+          },
+          {
+            "id": "31164f3c-42a2-46c2-acd4-09c55c27ffd8",
+            "date": "2026-05-07",
+            "bank": "FNB - PERSONAL",
+            "amount": -300,
+            "note": "#1536",
+            "tags": [],
+            "reconciled": "2026-05-15",
+            "planned": false
+          },
+          {
+            "id": "7fe51d56-8331-483c-866a-e6ff02232ac8",
+            "date": "2026-05-15",
+            "bank": "Transfers",
+            "amount": 119.42,
+            "note": "Transfer of 119.42 from 1 - Tithe:General to 1 - Tithe:Disciples of Christ",
+            "reconciled": "2026-05-15",
+            "planned": false
+          },
+          {
+            "id": "eb912d59-fb56-4734-a1d4-f28ce226e130",
+            "date": "2026-05-15",
+            "bank": "",
+            "amount": 1.95,
+            "note": "",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "a8649a76-d972-4376-a5c7-b216389cf215",
+            "subBudgetId": "5b3bd0b7-9ac9-49d3-9b5b-42fdce47b347"
+          },
+          {
+            "id": "71ba25f7-9470-4e00-af3c-8f777d89fdd2",
+            "date": "2026-05-15",
+            "bank": "Transfers",
+            "amount": -4.11,
+            "note": "Transfer of 4.11 from 1 - Tithe:Disciples of Christ to 1 - Tithe:General",
+            "reconciled": "2026-06-09",
+            "planned": false
+          },
+          {
+            "id": "26b7fa66-9c51-4105-894d-c52be196e3ee",
+            "date": "2026-05-14",
+            "bank": "",
+            "amount": 3.03,
+            "note": "",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "a8649a76-d972-4376-a5c7-b216389cf215",
+            "subBudgetId": "5b3bd0b7-9ac9-49d3-9b5b-42fdce47b347"
+          },
+          {
+            "id": "5ed208f4-608c-4981-a1b2-61b086a6b75e",
+            "date": "2026-05-17",
+            "bank": "FNB - PERSONAL",
+            "amount": -50,
+            "note": "#1574 - building",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "a8649a76-d972-4376-a5c7-b216389cf215",
+            "subBudgetId": "5b3bd0b7-9ac9-49d3-9b5b-42fdce47b347",
+            "reconciled": "2026-05-20"
+          },
+          {
+            "id": "2b216d0b-d8b8-4f0e-a91a-01e1cf7d9a41",
+            "date": "2026-05-20",
+            "bank": "",
+            "amount": "150",
+            "note": "",
+            "tags": [
+              "PYCH0002"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "7230da41-2978-4685-9be8-4d6f15ffc7a6",
+            "date": "2026-05-24",
+            "bank": "FNB - PERSONAL",
+            "amount": -50,
+            "note": "#1540",
+            "tags": [],
+            "reconciled": "2026-05-31",
+            "planned": false
+          },
+          {
+            "id": "ff01a786-d918-4851-9bef-66e26410a8c0",
+            "date": "2026-05-31",
+            "bank": "FNB - PERSONAL",
+            "amount": -50,
+            "note": "#1580",
+            "tags": [],
+            "reconciled": "2026-06-09",
+            "planned": false
+          },
+          {
+            "id": "3975798a-77e9-4882-9886-60ed0a76659b",
+            "date": "2026-06-07",
+            "bank": "FNB - PERSONAL",
+            "amount": -50,
+            "note": "#1541",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "a8649a76-d972-4376-a5c7-b216389cf215",
+            "subBudgetId": "5b3bd0b7-9ac9-49d3-9b5b-42fdce47b347",
+            "reconciled": "2026-06-12"
+          },
+          {
+            "id": "3e596eb1-6b60-45e2-a2a4-e62cf2d7fd67",
+            "date": "2026-06-02",
+            "bank": "",
+            "amount": "150",
+            "note": "",
+            "tags": [
+              "PYCH0003"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "7ef2bf48-1f24-48f9-bd3c-8d9f58a4e567",
+            "date": "2026-06-02",
+            "bank": "",
+            "amount": 0,
+            "note": "",
+            "tags": [
+              "PYCH0003"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "7dba4f46-fd03-413d-b125-63d833be9320",
+            "date": "2026-06-14",
+            "bank": "FNB - PERSONAL",
+            "amount": -120.69,
+            "note": "#1542",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "a8649a76-d972-4376-a5c7-b216389cf215",
+            "subBudgetId": "5b3bd0b7-9ac9-49d3-9b5b-42fdce47b347"
+          },
+          {
+            "id": "d2993a32-39ae-442e-bcc7-f74877e8c587",
+            "date": "2026-06-20",
+            "bank": "",
+            "amount": 22.15,
+            "note": "tithe of our 1 share out of 5 shares",
+            "tags": [
+              "PLF-SALE-250619-Chadwick"
+            ],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "a8649a76-d972-4376-a5c7-b216389cf215",
+            "subBudgetId": "5b3bd0b7-9ac9-49d3-9b5b-42fdce47b347"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "38741f70-87f6-4edd-96b7-95c3da6bd1b3",
+    "name": "2 - Farm",
+    "subBudgets": [
+      {
+        "id": "ed264d13-021f-41e5-a7bd-65b16edb6935",
+        "name": "General",
+        "transactions": [
+          {
+            "id": "c3c1549d-547e-422c-a8e4-f31e29747e56",
+            "date": "2026-06-09",
+            "bank": "Transfers",
+            "amount": 37.34,
+            "note": "Transfer of 37.34 from 5 - Home:Vehicle Replacement to 2 - Farm:General",
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "a77803ec-c1f5-4ea3-b62d-294f12864ea5",
+            "date": "2026-06-09",
+            "bank": "Transfers",
+            "amount": -37.34,
+            "note": "Transfer of 37.34 from 2 - Farm:General to 2 - Farm:Lean-to Shelter",
+            "reconciled": null,
+            "planned": false
+          }
+        ]
+      },
+      {
+        "id": "7212c900-2ec1-486b-903d-8459570874ef",
+        "name": "Lean-to Shelter",
+        "transactions": [
+          {
+            "id": "fc517f3a-bb2e-4e4e-b513-8064d8187daa",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "325.02",
+            "note": "",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "b9f02f51-65a9-46d3-b26f-6b935db62b1b",
+            "date": "2026-05-05",
+            "bank": "CC - CHASE",
+            "amount": -64.63,
+            "note": "grow lights",
+            "reconciled": "2026-05-05",
+            "planned": false,
+            "budgetId": "38741f70-87f6-4edd-96b7-95c3da6bd1b3",
+            "budgetName": "2 - Farm",
+            "subBudgetId": "7212c900-2ec1-486b-903d-8459570874ef",
+            "subBudgetName": "Lean-to Shelter",
+            "tags": [
+              "Expenses"
+            ],
+            "targetId": "38741f70-87f6-4edd-96b7-95c3da6bd1b3|7212c900-2ec1-486b-903d-8459570874ef"
+          },
+          {
+            "id": "e77108bc-6985-4047-b886-19339d5cebd0",
+            "date": "2026-05-06",
+            "bank": "",
+            "amount": "054.17",
+            "note": "",
+            "tags": [
+              "PYCH0001"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "e7dd6940-0c82-459e-8fd7-3167afd01389",
+            "date": "2026-05-06",
+            "bank": "",
+            "amount": 100,
+            "note": "",
+            "tags": [
+              "PYCH0001"
+            ],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "38741f70-87f6-4edd-96b7-95c3da6bd1b3",
+            "subBudgetId": "7212c900-2ec1-486b-903d-8459570874ef"
+          },
+          {
+            "id": "997f96b5-97aa-40bc-a22d-684d020d31f5",
+            "date": "2026-05-06",
+            "bank": "Transfers",
+            "amount": -17.9,
+            "note": "Transfer of 17.9 from 2 - Farm:Lean-to Shelter to 5 - Home:Property Taxes",
+            "reconciled": "2026-05-15",
+            "planned": false
+          },
+          {
+            "id": "4408b75e-4e20-4b3b-93c7-79c0705fbe72",
+            "date": "2026-05-07",
+            "bank": "Transfers",
+            "amount": -100,
+            "note": "Transfer of 100 from 2 - Farm:Lean-to Shelter to 7 - Other:SAR Supplies",
+            "reconciled": "2026-05-15",
+            "planned": false
+          },
+          {
+            "id": "6beae202-2625-415a-9313-7890a0c91569",
+            "date": "2026-05-07",
+            "bank": "Transfers",
+            "amount": -30,
+            "note": "Transfer of 30 from 2 - Farm:Lean-to Shelter to 7 - Other:Wedding Gift for Wayne and Hannah",
+            "reconciled": "2026-05-15",
+            "planned": false
+          },
+          {
+            "id": "ae9eecf7-93e0-4c4b-97df-b6ce78dacf6b",
+            "date": "2026-05-08",
+            "bank": "",
+            "amount": 0,
+            "note": "",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "38741f70-87f6-4edd-96b7-95c3da6bd1b3",
+            "subBudgetId": "7212c900-2ec1-486b-903d-8459570874ef"
+          },
+          {
+            "id": "014e9271-c1e1-4fea-8e3a-ee932c87d5a6",
+            "date": "2026-05-08",
+            "bank": "Wallet",
+            "amount": -14,
+            "note": "",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "38741f70-87f6-4edd-96b7-95c3da6bd1b3",
+            "subBudgetId": "7212c900-2ec1-486b-903d-8459570874ef",
+            "reconciled": "2026-05-15"
+          },
+          {
+            "id": "73e49b22-8a59-4dab-9080-7295309a901e",
+            "date": "2026-05-08",
+            "bank": "",
+            "amount": 0,
+            "note": "",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "38741f70-87f6-4edd-96b7-95c3da6bd1b3",
+            "subBudgetId": "7212c900-2ec1-486b-903d-8459570874ef"
+          },
+          {
+            "id": "6ff98a44-c062-4308-b75a-58f109459d75",
+            "date": "2026-05-10",
+            "bank": "CC - CHASE",
+            "amount": -362.38,
+            "note": "",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "38741f70-87f6-4edd-96b7-95c3da6bd1b3",
+            "subBudgetId": "7212c900-2ec1-486b-903d-8459570874ef",
+            "reconciled": "2026-05-15"
+          },
+          {
+            "id": "5c45f3b2-935c-413f-924d-78f509e58914",
+            "date": "2026-05-10",
+            "bank": "CC - CHASE",
+            "amount": 119.95,
+            "note": "",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "38741f70-87f6-4edd-96b7-95c3da6bd1b3",
+            "subBudgetId": "7212c900-2ec1-486b-903d-8459570874ef",
+            "reconciled": "2026-05-15"
+          },
+          {
+            "id": "41ae628a-d266-46b7-ab2e-72f376ca50ca",
+            "date": "2026-05-15",
+            "bank": "Transfers",
+            "amount": -10.23,
+            "note": "Transfer of 10.23 from 2 - Farm:Lean-to Shelter to 5 - Home:Property Taxes",
+            "reconciled": "2026-06-09",
+            "planned": false
+          },
+          {
+            "id": "c93e7b5d-f5de-4c52-8009-7688c3c7476c",
+            "date": "2026-05-20",
+            "bank": "",
+            "amount": 45,
+            "note": "",
+            "tags": [
+              "PYCH0002"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "7b195b32-a056-4720-8e93-43c74fbbbf74",
+            "date": "2026-05-20",
+            "bank": "",
+            "amount": 0,
+            "note": "",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "38741f70-87f6-4edd-96b7-95c3da6bd1b3",
+            "subBudgetId": "7212c900-2ec1-486b-903d-8459570874ef"
+          },
+          {
+            "id": "b5fa99bf-006d-4875-8013-b227ed06719a",
+            "date": "2026-05-20",
+            "bank": "",
+            "amount": -10.21,
+            "note": "",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "38741f70-87f6-4edd-96b7-95c3da6bd1b3",
+            "subBudgetId": "7212c900-2ec1-486b-903d-8459570874ef"
+          },
+          {
+            "id": "268f530b-07c1-4161-95aa-1de9d1923e40",
+            "date": "2026-05-31",
+            "bank": "",
+            "amount": -34.79,
+            "note": "",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "38741f70-87f6-4edd-96b7-95c3da6bd1b3",
+            "subBudgetId": "7212c900-2ec1-486b-903d-8459570874ef"
+          },
+          {
+            "id": "056d2f93-4ba0-46cc-988a-c171c34ab5d4",
+            "date": "2026-06-09",
+            "bank": "",
+            "amount": 54.17,
+            "note": "",
+            "tags": [],
+            "planned": true,
+            "recurring": true
+          },
+          {
+            "id": "fdb9162d-1339-413a-8a5e-1b8594d9758b",
+            "date": "2026-06-02",
+            "bank": "",
+            "amount": 54.17,
+            "note": "",
+            "tags": [
+              "PYCH0003"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "ea96ff03-1722-47af-ac05-e391c4287c99",
+            "date": "2026-06-08",
+            "bank": "CC - MENARDS",
+            "amount": -85.8,
+            "note": "",
+            "tags": [],
+            "reconciled": null,
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "ccc976bb-08f9-4bb6-a062-d6029c8f559c",
+            "date": "2026-06-09",
+            "bank": "CC - MENARDS",
+            "amount": 48.81,
+            "note": "",
+            "tags": [],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "eda30627-6dca-48f5-8ccd-2352278b5894",
+            "date": "2026-06-08",
+            "bank": "CC - MENARDS",
+            "amount": -54.52,
+            "note": "",
+            "tags": [],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "cae67b6f-6a24-47c7-a81f-4d42caaef52e",
+            "date": "2026-06-09",
+            "bank": "Transfers",
+            "amount": 37.34,
+            "note": "Transfer of 37.34 from 2 - Farm:General to 2 - Farm:Lean-to Shelter",
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "1050f63a-342a-43ad-8b1b-e173ed529e4f",
+            "date": "2026-06-09",
+            "bank": "",
+            "amount": 75,
+            "note": "",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "38741f70-87f6-4edd-96b7-95c3da6bd1b3",
+            "subBudgetId": "7212c900-2ec1-486b-903d-8459570874ef"
+          },
+          {
+            "id": "01d855e4-d1a3-4a62-99a9-cbb57808ac24",
+            "date": "2026-06-12",
+            "bank": "",
+            "amount": -28.78,
+            "note": "",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "38741f70-87f6-4edd-96b7-95c3da6bd1b3",
+            "subBudgetId": "7212c900-2ec1-486b-903d-8459570874ef"
+          },
+          {
+            "id": "01b163b4-35f2-493d-8d8c-0b4a5a06c045",
+            "date": "2026-06-12",
+            "bank": "Transfers",
+            "amount": -153.78,
+            "note": "Transfer of 153.78 from 2 - Farm:Lean-to Shelter to 2 - Farm:Lean-to Shelter",
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "e1ed42d6-7e3c-47c8-b835-00bd7a9135d3",
+            "date": "2026-06-12",
+            "bank": "Transfers",
+            "amount": 153.78,
+            "note": "Transfer of 153.78 from 2 - Farm:Lean-to Shelter to 2 - Farm:Lean-to Shelter",
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "bc9fcf4a-152e-4b72-b5ee-575bb8deaac7",
+            "date": "2026-06-12",
+            "bank": "Transfers",
+            "amount": 153.78,
+            "note": "Transfer of 153.78 from 9 - Savings:Loan Payment Fund to 2 - Farm:Lean-to Shelter",
+            "reconciled": null,
+            "planned": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "7fabc6df-5c8c-4d24-9423-f84cf235efd2",
+    "name": "3 - Food",
+    "subBudgets": [
+      {
+        "id": "144778bc-0c91-4cc4-9462-a2081c69c41d",
+        "name": "General",
+        "transactions": [
+          {
+            "id": "0e2b32c3-108d-4da6-a2ca-c47fa14851f2",
+            "date": "2026-05-01",
+            "bank": "CC - VERIZON VISA",
+            "amount": -32.74,
+            "note": "",
+            "reconciled": "2026-05-15",
+            "planned": false
+          },
+          {
+            "id": "52a17cfa-866f-41fd-bafa-e3cd593f91df",
+            "date": "2026-05-05",
+            "bank": "Transfers",
+            "amount": 32.74,
+            "note": "Transfer of 32.74 from 5 - Home:Diapers & Wipes to 3 - Food:General",
+            "reconciled": "2026-05-15",
+            "planned": false
+          },
+          {
+            "id": "912ce263-a965-4b4a-875f-c6529650de60",
+            "date": "2026-05-05",
+            "bank": "Wallet",
+            "amount": 5,
+            "note": "",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "7fabc6df-5c8c-4d24-9423-f84cf235efd2",
+            "subBudgetId": "144778bc-0c91-4cc4-9462-a2081c69c41d",
+            "reconciled": "2026-05-15"
+          },
+          {
+            "id": "6f02c608-e046-44e0-aef3-f631bc6978c1",
+            "date": "2026-05-06",
+            "bank": "",
+            "amount": "0150",
+            "note": "",
+            "tags": [
+              "PYCH0001"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "97b694e2-97ff-45ae-8f71-1d8f1b108daa",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": 0,
+            "note": "",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "7fabc6df-5c8c-4d24-9423-f84cf235efd2",
+            "subBudgetId": "144778bc-0c91-4cc4-9462-a2081c69c41d"
+          },
+          {
+            "id": "053ad3b7-f753-4192-8b2e-9ba8d87153f5",
+            "date": "2026-05-05",
+            "bank": "FNB - PERSONAL",
+            "amount": -21.55,
+            "note": "1567 - Deer Haven Greenhouse",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "7fabc6df-5c8c-4d24-9423-f84cf235efd2",
+            "subBudgetId": "144778bc-0c91-4cc4-9462-a2081c69c41d",
+            "reconciled": "2026-05-15"
+          },
+          {
+            "id": "37e221b7-e1f0-4a50-b2b8-22ea35cc4dc9",
+            "date": "2026-05-07",
+            "bank": "",
+            "amount": -89.27,
+            "note": "",
+            "tags": [
+              "TRAN0002"
+            ],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "7fabc6df-5c8c-4d24-9423-f84cf235efd2",
+            "subBudgetId": "144778bc-0c91-4cc4-9462-a2081c69c41d"
+          },
+          {
+            "id": "96b83e23-cb62-444c-9c7a-66cd140509ec",
+            "date": "2026-05-08",
+            "bank": "Transfers",
+            "amount": -10,
+            "note": "Transfer of 10 from 3 - Food:General to 6 - Medical:Pregnancy",
+            "reconciled": "2026-05-15",
+            "planned": false
+          },
+          {
+            "id": "99fdd39f-9a49-425a-b5a0-113e8268f556",
+            "date": "2026-05-08",
+            "bank": "",
+            "amount": 0,
+            "note": "",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "7fabc6df-5c8c-4d24-9423-f84cf235efd2",
+            "subBudgetId": "144778bc-0c91-4cc4-9462-a2081c69c41d"
+          },
+          {
+            "id": "b35fa4b8-eceb-49f2-a952-baa16166826d",
+            "date": "2026-05-10",
+            "bank": "CC - VERIZON VISA",
+            "amount": -14.09,
+            "note": "",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "7fabc6df-5c8c-4d24-9423-f84cf235efd2",
+            "subBudgetId": "144778bc-0c91-4cc4-9462-a2081c69c41d",
+            "reconciled": "2026-05-15"
+          },
+          {
+            "id": "b88055b7-af68-4c80-95e6-0ffae7b7df04",
+            "date": "2026-05-11",
+            "bank": "CC - VERIZON VISA",
+            "amount": -2.25,
+            "note": "",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "7fabc6df-5c8c-4d24-9423-f84cf235efd2",
+            "subBudgetId": "144778bc-0c91-4cc4-9462-a2081c69c41d",
+            "reconciled": "2026-05-15"
+          },
+          {
+            "id": "459fb2d2-7820-4eb5-9c44-ba61ac30ae06",
+            "date": "2026-05-10",
+            "bank": "Wallet",
+            "amount": -5,
+            "note": "eggs",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "7fabc6df-5c8c-4d24-9423-f84cf235efd2",
+            "subBudgetId": "144778bc-0c91-4cc4-9462-a2081c69c41d",
+            "reconciled": "2026-05-15"
+          },
+          {
+            "id": "882c1484-1b13-4d00-8ee7-23ed53a24be4",
+            "date": "2026-05-08",
+            "bank": "CC - VERIZON VISA",
+            "amount": -13.19,
+            "note": "",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "7fabc6df-5c8c-4d24-9423-f84cf235efd2",
+            "subBudgetId": "144778bc-0c91-4cc4-9462-a2081c69c41d",
+            "reconciled": "2026-05-15"
+          },
+          {
+            "id": "faf451f5-e85c-43a5-a46e-0248f6550f24",
+            "date": "2026-05-15",
+            "bank": "Transfers",
+            "amount": 0.35,
+            "note": "Transfer of 0.35 from 5 - Home:Bathroom Supplies to 3 - Food:General",
+            "reconciled": "2026-05-15",
+            "planned": false
+          },
+          {
+            "id": "181b6475-dc54-4d32-bac5-fb45f5da4e1c",
+            "date": "2026-05-20",
+            "bank": "",
+            "amount": 75,
+            "note": "",
+            "tags": [
+              "PYCH0002"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "49a6cbc6-21f6-4093-8e64-78a684fe5698",
+            "date": "2026-05-19",
+            "bank": "Wallet",
+            "amount": -20,
+            "note": "eggs",
+            "tags": [],
+            "reconciled": "2026-05-31",
+            "planned": false
+          },
+          {
+            "id": "63e7609b-7a4a-4493-8628-aae8ce2d0462",
+            "date": "2026-05-19",
+            "bank": "CC - VERIZON VISA",
+            "amount": -51.45,
+            "note": "",
+            "tags": [],
+            "reconciled": "2026-05-31",
+            "planned": false
+          },
+          {
+            "id": "8e23a270-a909-4e92-8554-47cfb1922f38",
+            "date": "2026-05-20",
+            "bank": "",
+            "amount": 60.72,
+            "note": "",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "7fabc6df-5c8c-4d24-9423-f84cf235efd2",
+            "subBudgetId": "144778bc-0c91-4cc4-9462-a2081c69c41d"
+          },
+          {
+            "id": "72ec2d7a-8b82-411d-9565-68c570ef28fd",
+            "date": "2026-05-20",
+            "bank": "CC - CHASE",
+            "amount": -26.86,
+            "note": "",
+            "tags": [],
+            "reconciled": "2026-05-31",
+            "planned": false
+          },
+          {
+            "id": "5eb83a29-6568-4cda-abc8-ef36318b64c8",
+            "date": "2026-05-29",
+            "bank": "CC - VERIZON VISA",
+            "amount": -8.97,
+            "note": "",
+            "tags": [],
+            "reconciled": "2026-06-09",
+            "planned": false
+          },
+          {
+            "id": "c3e13d50-2309-4769-9a13-4bd404cb789b",
+            "date": "2026-05-30",
+            "bank": "Wallet",
+            "amount": -19,
+            "note": "",
+            "tags": [],
+            "reconciled": "2026-05-31",
+            "planned": false
+          },
+          {
+            "id": "7159928d-884f-4906-8839-68062c64f547",
+            "date": "2026-05-31",
+            "bank": "",
+            "amount": -9.44,
+            "note": "",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "7fabc6df-5c8c-4d24-9423-f84cf235efd2",
+            "subBudgetId": "144778bc-0c91-4cc4-9462-a2081c69c41d"
+          },
+          {
+            "id": "f2a4050d-fc4f-4cf3-b16e-c4c2a474941e",
+            "date": "2026-06-09",
+            "bank": "",
+            "amount": 150,
+            "note": "",
+            "tags": [],
+            "planned": true,
+            "recurring": true
+          },
+          {
+            "id": "6b820c28-b692-4b57-9ce2-bb0699bb249a",
+            "date": "2026-06-02",
+            "bank": "",
+            "amount": 150,
+            "note": "",
+            "tags": [
+              "PYCH0003"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "7659b456-668b-4d03-8f1b-1cb44d419d1e",
+            "date": "2026-06-01",
+            "bank": "",
+            "amount": -33.64,
+            "note": "",
+            "tags": [
+              "TRAN0004"
+            ],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "7fabc6df-5c8c-4d24-9423-f84cf235efd2",
+            "subBudgetId": "144778bc-0c91-4cc4-9462-a2081c69c41d"
+          },
+          {
+            "id": "86ca0c1a-9777-4f74-87df-58e50ece849a",
+            "date": "2026-06-02",
+            "bank": "CC - VERIZON VISA",
+            "amount": -9.25,
+            "note": "",
+            "tags": [],
+            "reconciled": "2026-06-09",
+            "planned": false
+          },
+          {
+            "id": "fc2e17d2-8645-46d1-a2cb-a20fac3e6d88",
+            "date": "2026-06-02",
+            "bank": "CC - VERIZON VISA",
+            "amount": -7.79,
+            "note": "",
+            "tags": [],
+            "reconciled": "2026-06-09",
+            "planned": false
+          },
+          {
+            "id": "bb563402-8598-446b-9cbb-fdcf40059144",
+            "date": "2026-06-03",
+            "bank": "CC - VERIZON VISA",
+            "amount": -37.92,
+            "note": "",
+            "tags": [],
+            "reconciled": "2026-06-09",
+            "planned": false
+          },
+          {
+            "id": "060800b5-82d6-43de-9808-66d76078322c",
+            "date": "2026-06-06",
+            "bank": "CC - VERIZON VISA",
+            "amount": -1.5,
+            "note": "",
+            "tags": [],
+            "reconciled": "2026-06-12",
+            "planned": false
+          },
+          {
+            "id": "cdc1e8e9-9973-4c71-a1b9-b9bb26c5a36d",
+            "date": "2026-06-04",
+            "bank": "FNB - PERSONAL",
+            "amount": -10,
+            "note": "#1581",
+            "tags": [],
+            "reconciled": "2026-06-12",
+            "planned": false
+          },
+          {
+            "id": "f78ed373-0abe-43b9-b134-bbff70d2acb3",
+            "date": "2026-06-09",
+            "bank": "Transfers",
+            "amount": -25,
+            "note": "Transfer of 25 from 3 - Food:General to 3 - Food:Chicken Butchering",
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "47feac28-8f53-401c-b428-eddeb226df39",
+            "date": "2026-06-09",
+            "bank": "",
+            "amount": 25,
+            "note": "",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "7fabc6df-5c8c-4d24-9423-f84cf235efd2",
+            "subBudgetId": "144778bc-0c91-4cc4-9462-a2081c69c41d"
+          },
+          {
+            "id": "ce7df7ce-90a8-4ceb-9dcc-d081b9538707",
+            "date": "2026-06-10",
+            "bank": "",
+            "amount": 0,
+            "note": "",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "7fabc6df-5c8c-4d24-9423-f84cf235efd2",
+            "subBudgetId": "144778bc-0c91-4cc4-9462-a2081c69c41d"
+          },
+          {
+            "id": "7b8d2e34-e960-4469-90e0-da68c33c6ea9",
+            "date": "2026-06-10",
+            "bank": "",
+            "amount": 0,
+            "note": "",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "7fabc6df-5c8c-4d24-9423-f84cf235efd2",
+            "subBudgetId": "144778bc-0c91-4cc4-9462-a2081c69c41d"
+          },
+          {
+            "id": "2bcf375f-c315-449f-929c-4f50b4ac605a",
+            "date": "2026-06-10",
+            "bank": "CC - VERIZON VISA",
+            "amount": -52.3,
+            "note": "",
+            "tags": [],
+            "reconciled": "2026-06-12",
+            "planned": false
+          },
+          {
+            "id": "7328d8e0-4f80-4c2c-953f-d10afa941a21",
+            "date": "2026-06-09",
+            "bank": "CC - CHASE",
+            "amount": -14.5,
+            "note": "",
+            "tags": [],
+            "reconciled": "2026-06-12",
+            "planned": false
+          },
+          {
+            "id": "7873193b-2493-4a0c-a4a4-6058c27b72ea",
+            "date": "2026-06-12",
+            "bank": "Transfers",
+            "amount": 16.9,
+            "note": "Transfer of 16.9 from 5 - Home:Vehicle Replacement to 3 - Food:General",
+            "reconciled": null,
+            "planned": false
+          }
+        ]
+      },
+      {
+        "id": "194a03c8-f047-418f-a6db-ee4faaea2955",
+        "name": "Chicken Butchering",
+        "transactions": [
+          {
+            "id": "ecb14ab4-f803-429f-afa8-eb2e097c28e3",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "64.11",
+            "note": "",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "82c926ab-a670-4441-ae8c-0fc89dc1658b",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "4.17",
+            "note": "",
+            "planned": true,
+            "recurring": true
+          },
+          {
+            "id": "c2b49644-b1a7-4500-b5d7-fd77e8c3fa49",
+            "date": "2026-05-06",
+            "bank": "",
+            "amount": "4.17",
+            "note": "",
+            "tags": [
+              "PYCH0001"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "6606f218-8d54-4f1a-8cdf-8ab84d7faa21",
+            "date": "2026-05-20",
+            "bank": "",
+            "amount": "4.17",
+            "note": "",
+            "tags": [
+              "PYCH0002"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "b2661fb7-2fe6-492b-8c18-3a6e2097d370",
+            "date": "2026-06-02",
+            "bank": "",
+            "amount": "4.17",
+            "note": "",
+            "tags": [
+              "PYCH0003"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "da8f91ec-b09b-46ef-9de1-66140869dcfc",
+            "date": "2026-06-09",
+            "bank": "Transfers",
+            "amount": 50,
+            "note": "Transfer of 50 from 5 - Home:Oven to 3 - Food:Chicken Butchering",
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "a295d5c0-c251-4143-9fc2-e52567bce545",
+            "date": "2026-06-09",
+            "bank": "Transfers",
+            "amount": 25,
+            "note": "Transfer of 25 from 3 - Food:General to 3 - Food:Chicken Butchering",
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "63b03bb6-5f3f-4906-a6ae-7676e469f0c1",
+            "date": "2026-06-12",
+            "bank": "Wallet",
+            "amount": -20,
+            "note": "ice for chicken butchering",
+            "tags": [],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "4fa4e2e3-8f1c-4315-a0cf-969f5d538bb0",
+            "date": "2026-06-12",
+            "bank": "FNB - PERSONAL",
+            "amount": -200,
+            "note": "#1584",
+            "tags": [],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "2fd2b035-3b7e-4eb4-8bb0-53271309749a",
+            "date": "2026-06-12",
+            "bank": "Transfers",
+            "amount": 68.38,
+            "note": "Transfer of 68.38 from 5 - Home:Vehicle Replacement to 3 - Food:Chicken Butchering",
+            "reconciled": null,
+            "planned": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "a41ceae2-129e-4570-b713-b1e088c9f4ac",
+    "name": "4 - Travel",
+    "subBudgets": [
+      {
+        "id": "7ed880da-4b60-4868-87ae-63e4026b7ad1",
+        "name": "General",
+        "transactions": [
+          {
+            "id": "ac85b214-fff7-4869-82c9-651f34db0106",
+            "date": "2026-05-01",
+            "bank": "CC - VERIZON VISA",
+            "amount": -48.93,
+            "note": "",
+            "reconciled": "2026-05-15",
+            "planned": false
+          },
+          {
+            "id": "fb40bcdd-445e-4ef8-ac72-3d4fbd31b7a0",
+            "date": "2026-05-05",
+            "bank": "CC - VERIZON VISA",
+            "amount": "-69.47",
+            "note": "",
+            "planned": false,
+            "recurring": false,
+            "budgetId": "a41ceae2-129e-4570-b713-b1e088c9f4ac",
+            "budgetName": "Unlinked",
+            "subBudgetId": "7ed880da-4b60-4868-87ae-63e4026b7ad1",
+            "subBudgetName": "General",
+            "targetId": "a41ceae2-129e-4570-b713-b1e088c9f4ac|7ed880da-4b60-4868-87ae-63e4026b7ad1",
+            "reconciled": "2026-05-05"
+          },
+          {
+            "id": "3a82786e-7ceb-4c93-ac4b-e841d5d181d0",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "0150",
+            "note": "",
+            "planned": true,
+            "recurring": true
+          },
+          {
+            "id": "5b774597-8894-4cd3-9c17-0e489082af9a",
+            "date": "2026-05-05",
+            "bank": "Transfers",
+            "amount": 111.37,
+            "note": "Transfer of 111.37 from 5 - Home:Vehicle Replacement to 4 - Travel:General",
+            "reconciled": "2026-05-15",
+            "planned": false
+          },
+          {
+            "id": "b3770ac2-c088-42dc-8988-7ede0b2a8946",
+            "date": "2026-05-05",
+            "bank": "Transfers",
+            "amount": 7.03,
+            "note": "Transfer of 7.03 from 4 - Travel:Trip Home to 4 - Travel:General",
+            "reconciled": "2026-05-15",
+            "planned": false
+          },
+          {
+            "id": "26bd572f-996c-420f-8450-5217d3e45287",
+            "date": "2026-05-06",
+            "bank": "",
+            "amount": "0150",
+            "note": "",
+            "tags": [
+              "PYCH0001"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "7105e4e9-d4a0-46a5-b6fa-4f0f0344d8ab",
+            "date": "2026-05-06",
+            "bank": "",
+            "amount": 100,
+            "note": "",
+            "tags": [
+              "PYCH0001"
+            ],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "a41ceae2-129e-4570-b713-b1e088c9f4ac",
+            "subBudgetId": "7ed880da-4b60-4868-87ae-63e4026b7ad1"
+          },
+          {
+            "id": "0a2ec092-7bdc-46ab-ad45-02ee447a96ee",
+            "date": "2026-05-07",
+            "bank": "CC - VERIZON VISA",
+            "amount": -29.9,
+            "note": "",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "a41ceae2-129e-4570-b713-b1e088c9f4ac",
+            "subBudgetId": "7ed880da-4b60-4868-87ae-63e4026b7ad1",
+            "reconciled": "2026-05-15"
+          },
+          {
+            "id": "e22770f2-eff7-46c2-9598-64e54558b84d",
+            "date": "2026-05-11",
+            "bank": "CC - VERIZON VISA",
+            "amount": -47.24,
+            "note": "",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "a41ceae2-129e-4570-b713-b1e088c9f4ac",
+            "subBudgetId": "7ed880da-4b60-4868-87ae-63e4026b7ad1",
+            "reconciled": "2026-05-15"
+          },
+          {
+            "id": "09aaf109-d9e1-4042-b5d5-39237709e9d0",
+            "date": "2026-05-12",
+            "bank": "CC - VERIZON VISA",
+            "amount": -57,
+            "note": "",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "a41ceae2-129e-4570-b713-b1e088c9f4ac",
+            "subBudgetId": "7ed880da-4b60-4868-87ae-63e4026b7ad1",
+            "reconciled": "2026-05-15"
+          },
+          {
+            "id": "0811a742-1444-4885-9406-6281aca48ee2",
+            "date": "2026-05-15",
+            "bank": "CC - VERIZON VISA",
+            "amount": -52.84,
+            "note": "",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "a41ceae2-129e-4570-b713-b1e088c9f4ac",
+            "subBudgetId": "7ed880da-4b60-4868-87ae-63e4026b7ad1",
+            "reconciled": "2026-05-20"
+          },
+          {
+            "id": "ba1571b4-282f-4d06-bc6d-3dd83409a9e3",
+            "date": "2026-05-15",
+            "bank": "Transfers",
+            "amount": -6.08,
+            "note": "Transfer of 6.08 from 4 - Travel:General to 5 - Home:Property Taxes",
+            "reconciled": "2026-06-09",
+            "planned": false
+          },
+          {
+            "id": "4da51081-01df-42d7-a6ba-fca633d0415c",
+            "date": "2026-05-20",
+            "bank": "",
+            "amount": "0150",
+            "note": "",
+            "tags": [
+              "PYCH0002"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "d54bcbd3-fdbd-4739-ac6e-712a3108d499",
+            "date": "2026-05-20",
+            "bank": "",
+            "amount": -136.94,
+            "note": "",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "a41ceae2-129e-4570-b713-b1e088c9f4ac",
+            "subBudgetId": "7ed880da-4b60-4868-87ae-63e4026b7ad1"
+          },
+          {
+            "id": "5a7ecc53-d19f-4cf0-9d97-ae0b46a296cf",
+            "date": "2026-05-19",
+            "bank": "CC - VERIZON VISA",
+            "amount": -50.18,
+            "note": "",
+            "tags": [],
+            "reconciled": "2026-05-20",
+            "planned": false
+          },
+          {
+            "id": "f2452d81-78fb-48fa-9aff-0de7f6133a64",
+            "date": "2026-05-31",
+            "bank": "Transfers",
+            "amount": -4.73,
+            "note": "Transfer of 4.73 from 4 - Travel:General to 4 - Travel:Georgia Trip",
+            "reconciled": "2026-06-09",
+            "planned": false
+          },
+          {
+            "id": "88c45770-a57a-488a-bf06-4a4d385a8145",
+            "date": "2026-05-31",
+            "bank": "",
+            "amount": -15.09,
+            "note": "",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "a41ceae2-129e-4570-b713-b1e088c9f4ac",
+            "subBudgetId": "7ed880da-4b60-4868-87ae-63e4026b7ad1"
+          },
+          {
+            "id": "6aaf6b4a-ef2b-48cd-a3c7-a48573c22b39",
+            "date": "2026-06-02",
+            "bank": "",
+            "amount": "0150",
+            "note": "",
+            "tags": [
+              "PYCH0003"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "4e165578-5bba-4582-9976-6ab7caf44233",
+            "date": "2026-06-03",
+            "bank": "CC - VERIZON VISA",
+            "amount": -3.58,
+            "note": "",
+            "tags": [],
+            "reconciled": "2026-06-09",
+            "planned": false
+          },
+          {
+            "id": "90c42d2e-424c-48b9-8118-5e828374e14a",
+            "date": "2026-06-03",
+            "bank": "CC - VERIZON VISA",
+            "amount": -49.49,
+            "note": "",
+            "tags": [],
+            "reconciled": "2026-06-09",
+            "planned": false
+          },
+          {
+            "id": "aadf9be6-479a-4bc2-8afe-cb8abcaaaf31",
+            "date": "2026-06-09",
+            "bank": "",
+            "amount": 53.07,
+            "note": "",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "a41ceae2-129e-4570-b713-b1e088c9f4ac",
+            "subBudgetId": "7ed880da-4b60-4868-87ae-63e4026b7ad1"
+          },
+          {
+            "id": "ccdb3017-8f4b-4e27-a397-b3d0a66c2c95",
+            "date": "2026-06-09",
+            "bank": "CC - VERIZON VISA",
+            "amount": -50.97,
+            "note": "",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "a41ceae2-129e-4570-b713-b1e088c9f4ac",
+            "subBudgetId": "7ed880da-4b60-4868-87ae-63e4026b7ad1",
+            "reconciled": "2026-06-12"
+          },
+          {
+            "id": "54dc3ea7-8b10-43c7-bc7e-51677fe7c8a3",
+            "date": "2026-06-11",
+            "bank": "CC - VERIZON VISA",
+            "amount": -69.52,
+            "note": "",
+            "tags": [],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "c2a44e3d-865d-4a07-a943-470c2d0e5acd",
+            "date": "2026-06-20",
+            "bank": "FNB - PERSONAL",
+            "amount": 60,
+            "note": "",
+            "tags": [
+              "PLF-SALE-250619-Chadwick"
+            ],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "a41ceae2-129e-4570-b713-b1e088c9f4ac",
+            "subBudgetId": "7ed880da-4b60-4868-87ae-63e4026b7ad1"
+          }
+        ]
+      },
+      {
+        "id": "cc539309-1e70-45eb-8bdd-e82876c864c1",
+        "name": "Trip Home",
+        "transactions": [
+          {
+            "id": "1830fda9-e680-41a1-a755-5b262167f2c9",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "0394.87",
+            "note": "",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "f1aa04f1-9e56-4149-85d2-7119befa9741",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "29.17",
+            "note": "",
+            "planned": true,
+            "recurring": true
+          },
+          {
+            "id": "ab3a762c-eaf3-4468-b3ba-ae0e64145d6f",
+            "date": "2026-05-06",
+            "bank": "",
+            "amount": "29.17",
+            "note": "",
+            "tags": [
+              "PYCH0001"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "3d2a8ceb-edf5-4173-8dcb-a9a234a1c81b",
+            "date": "2026-05-07",
+            "bank": "",
+            "amount": -32,
+            "note": "",
+            "tags": [
+              "TRAN0001"
+            ],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "a41ceae2-129e-4570-b713-b1e088c9f4ac",
+            "subBudgetId": "cc539309-1e70-45eb-8bdd-e82876c864c1"
+          },
+          {
+            "id": "4a4e7148-1d66-48d4-81a2-89da87ff0487",
+            "date": "2026-05-08",
+            "bank": "",
+            "amount": 24,
+            "note": "",
+            "tags": [
+              "TRAN0003"
+            ],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "a41ceae2-129e-4570-b713-b1e088c9f4ac",
+            "subBudgetId": "cc539309-1e70-45eb-8bdd-e82876c864c1"
+          },
+          {
+            "id": "5faf94eb-bac2-4fe7-96d0-d7fc4a8912e7",
+            "date": "2026-05-20",
+            "bank": "",
+            "amount": "29.17",
+            "note": "",
+            "tags": [
+              "PYCH0002"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "1a7d2d9e-dfbd-4335-8af1-203fdcb495dd",
+            "date": "2026-06-02",
+            "bank": "",
+            "amount": "29.17",
+            "note": "",
+            "tags": [
+              "PYCH0003"
+            ],
+            "reconciled": null,
+            "planned": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "52e30a97-6f1a-4478-8b3c-85499bffb689",
+    "name": "5 - Home",
+    "subBudgets": [
+      {
+        "id": "533685c4-9cf4-4742-a384-4b3a7861fc71",
+        "name": "General",
+        "transactions": []
+      },
+      {
+        "id": "86f92356-a356-4cd4-bfdb-c64780a47e2c",
+        "name": "Car Maintenance",
+        "transactions": [
+          {
+            "id": "3163db6b-6797-48a5-ba99-967260f2403a",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "5.97",
+            "note": "oil changes",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "697dbb27-5fb7-4b21-8d7a-fe5c9c688e9a",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "012.50",
+            "note": "Oil Changes",
+            "planned": true,
+            "recurring": true
+          },
+          {
+            "id": "3ab0087f-b234-4699-b160-782698ee2ceb",
+            "date": "2026-05-06",
+            "bank": "",
+            "amount": "012.50",
+            "note": "Oil Changes",
+            "tags": [
+              "PYCH0001"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "3a165694-16a6-4f6d-ae90-e454cd912ee1",
+            "date": "2026-05-20",
+            "bank": "",
+            "amount": "012.50",
+            "note": "Oil Changes",
+            "tags": [
+              "PYCH0002"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "f2399c96-0ad5-44a9-ab73-c064d23b2b64",
+            "date": "2026-05-20",
+            "bank": "",
+            "amount": 600,
+            "note": "",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "52e30a97-6f1a-4478-8b3c-85499bffb689",
+            "subBudgetId": "86f92356-a356-4cd4-bfdb-c64780a47e2c"
+          },
+          {
+            "id": "97179707-4b18-4137-a685-134616e6d75e",
+            "date": "2026-05-20",
+            "bank": "FNB - PERSONAL",
+            "amount": -566.62,
+            "note": "#1539",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "52e30a97-6f1a-4478-8b3c-85499bffb689",
+            "subBudgetId": "86f92356-a356-4cd4-bfdb-c64780a47e2c",
+            "reconciled": "2026-05-31"
+          },
+          {
+            "id": "661a7f9a-3f00-41e4-bc72-5958ae065abd",
+            "date": "2026-05-20",
+            "bank": "",
+            "amount": -64.35,
+            "note": "",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "52e30a97-6f1a-4478-8b3c-85499bffb689",
+            "subBudgetId": "86f92356-a356-4cd4-bfdb-c64780a47e2c"
+          },
+          {
+            "id": "527ef327-f825-4a00-baf8-c0de90359bcf",
+            "date": "2026-06-02",
+            "bank": "",
+            "amount": "012.50",
+            "note": "Oil Changes",
+            "tags": [
+              "PYCH0003"
+            ],
+            "reconciled": null,
+            "planned": false
+          }
+        ]
+      },
+      {
+        "id": "3e9434ed-01b8-4690-b480-f671da7b728a",
+        "name": "Truck Maintenance",
+        "transactions": [
+          {
+            "id": "fafaef0c-1812-4404-98ef-c775eab94b7e",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "3.66",
+            "note": "oil changes",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "9ed502aa-ce52-44d6-a7b8-3eef1e9dc235",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "03.66",
+            "note": "Oil Changes",
+            "planned": true,
+            "recurring": true
+          },
+          {
+            "id": "70ac7ce8-9baa-494e-af59-13efc5f1b56c",
+            "date": "2026-05-06",
+            "bank": "",
+            "amount": "03.66",
+            "note": "Oil Changes",
+            "tags": [
+              "PYCH0001"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "e5b4d820-ab9a-4b5e-b877-21cad7d65b5c",
+            "date": "2026-05-20",
+            "bank": "",
+            "amount": "03.66",
+            "note": "Oil Changes",
+            "tags": [
+              "PYCH0002"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "ec2a683c-991b-45f1-8c38-d0aa407048d7",
+            "date": "2026-06-02",
+            "bank": "",
+            "amount": "03.66",
+            "note": "Oil Changes",
+            "tags": [
+              "PYCH0003"
+            ],
+            "reconciled": null,
+            "planned": false
+          }
+        ]
+      },
+      {
+        "id": "82e8d741-46ec-4f76-89cd-d1941999e724",
+        "name": "Bathroom Supplies",
+        "transactions": [
+          {
+            "id": "5c76ffde-0769-48d4-ac06-5f30d49c7e45",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "24.70",
+            "note": "",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "eb968778-1ad5-411c-8543-a2d00f1f9542",
+            "date": "2026-05-01",
+            "bank": "CC - CHASE",
+            "amount": -10,
+            "note": "jetbrains",
+            "reconciled": "2026-05-05",
+            "planned": false
+          },
+          {
+            "id": "41d69bc3-05fa-488f-87df-6d2a93e5a30c",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "03.33",
+            "note": "",
+            "planned": true,
+            "recurring": true
+          },
+          {
+            "id": "7bd9fea5-52eb-46dd-bae5-de5fabaeaff8",
+            "date": "2026-05-06",
+            "bank": "",
+            "amount": "03.33",
+            "note": "",
+            "tags": [
+              "PYCH0001"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "e6adcb20-d205-4ab8-89c7-94af0cc5c162",
+            "date": "2026-05-07",
+            "bank": "",
+            "amount": -16.38,
+            "note": "",
+            "tags": [
+              "TRAN0002"
+            ],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "52e30a97-6f1a-4478-8b3c-85499bffb689",
+            "subBudgetId": "82e8d741-46ec-4f76-89cd-d1941999e724"
+          },
+          {
+            "id": "22057f48-c0e9-4e6d-abb6-013b04fe2838",
+            "date": "2026-05-15",
+            "bank": "Transfers",
+            "amount": -0.35,
+            "note": "Transfer of 0.35 from 5 - Home:Bathroom Supplies to 3 - Food:General",
+            "reconciled": "2026-05-15",
+            "planned": false
+          },
+          {
+            "id": "c4a398df-0b40-465c-81f3-00865aee230a",
+            "date": "2026-05-20",
+            "bank": "",
+            "amount": "03.33",
+            "note": "",
+            "tags": [
+              "PYCH0002"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "ac8b61ce-1eb9-4c71-b620-762957bd04ea",
+            "date": "2026-06-02",
+            "bank": "",
+            "amount": "03.33",
+            "note": "",
+            "tags": [
+              "PYCH0003"
+            ],
+            "reconciled": null,
+            "planned": false
+          }
+        ]
+      },
+      {
+        "id": "1e87d04f-73f8-4bb9-a7ee-2c24a6453d90",
+        "name": "Diapers & Wipes",
+        "transactions": [
+          {
+            "id": "ffdb40eb-37af-4d6b-b35d-4e1f15ab3c8e",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "101.90",
+            "note": "",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "79ea0a19-b1e1-4bf6-a807-48df127e1a79",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "015",
+            "note": "",
+            "planned": true,
+            "recurring": true
+          },
+          {
+            "id": "1b4bc8f7-da1c-439e-8934-e26ea0015b90",
+            "date": "2026-05-05",
+            "bank": "Transfers",
+            "amount": -32.74,
+            "note": "Transfer of 32.74 from 5 - Home:Diapers & Wipes to 3 - Food:General",
+            "reconciled": "2026-05-15",
+            "planned": false,
+            "tags": [],
+            "budgetId": "52e30a97-6f1a-4478-8b3c-85499bffb689",
+            "subBudgetId": "1e87d04f-73f8-4bb9-a7ee-2c24a6453d90",
+            "targetId": "52e30a97-6f1a-4478-8b3c-85499bffb689|1e87d04f-73f8-4bb9-a7ee-2c24a6453d90"
+          },
+          {
+            "id": "c52354aa-9d0a-4399-a799-af3d2e35b67c",
+            "date": "2026-05-06",
+            "bank": "",
+            "amount": "015",
+            "note": "",
+            "tags": [
+              "PYCH0001"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "72ce8c3a-9bce-415e-bc58-6d028102079a",
+            "date": "2026-05-07",
+            "bank": "",
+            "amount": -57.73,
+            "note": "",
+            "tags": [
+              "TRAN0002"
+            ],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "52e30a97-6f1a-4478-8b3c-85499bffb689",
+            "subBudgetId": "1e87d04f-73f8-4bb9-a7ee-2c24a6453d90"
+          },
+          {
+            "id": "b5023195-833d-424d-84ff-50412a7d692a",
+            "date": "2026-05-07",
+            "bank": "Transfers",
+            "amount": -15,
+            "note": "Transfer of 15 from 5 - Home:Diapers & Wipes to 7 - Other:Wedding Gift for Wayne and Hannah",
+            "reconciled": "2026-05-15",
+            "planned": false
+          },
+          {
+            "id": "f76dc25f-21c7-476c-a94d-e2d29b9bc26d",
+            "date": "2026-05-20",
+            "bank": "",
+            "amount": "015",
+            "note": "",
+            "tags": [
+              "PYCH0002"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "5531d587-3afe-45d1-ba5a-3517c59dfd57",
+            "date": "2026-06-02",
+            "bank": "",
+            "amount": "015",
+            "note": "",
+            "tags": [
+              "PYCH0003"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "ebf7b7ac-2045-4894-acd5-56cc5ee6b26c",
+            "date": "2026-06-01",
+            "bank": "",
+            "amount": -40,
+            "note": "",
+            "tags": [
+              "TRAN0004"
+            ],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "52e30a97-6f1a-4478-8b3c-85499bffb689",
+            "subBudgetId": "1e87d04f-73f8-4bb9-a7ee-2c24a6453d90"
+          }
+        ]
+      },
+      {
+        "id": "16e2c73a-edbe-48ff-b14d-3b5436d0ca47",
+        "name": "Electric",
+        "transactions": [
+          {
+            "id": "c8019f5a-09c6-4d7d-bedb-ec765a5f8153",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "185.80",
+            "note": "",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "bbda7d2f-67ce-4389-acdc-9ba53920aee0",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "090",
+            "note": "",
+            "planned": true,
+            "recurring": true
+          },
+          {
+            "id": "5354d9f2-53cc-4e88-a12e-60a695635c5c",
+            "date": "2026-05-06",
+            "bank": "",
+            "amount": "090",
+            "note": "",
+            "tags": [
+              "PYCH0001"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "a7e983c3-5be0-4387-ad72-f625391858f8",
+            "date": "2026-05-08",
+            "bank": "CC - CHASE",
+            "amount": -185.8,
+            "note": "",
+            "tags": [],
+            "reconciled": "2026-05-15",
+            "planned": false
+          },
+          {
+            "id": "f67e1155-891c-49ed-83ed-522159f75c54",
+            "date": "2026-05-20",
+            "bank": "",
+            "amount": "090",
+            "note": "",
+            "tags": [
+              "PYCH0002"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "adcddd08-c4ef-45b0-b298-4b7b1c8b75d6",
+            "date": "2026-06-02",
+            "bank": "",
+            "amount": "090",
+            "note": "",
+            "tags": [
+              "PYCH0003"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "8ac4981b-a7f7-4e2b-9993-4ff26fdf6f04",
+            "date": "2026-06-09",
+            "bank": "",
+            "amount": -23.5,
+            "note": "",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "52e30a97-6f1a-4478-8b3c-85499bffb689",
+            "subBudgetId": "16e2c73a-edbe-48ff-b14d-3b5436d0ca47"
+          },
+          {
+            "id": "312a6ae9-3040-47a8-8b69-21ac1884414c",
+            "date": "2026-06-09",
+            "bank": "CC - CHASE",
+            "amount": -156.5,
+            "note": "",
+            "tags": [],
+            "reconciled": "2026-06-12",
+            "planned": false
+          }
+        ]
+      },
+      {
+        "id": "74af5e51-f73b-45f2-b05c-9888435b07cd",
+        "name": "Vehicle Insurance",
+        "transactions": [
+          {
+            "id": "6b6cfbf4-c954-436b-bdbd-8bf3d4dcd4eb",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "81.99",
+            "note": "",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "29c8b7ff-0a6b-44b1-8adb-5bb7c978ea0a",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "027.33",
+            "note": "",
+            "planned": true,
+            "recurring": true
+          },
+          {
+            "id": "dd6a09ba-9b43-43ff-848d-2d2519b6e1c9",
+            "date": "2026-05-06",
+            "bank": "",
+            "amount": "027.33",
+            "note": "",
+            "tags": [
+              "PYCH0001"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "ed3babf5-24b8-43c7-bf2c-6b1dbb9a8789",
+            "date": "2026-05-20",
+            "bank": "",
+            "amount": "027.33",
+            "note": "",
+            "tags": [
+              "PYCH0002"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "f250637d-38ce-45be-b3ba-dcac838bbd4d",
+            "date": "2026-06-02",
+            "bank": "",
+            "amount": "027.33",
+            "note": "",
+            "tags": [
+              "PYCH0003"
+            ],
+            "reconciled": null,
+            "planned": false
+          }
+        ]
+      },
+      {
+        "id": "8eda748c-706e-460d-a0e0-172e26754479",
+        "name": "Kitchen Supplies",
+        "transactions": [
+          {
+            "id": "6a977a27-485d-4730-ae86-eab7c708a90b",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "17.69",
+            "note": "",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "067e556d-25d5-4460-9af1-d821db25701d",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "02.08",
+            "note": "",
+            "planned": true,
+            "recurring": true
+          },
+          {
+            "id": "76c98e70-5f66-420b-84d0-1b3f7e1c3769",
+            "date": "2026-05-06",
+            "bank": "",
+            "amount": "02.08",
+            "note": "",
+            "tags": [
+              "PYCH0001"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "179c0875-4963-4409-8757-d029192d0f32",
+            "date": "2026-05-07",
+            "bank": "Transfers",
+            "amount": -12,
+            "note": "Transfer of 12 from 5 - Home:Kitchen Supplies to 7 - Other:Wedding Gift for Wayne and Hannah",
+            "reconciled": "2026-05-15",
+            "planned": false
+          },
+          {
+            "id": "7ff78ee7-f2c0-4757-8cd9-30dea28e3ba9",
+            "date": "2026-05-08",
+            "bank": "Wallet",
+            "amount": -1,
+            "note": "",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "52e30a97-6f1a-4478-8b3c-85499bffb689",
+            "subBudgetId": "8eda748c-706e-460d-a0e0-172e26754479",
+            "reconciled": "2026-05-15"
+          },
+          {
+            "id": "b0546f5e-0779-4398-8725-4d9af8c6c417",
+            "date": "2026-05-09",
+            "bank": "Wallet",
+            "amount": -5,
+            "note": "",
+            "tags": [
+              "garage sale"
+            ],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "52e30a97-6f1a-4478-8b3c-85499bffb689",
+            "subBudgetId": "8eda748c-706e-460d-a0e0-172e26754479",
+            "reconciled": "2026-05-15"
+          },
+          {
+            "id": "b2004ab1-0693-4c0f-aa8b-84eb627a68f6",
+            "date": "2026-05-20",
+            "bank": "",
+            "amount": "02.08",
+            "note": "",
+            "tags": [
+              "PYCH0002"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "858ebc51-a4da-4474-b28e-e0e4748ec653",
+            "date": "2026-06-02",
+            "bank": "",
+            "amount": "02.08",
+            "note": "",
+            "tags": [
+              "PYCH0003"
+            ],
+            "reconciled": null,
+            "planned": false
+          }
+        ]
+      },
+      {
+        "id": "58212605-82cc-435a-a932-2b17b63f14ae",
+        "name": "Laundry Supplies",
+        "transactions": [
+          {
+            "id": "b276a9a8-8d0e-411a-8a5f-918828a134d3",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "10.02",
+            "note": "",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "4a07fda1-6aa6-4235-b366-1c986ec30d98",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "1.67",
+            "note": "",
+            "planned": true,
+            "recurring": true
+          },
+          {
+            "id": "1e644cc3-eda8-4404-bd78-5d02c12904f0",
+            "date": "2026-05-06",
+            "bank": "",
+            "amount": "1.67",
+            "note": "",
+            "tags": [
+              "PYCH0001"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "7c6e5f06-d383-484d-aa6e-0633bd58bac2",
+            "date": "2026-05-09",
+            "bank": "",
+            "amount": -3.5,
+            "note": "ATM",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "52e30a97-6f1a-4478-8b3c-85499bffb689",
+            "subBudgetId": "58212605-82cc-435a-a932-2b17b63f14ae"
+          },
+          {
+            "id": "bd8703e5-d310-44ec-8939-ef431dd9f14d",
+            "date": "2026-05-20",
+            "bank": "",
+            "amount": "1.67",
+            "note": "",
+            "tags": [
+              "PYCH0002"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "5f0b46a2-5f61-4ed9-b266-f82b5f90a1e7",
+            "date": "2026-06-02",
+            "bank": "",
+            "amount": "1.67",
+            "note": "",
+            "tags": [
+              "PYCH0003"
+            ],
+            "reconciled": null,
+            "planned": false
+          }
+        ]
+      },
+      {
+        "id": "f9046e8b-a33a-4326-a9fb-18241a53104a",
+        "name": "Vehicle Tags",
+        "transactions": [
+          {
+            "id": "4b8f077a-09d2-47af-b9af-0f0c8753ccdb",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "76.30",
+            "note": "",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "7ae26453-70cc-4deb-8507-16ccf525070a",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "03.35",
+            "note": "",
+            "planned": true,
+            "recurring": true
+          },
+          {
+            "id": "4fbb93e5-0af9-4697-b7a0-01c63e951633",
+            "date": "2026-05-06",
+            "bank": "",
+            "amount": "03.35",
+            "note": "",
+            "tags": [
+              "PYCH0001"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "1a3045bb-8ea4-463c-ab78-5cd47b4efc50",
+            "date": "2026-05-20",
+            "bank": "",
+            "amount": "03.35",
+            "note": "",
+            "tags": [
+              "PYCH0002"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "fa74b6ec-52ec-4918-9185-7882f3d81b7a",
+            "date": "2026-05-27",
+            "bank": "FNB - PERSONAL",
+            "amount": -40.25,
+            "note": "#1577",
+            "tags": [],
+            "reconciled": "2026-06-09",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "633b0f75-cd04-4809-ac65-3c9671327b9e",
+            "date": "2026-06-02",
+            "bank": "",
+            "amount": "03.35",
+            "note": "",
+            "tags": [
+              "PYCH0003"
+            ],
+            "reconciled": null,
+            "planned": false
+          }
+        ]
+      },
+      {
+        "id": "4bdfeab0-c365-4640-94d9-0341f98b1b91",
+        "name": "Oven",
+        "transactions": [
+          {
+            "id": "e060a578-afd1-4164-94ec-098e86c7cfb7",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "0200",
+            "note": "",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "ef0b0fc7-97df-444f-8804-d1796a567fb5",
+            "date": "2026-05-06",
+            "bank": "",
+            "amount": "050",
+            "note": "",
+            "tags": [
+              "PYCH0001"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "91e468bd-a1bc-4de2-ac24-ad2447547357",
+            "date": "2026-05-14",
+            "bank": "",
+            "amount": -35.67,
+            "note": "",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "52e30a97-6f1a-4478-8b3c-85499bffb689",
+            "subBudgetId": "4bdfeab0-c365-4640-94d9-0341f98b1b91"
+          },
+          {
+            "id": "58443604-78f1-4376-bfef-d1ec1a68fac8",
+            "date": "2026-05-20",
+            "bank": "",
+            "amount": 0,
+            "note": "",
+            "tags": [
+              "PYCH0002"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "904ebfaf-f4a7-4886-bc1d-679784752346",
+            "date": "2026-05-20",
+            "bank": "",
+            "amount": -214.33,
+            "note": "",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "52e30a97-6f1a-4478-8b3c-85499bffb689",
+            "subBudgetId": "4bdfeab0-c365-4640-94d9-0341f98b1b91"
+          },
+          {
+            "id": "dfc388c8-de76-4645-996d-3b742e37bac5",
+            "date": "2026-06-09",
+            "bank": "",
+            "amount": 50,
+            "note": "",
+            "tags": [],
+            "planned": true,
+            "recurring": true
+          },
+          {
+            "id": "70c3a6d2-5c5a-4119-8a59-016aac98ff47",
+            "date": "2026-06-02",
+            "bank": "",
+            "amount": 50,
+            "note": "",
+            "tags": [
+              "PYCH0003"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "31826287-083e-4ab8-9c0f-6d2b8a5dba29",
+            "date": "2026-06-09",
+            "bank": "Transfers",
+            "amount": -50,
+            "note": "Transfer of 50 from 5 - Home:Oven to 3 - Food:Chicken Butchering",
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "ca02e5ae-2ff5-4377-832e-0124acb6a71f",
+            "date": "2026-06-09",
+            "bank": "",
+            "amount": 75,
+            "note": "",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "52e30a97-6f1a-4478-8b3c-85499bffb689",
+            "subBudgetId": "4bdfeab0-c365-4640-94d9-0341f98b1b91"
+          },
+          {
+            "id": "e0bb1b75-50d3-40f1-9bb9-e90eda10d40a",
+            "date": "2026-06-12",
+            "bank": "",
+            "amount": -75,
+            "note": "",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "52e30a97-6f1a-4478-8b3c-85499bffb689",
+            "subBudgetId": "4bdfeab0-c365-4640-94d9-0341f98b1b91"
+          }
+        ]
+      },
+      {
+        "id": "a07018b5-1813-407b-8ac6-b80830b3500b",
+        "name": "Propane Heat",
+        "transactions": [
+          {
+            "id": "453d295d-a576-47ec-b0ee-98870bd8f298",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "0645.84",
+            "note": "",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "eb61bbfb-dae6-4dc6-9f57-87342c3cd6d6",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "041.67",
+            "note": "",
+            "planned": true,
+            "recurring": true
+          },
+          {
+            "id": "b77bd90b-df1b-4674-9663-d7b95dea0b9b",
+            "date": "2026-05-06",
+            "bank": "",
+            "amount": "041.67",
+            "note": "",
+            "tags": [
+              "PYCH0001"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "4f2eff90-5234-4cfe-bfaa-9690daa0b8d2",
+            "date": "2026-05-20",
+            "bank": "",
+            "amount": "041.67",
+            "note": "",
+            "tags": [
+              "PYCH0002"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "fe986825-6593-4314-8501-7c31f8c6f693",
+            "date": "2026-05-20",
+            "bank": "FNB - PERSONAL",
+            "amount": -153.84,
+            "note": "#1573",
+            "tags": [],
+            "reconciled": "2026-05-31",
+            "planned": false
+          },
+          {
+            "id": "13ffc700-306a-40aa-b092-3d88c0d25df7",
+            "date": "2026-06-02",
+            "bank": "",
+            "amount": "041.67",
+            "note": "",
+            "tags": [
+              "PYCH0003"
+            ],
+            "reconciled": null,
+            "planned": false
+          }
+        ]
+      },
+      {
+        "id": "97eb215a-d484-4aee-9dbf-c5e720df07b5",
+        "name": "Propane Tank Rent",
+        "transactions": [
+          {
+            "id": "309d6697-7556-486c-94d4-5d2180d4eb04",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": 0,
+            "note": "",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "fed9b53c-7543-4c91-876c-47fc649d7d54",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "08.13",
+            "note": "",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "f03e8d86-ecaf-42f0-819b-2da833f05124",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "02.71",
+            "note": "",
+            "planned": true,
+            "recurring": true
+          },
+          {
+            "id": "6f08643b-b26b-4d1c-906e-252f835098e7",
+            "date": "2026-05-06",
+            "bank": "",
+            "amount": "02.71",
+            "note": "",
+            "tags": [
+              "PYCH0001"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "41fabf9e-4ac3-4272-9ea4-af63d8ff02a3",
+            "date": "2026-05-20",
+            "bank": "",
+            "amount": "02.71",
+            "note": "",
+            "tags": [
+              "PYCH0002"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "b8ed727b-4451-4e62-9263-24cff8f8a1e2",
+            "date": "2026-06-02",
+            "bank": "",
+            "amount": "02.71",
+            "note": "",
+            "tags": [
+              "PYCH0003"
+            ],
+            "reconciled": null,
+            "planned": false
+          }
+        ]
+      },
+      {
+        "id": "fbc96dac-bf37-4c89-b21a-f5a740fc6e79",
+        "name": "Property Taxes",
+        "transactions": [
+          {
+            "id": "5053a8b3-8694-4f43-b272-b4fcc22da655",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "0131.53",
+            "note": "",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "1a04d49b-019a-4019-97c7-0c0ab9e90a97",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "028.83",
+            "note": "",
+            "planned": true,
+            "recurring": true
+          },
+          {
+            "id": "d56e6751-d504-4b11-9dab-fa90421d1a10",
+            "date": "2026-05-06",
+            "bank": "",
+            "amount": "028.83",
+            "note": "",
+            "tags": [
+              "PYCH0001"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "bfce8c8f-a0cc-442f-9c4c-819dc66109ca",
+            "date": "2026-05-06",
+            "bank": "Transfers",
+            "amount": 160.18,
+            "note": "Transfer of 160.18 from 7 - Other:General to 5 - Home:Property Taxes",
+            "reconciled": "2026-05-15",
+            "planned": false
+          },
+          {
+            "id": "7de650b2-e4e1-488c-b5c0-55e048adb3b3",
+            "date": "2026-05-06",
+            "bank": "Transfers",
+            "amount": 25.46,
+            "note": "Transfer of 25.46 from 9 - Savings:Loan Payment Fund to 5 - Home:Property Taxes",
+            "reconciled": "2026-05-15",
+            "planned": false
+          },
+          {
+            "id": "2200d3dd-8822-4e80-9944-57337e7a8758",
+            "date": "2026-05-06",
+            "bank": "Transfers",
+            "amount": 174.54,
+            "note": "Transfer of 174.54 from 9 - Savings:Loan Payment Fund to 5 - Home:Property Taxes",
+            "reconciled": "2026-05-15",
+            "planned": false
+          },
+          {
+            "id": "4ce6025a-25d9-41ad-b5c6-bc998f0033ee",
+            "date": "2026-05-06",
+            "bank": "Transfers",
+            "amount": 17.9,
+            "note": "Transfer of 17.9 from 2 - Farm:Lean-to Shelter to 5 - Home:Property Taxes",
+            "reconciled": "2026-05-15",
+            "planned": false
+          },
+          {
+            "id": "be43fa5f-799a-4086-8137-f334bf42ce23",
+            "date": "2026-05-07",
+            "bank": "FNB - PERSONAL",
+            "amount": -694,
+            "note": "#1570",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "52e30a97-6f1a-4478-8b3c-85499bffb689",
+            "subBudgetId": "fbc96dac-bf37-4c89-b21a-f5a740fc6e79",
+            "reconciled": "2026-05-15"
+          },
+          {
+            "id": "e50c1064-f31e-42c3-b222-d368ad6a8cb0",
+            "date": "2026-05-15",
+            "bank": "Transfers",
+            "amount": 100,
+            "note": "Transfer of 100 from 4 - Travel:Georgia Trip to 5 - Home:Property Taxes",
+            "reconciled": "2026-06-09",
+            "planned": false
+          },
+          {
+            "id": "55a2c63d-ac79-4f81-8cdf-18f0447f6e23",
+            "date": "2026-05-15",
+            "bank": "Transfers",
+            "amount": 16.45,
+            "note": "Transfer of 16.45 from 7 - Other:Wedding Gift for Wayne and Hannah to 5 - Home:Property Taxes",
+            "reconciled": "2026-06-09",
+            "planned": false
+          },
+          {
+            "id": "94ca9d6f-f84b-45fa-8f91-f72bc6bbe81f",
+            "date": "2026-05-15",
+            "bank": "Transfers",
+            "amount": 22.8,
+            "note": "Transfer of 22.8 from 7 - Other:SAR Supplies to 5 - Home:Property Taxes",
+            "reconciled": "2026-06-09",
+            "planned": false
+          },
+          {
+            "id": "772653db-5dd4-4282-9927-d4ad02bb747c",
+            "date": "2026-05-15",
+            "bank": "Transfers",
+            "amount": 10.23,
+            "note": "Transfer of 10.23 from 2 - Farm:Lean-to Shelter to 5 - Home:Property Taxes",
+            "reconciled": "2026-06-09",
+            "planned": false
+          },
+          {
+            "id": "e328582c-249b-424f-b234-91f434879489",
+            "date": "2026-05-15",
+            "bank": "Transfers",
+            "amount": 6.08,
+            "note": "Transfer of 6.08 from 4 - Travel:General to 5 - Home:Property Taxes",
+            "reconciled": "2026-06-09",
+            "planned": false
+          },
+          {
+            "id": "42d53c7a-ea5a-4b78-a619-ba34011decf6",
+            "date": "2026-05-20",
+            "bank": "",
+            "amount": "028.83",
+            "note": "",
+            "tags": [
+              "PYCH0002"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "a1db5807-8286-4095-81d0-91fca2d7e316",
+            "date": "2026-06-02",
+            "bank": "",
+            "amount": "028.83",
+            "note": "",
+            "tags": [
+              "PYCH0003"
+            ],
+            "reconciled": null,
+            "planned": false
+          }
+        ]
+      },
+      {
+        "id": "58a336a2-395f-4b81-8be2-cf9dcc07d38c",
+        "name": "Tires",
+        "transactions": [
+          {
+            "id": "3f701cc7-3b4f-4342-b682-8c3027533080",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "0108.03",
+            "note": "",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "f7f626d9-4354-45ab-8f16-04a715dcf6ba",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "07.13",
+            "note": "",
+            "planned": true,
+            "recurring": true
+          },
+          {
+            "id": "d56570cf-f230-4c62-a3dc-15b5036cdbbe",
+            "date": "2026-05-06",
+            "bank": "",
+            "amount": "07.13",
+            "note": "",
+            "tags": [
+              "PYCH0001"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "2e7a4c25-e470-45b0-b5e2-d203bba5e6c7",
+            "date": "2026-05-20",
+            "bank": "",
+            "amount": "07.13",
+            "note": "",
+            "tags": [
+              "PYCH0002"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "18d286cc-341a-47c6-a8aa-988b56ddf838",
+            "date": "2026-06-02",
+            "bank": "",
+            "amount": "07.13",
+            "note": "",
+            "tags": [
+              "PYCH0003"
+            ],
+            "reconciled": null,
+            "planned": false
+          }
+        ]
+      },
+      {
+        "id": "db0e323e-1e9c-4a3a-ae2f-4ae36c88a4c4",
+        "name": "Vehicle Replacement",
+        "transactions": [
+          {
+            "id": "bd00e7aa-fd03-4a2e-90c2-412fa9f4dce5",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "0201.18",
+            "note": "",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "9c29b0d1-18bc-4eea-aefc-7ae1eb6cfed7",
+            "date": "2026-05-05",
+            "bank": "CC - CHASE",
+            "amount": -63.53,
+            "note": "",
+            "reconciled": "2026-05-05",
+            "planned": false
+          },
+          {
+            "id": "093ee5a7-1137-4304-b8e1-5350b3b01143",
+            "date": "2026-05-01",
+            "bank": "CC - VERIZON VISA",
+            "amount": -26.28,
+            "note": "",
+            "reconciled": "2026-05-15",
+            "planned": false
+          },
+          {
+            "id": "5f089131-2496-46f9-a849-1b622ba19f0e",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": 83.33,
+            "note": "",
+            "planned": true,
+            "recurring": true,
+            "tags": []
+          },
+          {
+            "id": "d428eb62-c614-4feb-a510-b20ddc055768",
+            "date": "2026-05-05",
+            "bank": "Transfers",
+            "amount": -111.37,
+            "note": "Transfer of 111.37 from 5 - Home:Vehicle Replacement to 4 - Travel:General",
+            "reconciled": "2026-05-15",
+            "planned": false,
+            "tags": [],
+            "budgetId": "52e30a97-6f1a-4478-8b3c-85499bffb689",
+            "subBudgetId": "db0e323e-1e9c-4a3a-ae2f-4ae36c88a4c4",
+            "targetId": "52e30a97-6f1a-4478-8b3c-85499bffb689|db0e323e-1e9c-4a3a-ae2f-4ae36c88a4c4"
+          },
+          {
+            "id": "c85e49e6-5920-472b-8ce8-68b00b7a8657",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "105.39",
+            "note": "",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "52e30a97-6f1a-4478-8b3c-85499bffb689",
+            "subBudgetId": "db0e323e-1e9c-4a3a-ae2f-4ae36c88a4c4",
+            "targetId": "52e30a97-6f1a-4478-8b3c-85499bffb689|db0e323e-1e9c-4a3a-ae2f-4ae36c88a4c4"
+          },
+          {
+            "id": "98370641-b25d-430a-8b97-696cecd25c2a",
+            "date": "2026-05-06",
+            "bank": "",
+            "amount": "083.33",
+            "note": "",
+            "tags": [
+              "PYCH0001"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "94236c6c-f3ad-48c8-8712-c1839637288d",
+            "date": "2026-05-10",
+            "bank": "CC - CHASE",
+            "amount": -43.39,
+            "note": "acme tools",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "52e30a97-6f1a-4478-8b3c-85499bffb689",
+            "subBudgetId": "db0e323e-1e9c-4a3a-ae2f-4ae36c88a4c4",
+            "reconciled": "2026-05-15"
+          },
+          {
+            "id": "8e57f944-6cb2-4a35-a944-f0f2346fbd7c",
+            "date": "2026-05-10",
+            "bank": "CC - CHASE",
+            "amount": -36.83,
+            "note": "L & M",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "52e30a97-6f1a-4478-8b3c-85499bffb689",
+            "subBudgetId": "db0e323e-1e9c-4a3a-ae2f-4ae36c88a4c4",
+            "reconciled": "2026-05-15"
+          },
+          {
+            "id": "c81ed81e-8fb6-4177-92c2-e299228f8f80",
+            "date": "2026-05-10",
+            "bank": "CC - CHASE",
+            "amount": -15.67,
+            "note": "Ace",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "52e30a97-6f1a-4478-8b3c-85499bffb689",
+            "subBudgetId": "db0e323e-1e9c-4a3a-ae2f-4ae36c88a4c4",
+            "reconciled": "2026-05-15"
+          },
+          {
+            "id": "5ff66114-e44d-42d0-92bb-684e9c974b09",
+            "date": "2026-05-11",
+            "bank": "FNB - PERSONAL",
+            "amount": -40,
+            "note": "#1571 - garage sale",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "52e30a97-6f1a-4478-8b3c-85499bffb689",
+            "subBudgetId": "db0e323e-1e9c-4a3a-ae2f-4ae36c88a4c4",
+            "reconciled": "2026-05-20"
+          },
+          {
+            "id": "cf9fa242-76c5-45b8-8587-63d6145fcf40",
+            "date": "2026-05-20",
+            "bank": "",
+            "amount": 50,
+            "note": "",
+            "tags": [
+              "PYCH0002"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "192a55ce-094d-4db9-8faf-f02e3cc6bfaf",
+            "date": "2026-05-20",
+            "bank": "",
+            "amount": -102.83,
+            "note": "",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "52e30a97-6f1a-4478-8b3c-85499bffb689",
+            "subBudgetId": "db0e323e-1e9c-4a3a-ae2f-4ae36c88a4c4"
+          },
+          {
+            "id": "de5818c4-c107-4fad-9214-fe22f485ef67",
+            "date": "2026-06-02",
+            "bank": "",
+            "amount": 83.33,
+            "note": "",
+            "tags": [
+              "PYCH0003"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "fb3821ee-dff3-4186-9c56-bedc02ee9306",
+            "date": "2026-06-09",
+            "bank": "Transfers",
+            "amount": -37.34,
+            "note": "Transfer of 37.34 from 5 - Home:Vehicle Replacement to 2 - Farm:General",
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "d3d0de07-4701-4572-93e8-6311b78b1988",
+            "date": "2026-06-09",
+            "bank": "",
+            "amount": 75,
+            "note": "",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "52e30a97-6f1a-4478-8b3c-85499bffb689",
+            "subBudgetId": "db0e323e-1e9c-4a3a-ae2f-4ae36c88a4c4"
+          },
+          {
+            "id": "dcdcd823-ef94-4d3c-8151-8661e5deccd6",
+            "date": "2026-06-12",
+            "bank": "Transfers",
+            "amount": -16.9,
+            "note": "Transfer of 16.9 from 5 - Home:Vehicle Replacement to 3 - Food:General",
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "c9033b9d-4cbc-494f-b9c8-a96d5cf66ba7",
+            "date": "2026-06-12",
+            "bank": "Transfers",
+            "amount": -68.38,
+            "note": "Transfer of 68.38 from 5 - Home:Vehicle Replacement to 3 - Food:Chicken Butchering",
+            "reconciled": null,
+            "planned": false
+          }
+        ]
+      },
+      {
+        "id": "6872711e-41f1-416c-928e-087fd9bebc8a",
+        "name": "Water Softener Salt",
+        "transactions": [
+          {
+            "id": "a6ad33e0-9355-44cd-aabc-bcf98cfc7344",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "021.47",
+            "note": "",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "42f24118-ce62-42eb-9bd5-a9f2f5e0db90",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "05.42",
+            "note": "",
+            "planned": true,
+            "recurring": true
+          },
+          {
+            "id": "70d941b4-e510-4050-9574-8788e07b90c0",
+            "date": "2026-05-06",
+            "bank": "",
+            "amount": "05.42",
+            "note": "",
+            "tags": [
+              "PYCH0001"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "4fdcec5f-bd21-4d10-9e59-56c878c19d21",
+            "date": "2026-05-20",
+            "bank": "",
+            "amount": "05.42",
+            "note": "",
+            "tags": [
+              "PYCH0002"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "9da0fbb4-f988-41b8-abae-a1a91f27220a",
+            "date": "2026-06-02",
+            "bank": "",
+            "amount": "05.42",
+            "note": "",
+            "tags": [
+              "PYCH0003"
+            ],
+            "reconciled": null,
+            "planned": false
+          }
+        ]
+      },
+      {
+        "id": "5aba0068-d5d6-4afb-bccd-b9b70820b860",
+        "name": "Well/Water Supply",
+        "transactions": [
+          {
+            "id": "7bf79019-2b43-4b9f-8881-5845bad784a1",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "06608.5",
+            "note": "",
+            "planned": false,
+            "recurring": false
+          }
+        ]
+      },
+      {
+        "id": "85d15b08-9ae0-416f-b9a9-00bd4636c2e7",
+        "name": "Verizon Bill",
+        "transactions": [
+          {
+            "id": "58af7a4b-62a4-459e-b387-daea420a26e9",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "042.74",
+            "note": "",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "7ac81079-3d7a-4800-ac2f-262b8542f7dd",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "042.74",
+            "note": "",
+            "planned": true,
+            "recurring": true
+          },
+          {
+            "id": "7fd76c03-0ee7-40dc-9afd-4a6b42a55c92",
+            "date": "2026-05-06",
+            "bank": "",
+            "amount": "042.74",
+            "note": "",
+            "tags": [
+              "PYCH0001"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "c940ec6c-83a7-4d4f-bb97-732a886fc301",
+            "date": "2026-05-15",
+            "bank": "",
+            "amount": -80.14,
+            "note": "",
+            "tags": [
+              "VB2026-05-04"
+            ],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "52e30a97-6f1a-4478-8b3c-85499bffb689",
+            "subBudgetId": "85d15b08-9ae0-416f-b9a9-00bd4636c2e7"
+          },
+          {
+            "id": "cc7df475-b4cb-4cd4-9f69-8647d47f7430",
+            "date": "2026-05-20",
+            "bank": "",
+            "amount": "042.74",
+            "note": "",
+            "tags": [
+              "PYCH0002"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "81b6e82f-6228-469f-967c-cdf715517f2a",
+            "date": "2026-06-02",
+            "bank": "",
+            "amount": "042.74",
+            "note": "",
+            "tags": [
+              "PYCH0003"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "20458f22-31ba-41c3-b048-e2eb68640073",
+            "date": "2026-06-09",
+            "bank": "",
+            "amount": -90.82,
+            "note": "",
+            "tags": [
+              "VB2026-06-04"
+            ],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "52e30a97-6f1a-4478-8b3c-85499bffb689",
+            "subBudgetId": "85d15b08-9ae0-416f-b9a9-00bd4636c2e7"
+          }
+        ]
+      },
+      {
+        "id": "1493d55b-6b41-4811-a001-c05e9890af53",
+        "name": "Clothing",
+        "transactions": [
+          {
+            "id": "afbf6570-6633-40a0-afae-cfd287620359",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "12.5",
+            "note": "",
+            "planned": true,
+            "recurring": true
+          },
+          {
+            "id": "91724f62-cab1-4f00-a61c-1de9cb9a4a9e",
+            "date": "2026-05-06",
+            "bank": "",
+            "amount": "12.5",
+            "note": "",
+            "tags": [
+              "PYCH0001"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "0fab7bb3-d32b-469a-bf3a-9dc4e1c2f733",
+            "date": "2026-05-09",
+            "bank": "Wallet",
+            "amount": -10,
+            "note": "",
+            "tags": [
+              "garage sale"
+            ],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "52e30a97-6f1a-4478-8b3c-85499bffb689",
+            "subBudgetId": "1493d55b-6b41-4811-a001-c05e9890af53",
+            "reconciled": "2026-05-15"
+          },
+          {
+            "id": "cd490426-5bee-4a46-94e7-2692003ef49a",
+            "date": "2026-05-20",
+            "bank": "",
+            "amount": "12.5",
+            "note": "",
+            "tags": [
+              "PYCH0002"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "a0ba1175-cdbd-44cd-9268-83355965b19f",
+            "date": "2026-05-31",
+            "bank": "",
+            "amount": -15,
+            "note": "",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "52e30a97-6f1a-4478-8b3c-85499bffb689",
+            "subBudgetId": "1493d55b-6b41-4811-a001-c05e9890af53"
+          },
+          {
+            "id": "09ea196c-c6be-4fcb-8efd-4662285a2ad9",
+            "date": "2026-06-02",
+            "bank": "",
+            "amount": "12.5",
+            "note": "",
+            "tags": [
+              "PYCH0003"
+            ],
+            "reconciled": null,
+            "planned": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "16d1e76c-4051-417d-a67a-85d511ac07b8",
+    "name": "6 - Medical",
+    "subBudgets": [
+      {
+        "id": "23e888cf-0f92-435e-a7db-cd31ffbe5dba",
+        "name": "General",
+        "transactions": []
+      },
+      {
+        "id": "c9dba137-206c-4fe5-bb99-8f3c6f009e1d",
+        "name": "Pregnancy",
+        "transactions": [
+          {
+            "id": "046d1693-f459-4d7d-b664-4e50a64c7261",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "650",
+            "note": "midwifery",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "c3f0ea67-b2ad-44ce-882b-9aa61c49eb1b",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "0108.33",
+            "note": "",
+            "planned": true,
+            "recurring": true
+          },
+          {
+            "id": "72b3dbbc-ac27-4dc8-8f89-c2a56fd37429",
+            "date": "2026-05-06",
+            "bank": "",
+            "amount": "0108.33",
+            "note": "",
+            "tags": [
+              "PYCH0001"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "c57958c0-ec13-448b-8b42-6adbd425bdef",
+            "date": "2026-05-07",
+            "bank": "",
+            "amount": -10,
+            "note": "",
+            "tags": [
+              "TRAN0002",
+              "prenatal vitamins"
+            ],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "16d1e76c-4051-417d-a67a-85d511ac07b8",
+            "subBudgetId": "c9dba137-206c-4fe5-bb99-8f3c6f009e1d"
+          },
+          {
+            "id": "95c02de7-0149-416b-80ba-8d2021c359db",
+            "date": "2026-05-08",
+            "bank": "Transfers",
+            "amount": 10,
+            "note": "Transfer of 10 from 3 - Food:General to 6 - Medical:Pregnancy",
+            "reconciled": "2026-05-15",
+            "planned": false
+          },
+          {
+            "id": "c6b1460a-5851-4dad-8a37-5ce91bcdc45f",
+            "date": "2026-05-20",
+            "bank": "",
+            "amount": "0108.33",
+            "note": "",
+            "tags": [
+              "PYCH0002"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "ac6ffcc4-1ab8-45b3-a909-afe2e08b5fc8",
+            "date": "2026-06-02",
+            "bank": "",
+            "amount": "0108.33",
+            "note": "",
+            "tags": [
+              "PYCH0003"
+            ],
+            "reconciled": null,
+            "planned": false
+          }
+        ]
+      },
+      {
+        "id": "875b08d0-ea1f-4601-8b7a-0a64219d1ba6",
+        "name": "Brotherhood Mutual Aid",
+        "transactions": [
+          {
+            "id": "e4088f28-a846-4613-9600-0a0a2031076e",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "371.66",
+            "note": "",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "ebe655ce-ebf5-46e3-b790-d2fbe47f6a52",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "0185.83",
+            "note": "",
+            "planned": true,
+            "recurring": true
+          },
+          {
+            "id": "10caefae-07be-4f34-ac61-36add03b55d4",
+            "date": "2026-05-06",
+            "bank": "",
+            "amount": "0185.83",
+            "note": "",
+            "tags": [
+              "PYCH0001"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "4951ac05-a3fa-490c-b60d-99b8a8daacdc",
+            "date": "2026-05-20",
+            "bank": "",
+            "amount": "0185.83",
+            "note": "",
+            "tags": [
+              "PYCH0002"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "112d560f-0627-4e98-84f1-45f725e58dcc",
+            "date": "2026-06-02",
+            "bank": "",
+            "amount": "0185.83",
+            "note": "",
+            "tags": [
+              "PYCH0003"
+            ],
+            "reconciled": null,
+            "planned": false
+          }
+        ]
+      },
+      {
+        "id": "4cfaad73-bd62-4c3a-8bbf-88f3fd50b86c",
+        "name": "Dental Expenses",
+        "transactions": [
+          {
+            "id": "38da0a81-f7b5-4abf-be59-a00825eabe3d",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "66.66",
+            "note": "",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "df623b8c-b8a6-4599-a280-0884eb4e74a8",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "033.33",
+            "note": "",
+            "planned": true,
+            "recurring": true
+          },
+          {
+            "id": "1a66c0c5-cbf4-4e73-a849-b44351077009",
+            "date": "2026-05-06",
+            "bank": "",
+            "amount": "033.33",
+            "note": "",
+            "tags": [
+              "PYCH0001"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "d9bab90c-762b-4f29-9013-2d515af8094d",
+            "date": "2026-05-20",
+            "bank": "",
+            "amount": "033.33",
+            "note": "",
+            "tags": [
+              "PYCH0002"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "a41b97b7-560c-417a-a7de-a193051a1fdc",
+            "date": "2026-06-02",
+            "bank": "",
+            "amount": "033.33",
+            "note": "",
+            "tags": [
+              "PYCH0003"
+            ],
+            "reconciled": null,
+            "planned": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ae91c4f1-d658-4169-85bf-d73ae67b8046",
+    "name": "7 - Other",
+    "subBudgets": [
+      {
+        "id": "b3e51986-f580-49d8-b19e-8a0af712a6bd",
+        "name": "General",
+        "transactions": [
+          {
+            "id": "9dad7dc6-99a2-45f9-9a4f-75e0229e0cb2",
+            "date": "2026-05-05",
+            "bank": "FNB - SAVINGS",
+            "amount": 0,
+            "note": "",
+            "planned": false,
+            "recurring": false,
+            "reconciled": "2026-05-05"
+          },
+          {
+            "id": "a70c6111-101d-4e61-ba60-000c3091af64",
+            "date": "2026-05-05",
+            "bank": "CC - AMEX BLUE",
+            "amount": "0",
+            "note": "",
+            "planned": false,
+            "recurring": false,
+            "budgetId": "ae91c4f1-d658-4169-85bf-d73ae67b8046",
+            "budgetName": "7 - Other",
+            "subBudgetId": "b3e51986-f580-49d8-b19e-8a0af712a6bd",
+            "subBudgetName": "General",
+            "reconciled": "2026-05-05"
+          },
+          {
+            "id": "1ade53a8-1ed9-4195-bfd4-9977b39230b6",
+            "date": "2026-05-05",
+            "bank": "CC - CHASE",
+            "amount": 0,
+            "note": "",
+            "planned": false,
+            "recurring": false,
+            "reconciled": "2026-05-05"
+          },
+          {
+            "id": "7ace3f1e-54f9-4878-af26-d991eac1f01d",
+            "date": "2026-05-05",
+            "bank": "CC - VERIZON VISA",
+            "amount": 0,
+            "note": "",
+            "planned": false,
+            "recurring": false,
+            "reconciled": "2026-05-05"
+          },
+          {
+            "id": "6b6a438c-c8bc-43b0-9452-9f901ea681e3",
+            "date": "2026-05-05",
+            "bank": "CC - AMAZON",
+            "amount": "0",
+            "note": "",
+            "planned": false,
+            "recurring": false,
+            "budgetId": "ae91c4f1-d658-4169-85bf-d73ae67b8046",
+            "budgetName": "7 - Other",
+            "subBudgetId": "b3e51986-f580-49d8-b19e-8a0af712a6bd",
+            "subBudgetName": "General",
+            "reconciled": "2026-05-05"
+          },
+          {
+            "id": "7c9d851a-3e09-4d46-91a6-f34affbb4fe7",
+            "date": "2026-05-05",
+            "bank": "PP - CREDIT",
+            "amount": 0,
+            "note": "",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "4e56fda1-1d09-4521-a8f5-bbd9e78f90e7",
+            "date": "2026-05-05",
+            "bank": "PP - SAVINGS",
+            "amount": 0,
+            "note": "",
+            "planned": false,
+            "recurring": false,
+            "reconciled": "2026-05-05"
+          },
+          {
+            "id": "d4e6182e-91da-478e-b5ae-6d9581c9ad8b",
+            "date": "2026-05-06",
+            "bank": "",
+            "amount": 160.18,
+            "note": "",
+            "tags": [
+              "PYCH0001"
+            ],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "ae91c4f1-d658-4169-85bf-d73ae67b8046",
+            "subBudgetId": "b3e51986-f580-49d8-b19e-8a0af712a6bd"
+          },
+          {
+            "id": "65b1f97a-11e0-46b1-a53a-81677cef4f13",
+            "date": "2026-05-06",
+            "bank": "Transfers",
+            "amount": -160.18,
+            "note": "Transfer of 160.18 from 7 - Other:General to 5 - Home:Property Taxes",
+            "reconciled": "2026-05-15",
+            "planned": false
+          }
+        ]
+      },
+      {
+        "id": "f8c45bc7-842f-45ff-b9d8-a96b99df33d3",
+        "name": "Software Subscriptions",
+        "transactions": [
+          {
+            "id": "d76bde30-be85-4603-a2de-20eb34928286",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "0.83",
+            "note": "Adblock Plus",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "6ee8115c-4548-40c6-a947-373d099baba9",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "0.83",
+            "note": "Adblock Plus",
+            "planned": true,
+            "recurring": true
+          },
+          {
+            "id": "61258aa9-7cb9-4f8d-8b70-b8d8a0b40272",
+            "date": "2026-05-06",
+            "bank": "",
+            "amount": "0.83",
+            "note": "Adblock Plus",
+            "tags": [
+              "PYCH0001"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "fe86cfc8-287e-4fc7-b2be-8b02e54163d8",
+            "date": "2026-05-20",
+            "bank": "",
+            "amount": "0.83",
+            "note": "Adblock Plus",
+            "tags": [
+              "PYCH0002"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "1d79e562-5e2b-419d-806b-0b161a6e9046",
+            "date": "2026-06-02",
+            "bank": "",
+            "amount": "0.83",
+            "note": "Adblock Plus",
+            "tags": [
+              "PYCH0003"
+            ],
+            "reconciled": null,
+            "planned": false
+          }
+        ]
+      },
+      {
+        "id": "0312c1a5-e65b-44e5-80a4-53ab8ab23bae",
+        "name": "SAR Supplies",
+        "transactions": [
+          {
+            "id": "e6795c10-3453-4cea-99e9-676b070d79e6",
+            "date": "2026-05-07",
+            "bank": "Transfers",
+            "amount": 100,
+            "note": "Transfer of 100 from 2 - Farm:Lean-to Shelter to 7 - Other:SAR Supplies",
+            "reconciled": "2026-05-15",
+            "planned": false
+          },
+          {
+            "id": "c5a451b5-5faa-4e3c-beba-c0e87ac6353f",
+            "date": "2026-05-07",
+            "bank": "",
+            "amount": -57.2,
+            "note": "",
+            "tags": [
+              "TRAN0001"
+            ],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "ae91c4f1-d658-4169-85bf-d73ae67b8046",
+            "subBudgetId": "0312c1a5-e65b-44e5-80a4-53ab8ab23bae"
+          },
+          {
+            "id": "054eb684-04a8-4ddf-b33a-8239742f84bb",
+            "date": "2026-05-07",
+            "bank": "Transfers",
+            "amount": -20,
+            "note": "Transfer of 20 from 7 - Other:SAR Supplies to 7 - Other:Wedding Gift for Wayne and Hannah",
+            "reconciled": "2026-05-15",
+            "planned": false
+          },
+          {
+            "id": "81e3f740-dbc3-40d5-b5bf-e4e924757016",
+            "date": "2026-05-15",
+            "bank": "Transfers",
+            "amount": -22.8,
+            "note": "Transfer of 22.8 from 7 - Other:SAR Supplies to 5 - Home:Property Taxes",
+            "reconciled": "2026-06-09",
+            "planned": false
+          },
+          {
+            "id": "df2cab6b-c98d-4132-9824-43b1c94fa7b7",
+            "date": "2026-06-09",
+            "bank": "",
+            "amount": 20,
+            "note": "",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "ae91c4f1-d658-4169-85bf-d73ae67b8046",
+            "subBudgetId": "0312c1a5-e65b-44e5-80a4-53ab8ab23bae"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bef3861f-accc-42ca-a3e6-9f911f0d1539",
+    "name": "8 - Business",
+    "subBudgets": [
+      {
+        "id": "077a8c51-de11-4a02-a628-0de8bb06ae5f",
+        "name": "General",
+        "transactions": []
+      },
+      {
+        "id": "f7b35561-55d8-4a79-b473-7534347d0d9d",
+        "name": "Cottage Scrubbies",
+        "transactions": [
+          {
+            "id": "f50db0ae-278c-4a1b-9107-0691c98d78b9",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "-2.34",
+            "note": "tithe",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "882781e9-1b2c-495e-a863-2ef85237b816",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "018",
+            "note": "income",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "d36ef66a-c37a-4ce8-96fd-f5c575a7b036",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "-6",
+            "note": "expenses",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "3ba5b0ea-618d-445a-89d5-898556ace349",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "-5.57",
+            "note": "supplies",
+            "planned": false,
+            "recurring": false
+          }
+        ]
+      },
+      {
+        "id": "965d7181-1a75-4de5-870a-235910e0d595",
+        "name": "Jam",
+        "transactions": [
+          {
+            "id": "03beeecd-5e90-4eaa-8da4-c1f3a53100c5",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "0160",
+            "note": "income",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "7ba25834-81ee-4052-a0ca-40b45c62bf62",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "-160",
+            "note": "payouts",
+            "planned": false,
+            "recurring": false
+          }
+        ]
+      },
+      {
+        "id": "a4e37499-0dab-46c4-a7bc-7b3dd15de717",
+        "name": "Poplar Lake Furniture",
+        "transactions": [
+          {
+            "id": "cec1be40-f014-45a9-ba8f-514933acac14",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "0870",
+            "note": "income",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "7b71c26b-abe9-4e21-afb6-66b1360f31a5",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "-342.62",
+            "note": "materials",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "81a29c9d-3606-452c-b8c3-a7fc40e25188",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "-527.38",
+            "note": "payouts",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "00990760-4abb-4502-908f-cbe9e0e7fad9",
+            "date": "2026-06-20",
+            "bank": "FNB - PERSONAL",
+            "amount": 2825,
+            "note": "",
+            "tags": [
+              "PLF-SALE-250619-Chadwick"
+            ],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "bef3861f-accc-42ca-a3e6-9f911f0d1539",
+            "subBudgetId": "a4e37499-0dab-46c4-a7bc-7b3dd15de717"
+          },
+          {
+            "id": "13a22c19-3ced-419b-acbe-92d9df8536ee",
+            "date": "2026-06-19",
+            "bank": "FNB - PERSONAL",
+            "amount": -1435,
+            "note": "#1587 - Materials",
+            "tags": [
+              "PLF-SALE-250619-Chadwick"
+            ],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "bef3861f-accc-42ca-a3e6-9f911f0d1539",
+            "subBudgetId": "a4e37499-0dab-46c4-a7bc-7b3dd15de717"
+          },
+          {
+            "id": "a97ffe3d-fe6b-4470-ad0f-6739b7ede757",
+            "date": "2026-06-20",
+            "bank": "FNB - PERSONAL",
+            "amount": -60,
+            "note": "Gas",
+            "tags": [
+              "PLF-SALE-250619-Chadwick"
+            ],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "bef3861f-accc-42ca-a3e6-9f911f0d1539",
+            "subBudgetId": "a4e37499-0dab-46c4-a7bc-7b3dd15de717"
+          },
+          {
+            "id": "a49534bf-a175-48a0-90bb-37c1172e2f5f",
+            "date": "2026-06-20",
+            "bank": "FNB - PERSONAL",
+            "amount": -222.47,
+            "note": "Sales Tax",
+            "tags": [
+              "PLF-SALE-250619-Chadwick"
+            ],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "bef3861f-accc-42ca-a3e6-9f911f0d1539",
+            "subBudgetId": "a4e37499-0dab-46c4-a7bc-7b3dd15de717"
+          },
+          {
+            "id": "778f1351-110b-42e2-ac1a-95413b838873",
+            "date": "2026-06-20",
+            "bank": "FNB - PERSONAL",
+            "amount": -664.52,
+            "note": "#1543 - Wayne's Work (3 of 5 shares)",
+            "tags": [
+              "PLF-SALE-250619-Chadwick"
+            ],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "bef3861f-accc-42ca-a3e6-9f911f0d1539",
+            "subBudgetId": "a4e37499-0dab-46c4-a7bc-7b3dd15de717"
+          },
+          {
+            "id": "3480faf6-6e09-46a4-9a10-1515a797d596",
+            "date": "2026-06-20",
+            "bank": "FNB - PERSONAL",
+            "amount": -221.51,
+            "note": "Youth Group's work (1 of 5 shares)",
+            "tags": [
+              "PLF-SALE-250619-Chadwick"
+            ],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "bef3861f-accc-42ca-a3e6-9f911f0d1539",
+            "subBudgetId": "a4e37499-0dab-46c4-a7bc-7b3dd15de717"
+          },
+          {
+            "id": "b1ae5735-7488-45c8-a9e4-826079bae36f",
+            "date": "2026-06-20",
+            "bank": "",
+            "amount": -221.5,
+            "note": "Our Sales and Delivery (1 of 5 shares)",
+            "tags": [
+              "PLF-SALE-250619-Chadwick"
+            ],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "bef3861f-accc-42ca-a3e6-9f911f0d1539",
+            "subBudgetId": "a4e37499-0dab-46c4-a7bc-7b3dd15de717"
+          }
+        ]
+      },
+      {
+        "id": "e4d94df3-47b0-4280-8f22-e539ced7a429",
+        "name": "Snow Removal",
+        "transactions": [
+          {
+            "id": "486d66a5-ee47-4378-9fbc-853f7cdb3ac8",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "-7.37",
+            "note": "expenses - Meals",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "29c12f39-bd78-4eb7-89c6-b98f009ce7ed",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "1650",
+            "note": "income - Lutheran Campus Ministries",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "429e10ed-9976-43c6-b686-aa2708837856",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "-9.9",
+            "note": "expenses - Automobile",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "c0e71fc1-599a-4578-80d4-79656ea76869",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "-8.83",
+            "note": "expenses - Automobile",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "d7054ce6-650b-4c2b-addb-7b8a64e7a491",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "-150",
+            "note": "equipment - Snowblower",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "44df0918-2171-48ab-8f70-a17d38c54fe5",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "200",
+            "note": "income - Keith Johnson",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "8bb441eb-dce4-41ab-a958-f02e3c1c5995",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "-726.67",
+            "note": "payouts - Joshua",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "e5027a84-3192-43b5-ac24-00e3d6d9ede0",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "-7.15",
+            "note": "expenses - Meals",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "b8da8f61-3221-4ad1-8edb-a3672dad235c",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "-7.58",
+            "note": "expenses - Snowblower Gas",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "d8822177-c868-49b9-896a-b136dd33e072",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "-932.5",
+            "note": "payouts - Jeremiah",
+            "planned": false,
+            "recurring": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "3fe69203-17a1-447a-ac3c-fc3ad0b4037c",
+    "name": "9 - Savings",
+    "subBudgets": [
+      {
+        "id": "1d015590-bebc-4424-b224-fe8337189b55",
+        "name": "General",
+        "transactions": []
+      },
+      {
+        "id": "5c748eb8-1f30-4164-be13-7ddfa2f5cb19",
+        "name": "Loan Payment Fund",
+        "transactions": [
+          {
+            "id": "43b004ef-c0a7-4a2a-8ae7-2115968da3fc",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "0250",
+            "note": "",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "89c01533-843d-469e-a637-72c07cc6ada8",
+            "date": "2026-05-05",
+            "bank": "FNB - PERSONAL",
+            "amount": "-250",
+            "note": "T1005",
+            "planned": false,
+            "recurring": false,
+            "reconciled": "2026-05-15"
+          },
+          {
+            "id": "342d76fb-409d-46f3-9b22-868101e78ae4",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "0210",
+            "note": "",
+            "planned": true,
+            "recurring": true
+          },
+          {
+            "id": "ab951af0-e81b-4aca-8ed4-e852d7dd257a",
+            "date": "2026-05-06",
+            "bank": "",
+            "amount": "0210",
+            "note": "",
+            "tags": [
+              "PYCH0001"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "0677a414-9790-409c-b833-7985219ab0e4",
+            "date": "2026-05-06",
+            "bank": "",
+            "amount": 200,
+            "note": "",
+            "tags": [
+              "PYCH0001"
+            ],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "3fe69203-17a1-447a-ac3c-fc3ad0b4037c",
+            "subBudgetId": "5c748eb8-1f30-4164-be13-7ddfa2f5cb19"
+          },
+          {
+            "id": "65eaf8af-b846-4ec8-ac58-ef93a97e9c52",
+            "date": "2026-05-06",
+            "bank": "Transfers",
+            "amount": -25.46,
+            "note": "Transfer of 25.46 from 9 - Savings:Loan Payment Fund to 5 - Home:Property Taxes",
+            "reconciled": "2026-05-15",
+            "planned": false
+          },
+          {
+            "id": "1b1a4a54-c94a-44b7-a5b1-f0c1c71efc86",
+            "date": "2026-05-06",
+            "bank": "Transfers",
+            "amount": -174.54,
+            "note": "Transfer of 174.54 from 9 - Savings:Loan Payment Fund to 5 - Home:Property Taxes",
+            "reconciled": "2026-05-15",
+            "planned": false
+          },
+          {
+            "id": "b7bfdb25-9eee-440e-9714-475b7ebbf72e",
+            "date": "2026-05-20",
+            "bank": "",
+            "amount": "0210",
+            "note": "",
+            "tags": [
+              "PYCH0002"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "eb02472e-67d9-4be4-a5e0-799400708a42",
+            "date": "2026-05-20",
+            "bank": "",
+            "amount": -170,
+            "note": "",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "3fe69203-17a1-447a-ac3c-fc3ad0b4037c",
+            "subBudgetId": "5c748eb8-1f30-4164-be13-7ddfa2f5cb19"
+          },
+          {
+            "id": "d0601054-e986-4afc-a6d8-0326e2e318e7",
+            "date": "2026-05-31",
+            "bank": "",
+            "amount": 0,
+            "note": "",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "3fe69203-17a1-447a-ac3c-fc3ad0b4037c",
+            "subBudgetId": "5c748eb8-1f30-4164-be13-7ddfa2f5cb19"
+          },
+          {
+            "id": "f7ab2377-6eba-43ec-8473-0bf33f73ebb5",
+            "date": "2026-05-31",
+            "bank": "",
+            "amount": -159.31,
+            "note": "",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "3fe69203-17a1-447a-ac3c-fc3ad0b4037c",
+            "subBudgetId": "5c748eb8-1f30-4164-be13-7ddfa2f5cb19"
+          },
+          {
+            "id": "23309e17-ae09-4208-a290-3cae7b95894a",
+            "date": "2026-06-02",
+            "bank": "",
+            "amount": "0210",
+            "note": "",
+            "tags": [
+              "PYCH0003"
+            ],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "ea264ae4-4284-4bd5-813e-673051d04ce1",
+            "date": "2026-06-08",
+            "bank": "FNB - PERSONAL",
+            "amount": -250,
+            "note": "",
+            "tags": [],
+            "reconciled": "2026-06-12",
+            "planned": false
+          },
+          {
+            "id": "317563a9-454e-4c56-9125-b48a03f9563b",
+            "date": "2026-06-09",
+            "bank": "",
+            "amount": 146.39,
+            "note": "",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "3fe69203-17a1-447a-ac3c-fc3ad0b4037c",
+            "subBudgetId": "5c748eb8-1f30-4164-be13-7ddfa2f5cb19"
+          },
+          {
+            "id": "acf7020a-fa3f-4bff-ab69-d0b078a7183f",
+            "date": "2026-06-12",
+            "bank": "Transfers",
+            "amount": -153.78,
+            "note": "Transfer of 153.78 from 9 - Savings:Loan Payment Fund to 2 - Farm:Lean-to Shelter",
+            "reconciled": null,
+            "planned": false
+          }
+        ]
+      },
+      {
+        "id": "2a0706d1-b19d-4e08-9328-02e1be99353d",
+        "name": "Beck and Julia",
+        "transactions": [
+          {
+            "id": "23fd5306-014f-44f9-a7df-4e9a88614a87",
+            "date": "2026-05-05",
+            "bank": "Loans",
+            "amount": "-337.5",
+            "note": "Labor owed to Beck",
+            "planned": false,
+            "recurring": false,
+            "tags": [
+              "Beck and Julia"
+            ],
+            "budgetId": "3fe69203-17a1-447a-ac3c-fc3ad0b4037c",
+            "subBudgetId": "2a0706d1-b19d-4e08-9328-02e1be99353d",
+            "targetId": "3fe69203-17a1-447a-ac3c-fc3ad0b4037c|2a0706d1-b19d-4e08-9328-02e1be99353d"
+          }
+        ]
+      },
+      {
+        "id": "3d745ded-4e0d-4941-ba3b-1d590bbc611a",
+        "name": "Bob and Doris",
+        "transactions": [
+          {
+            "id": "5d5b652b-8110-4bdd-ba1a-f685766fddd6",
+            "date": "2026-05-05",
+            "bank": "Loans",
+            "amount": "-52",
+            "note": "3hrs labor owed to Grandpa",
+            "planned": false,
+            "recurring": false,
+            "tags": [
+              "Bob and Doris"
+            ],
+            "budgetId": "3fe69203-17a1-447a-ac3c-fc3ad0b4037c",
+            "subBudgetId": "3d745ded-4e0d-4941-ba3b-1d590bbc611a",
+            "targetId": "3fe69203-17a1-447a-ac3c-fc3ad0b4037c|3d745ded-4e0d-4941-ba3b-1d590bbc611a"
+          }
+        ]
+      },
+      {
+        "id": "2326920f-c499-4a28-b71f-1360acc5eb16",
+        "name": "Japheth and Aimee",
+        "transactions": [
+          {
+            "id": "c6833cbb-99c9-46cd-8abc-e002c1f20f28",
+            "date": "2026-05-05",
+            "bank": "Loans",
+            "amount": 250,
+            "note": "T1005",
+            "planned": false,
+            "recurring": false,
+            "tags": [
+              "Japheth and Aimee"
+            ],
+            "budgetId": "3fe69203-17a1-447a-ac3c-fc3ad0b4037c",
+            "subBudgetId": "2326920f-c499-4a28-b71f-1360acc5eb16",
+            "targetId": "3fe69203-17a1-447a-ac3c-fc3ad0b4037c|2326920f-c499-4a28-b71f-1360acc5eb16"
+          },
+          {
+            "id": "a36ca6f3-4aca-4e85-8ef9-007024e47037",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": 0,
+            "note": "",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "3fe69203-17a1-447a-ac3c-fc3ad0b4037c",
+            "subBudgetId": "2326920f-c499-4a28-b71f-1360acc5eb16"
+          },
+          {
+            "id": "cf4ec70e-45f7-48ce-abca-1db8615755b1",
+            "date": "2026-05-05",
+            "bank": "Loans",
+            "amount": "-23780",
+            "note": "",
+            "tags": [
+              "Japheth and Aimee"
+            ],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "3fe69203-17a1-447a-ac3c-fc3ad0b4037c",
+            "subBudgetId": "2326920f-c499-4a28-b71f-1360acc5eb16",
+            "targetId": "3fe69203-17a1-447a-ac3c-fc3ad0b4037c|2326920f-c499-4a28-b71f-1360acc5eb16"
+          },
+          {
+            "id": "26e491be-39c4-4488-88b7-d0764aaa5323",
+            "date": "2026-06-09",
+            "bank": "Loans",
+            "amount": 250,
+            "note": "T1006",
+            "tags": [
+              "Japheth and Aimee"
+            ],
+            "reconciled": null,
+            "planned": false,
+            "recurring": false
+          }
+        ]
+      },
+      {
+        "id": "47c5820b-567f-4d70-9b38-98adf8489fa0",
+        "name": "Ode to Us",
+        "transactions": [
+          {
+            "id": "5cf33a7f-1d4b-40db-8be4-5356d897608a",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "-30",
+            "note": "",
+            "planned": false,
+            "recurring": false,
+            "tags": [
+              "CAM SAR"
+            ],
+            "budgetId": "3fe69203-17a1-447a-ac3c-fc3ad0b4037c",
+            "subBudgetId": "47c5820b-567f-4d70-9b38-98adf8489fa0",
+            "targetId": "3fe69203-17a1-447a-ac3c-fc3ad0b4037c|47c5820b-567f-4d70-9b38-98adf8489fa0"
+          },
+          {
+            "id": "8d4d88ef-dd0c-4e3c-8827-b3cc43830020",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "-16",
+            "note": "diapers",
+            "planned": false,
+            "recurring": false,
+            "tags": [
+              "Josh and Loraine"
+            ],
+            "budgetId": "3fe69203-17a1-447a-ac3c-fc3ad0b4037c",
+            "subBudgetId": "47c5820b-567f-4d70-9b38-98adf8489fa0",
+            "targetId": "3fe69203-17a1-447a-ac3c-fc3ad0b4037c|47c5820b-567f-4d70-9b38-98adf8489fa0"
+          },
+          {
+            "id": "2fa3b341-380e-4225-9fdf-fb1bbbfe9fb3",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "-8.99",
+            "note": "Skippy's pantry bib",
+            "planned": false,
+            "recurring": false,
+            "tags": [
+              "Wesley Nolt"
+            ],
+            "budgetId": "3fe69203-17a1-447a-ac3c-fc3ad0b4037c",
+            "subBudgetId": "47c5820b-567f-4d70-9b38-98adf8489fa0",
+            "targetId": "3fe69203-17a1-447a-ac3c-fc3ad0b4037c|47c5820b-567f-4d70-9b38-98adf8489fa0"
+          },
+          {
+            "id": "6e6034dd-de78-4c93-a13c-e07110090a82",
+            "date": "2026-04-04",
+            "bank": "",
+            "amount": -78,
+            "note": "",
+            "planned": false,
+            "recurring": false,
+            "tags": [
+              "Micah and Amber",
+              "Verizon Bill",
+              "VB2026-04-04"
+            ],
+            "budgetId": "3fe69203-17a1-447a-ac3c-fc3ad0b4037c",
+            "subBudgetId": "47c5820b-567f-4d70-9b38-98adf8489fa0",
+            "targetId": "3fe69203-17a1-447a-ac3c-fc3ad0b4037c|47c5820b-567f-4d70-9b38-98adf8489fa0"
+          },
+          {
+            "id": "2c548b07-e0ba-4b0d-ac64-3732374c38a3",
+            "date": "2026-05-04",
+            "bank": "",
+            "amount": -78,
+            "note": "",
+            "planned": false,
+            "recurring": false,
+            "tags": [
+              "Micah and Amber",
+              "Verizon Bill",
+              "VB2026-05-04"
+            ],
+            "budgetId": "3fe69203-17a1-447a-ac3c-fc3ad0b4037c",
+            "subBudgetId": "47c5820b-567f-4d70-9b38-98adf8489fa0",
+            "targetId": "3fe69203-17a1-447a-ac3c-fc3ad0b4037c|47c5820b-567f-4d70-9b38-98adf8489fa0"
+          },
+          {
+            "id": "4267a212-8cba-410c-94b8-cd93cff36afd",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "-100",
+            "note": "",
+            "planned": false,
+            "recurring": false,
+            "tags": [
+              "Keith Johnson",
+              "Customers"
+            ],
+            "budgetId": "3fe69203-17a1-447a-ac3c-fc3ad0b4037c",
+            "subBudgetId": "47c5820b-567f-4d70-9b38-98adf8489fa0",
+            "targetId": "3fe69203-17a1-447a-ac3c-fc3ad0b4037c|47c5820b-567f-4d70-9b38-98adf8489fa0"
+          },
+          {
+            "id": "308ed3b3-7941-49f6-b696-bf092a15103b",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "-143.32",
+            "note": "",
+            "planned": false,
+            "recurring": false,
+            "tags": [
+              "Deacon Expenses",
+              "Jason and Sarah"
+            ],
+            "budgetId": "3fe69203-17a1-447a-ac3c-fc3ad0b4037c",
+            "subBudgetId": "47c5820b-567f-4d70-9b38-98adf8489fa0",
+            "targetId": "3fe69203-17a1-447a-ac3c-fc3ad0b4037c|47c5820b-567f-4d70-9b38-98adf8489fa0"
+          },
+          {
+            "id": "35249161-f770-483b-8b90-2f58c63f8618",
+            "date": "2026-04-04",
+            "bank": "",
+            "amount": -68,
+            "note": "",
+            "planned": false,
+            "recurring": false,
+            "tags": [
+              "Josh and Loraine",
+              "Verizon Bill",
+              "VB2026-04-04"
+            ],
+            "budgetId": "3fe69203-17a1-447a-ac3c-fc3ad0b4037c",
+            "subBudgetId": "47c5820b-567f-4d70-9b38-98adf8489fa0",
+            "targetId": "3fe69203-17a1-447a-ac3c-fc3ad0b4037c|47c5820b-567f-4d70-9b38-98adf8489fa0"
+          },
+          {
+            "id": "7f1a49eb-88a4-4650-910b-966572d96abe",
+            "date": "2026-05-04",
+            "bank": "",
+            "amount": -68,
+            "note": "",
+            "planned": false,
+            "recurring": false,
+            "tags": [
+              "Josh and Loraine",
+              "Verizon Bill",
+              "VB2026-05-04"
+            ],
+            "budgetId": "3fe69203-17a1-447a-ac3c-fc3ad0b4037c",
+            "subBudgetId": "47c5820b-567f-4d70-9b38-98adf8489fa0",
+            "targetId": "3fe69203-17a1-447a-ac3c-fc3ad0b4037c|47c5820b-567f-4d70-9b38-98adf8489fa0"
+          },
+          {
+            "id": "4732de04-09c1-486a-a208-f55e9188c055",
+            "date": "2026-05-05",
+            "bank": "CC - CHASE",
+            "amount": -39.05,
+            "note": "",
+            "reconciled": "2026-05-05",
+            "planned": false,
+            "tags": [
+              "Deacon Expenses",
+              "Jason and Sarah"
+            ],
+            "budgetId": "3fe69203-17a1-447a-ac3c-fc3ad0b4037c",
+            "subBudgetId": "47c5820b-567f-4d70-9b38-98adf8489fa0",
+            "targetId": "3fe69203-17a1-447a-ac3c-fc3ad0b4037c|47c5820b-567f-4d70-9b38-98adf8489fa0"
+          },
+          {
+            "id": "9becd226-f1ac-4bb5-a279-969e52ea9169",
+            "date": "2026-05-05",
+            "bank": "CC - CHASE",
+            "amount": 29.28,
+            "note": "",
+            "reconciled": "2026-05-20",
+            "planned": false,
+            "tags": [
+              "Deacon Expenses",
+              "Jason and Sarah"
+            ],
+            "budgetId": "3fe69203-17a1-447a-ac3c-fc3ad0b4037c",
+            "subBudgetId": "47c5820b-567f-4d70-9b38-98adf8489fa0",
+            "targetId": "3fe69203-17a1-447a-ac3c-fc3ad0b4037c|47c5820b-567f-4d70-9b38-98adf8489fa0"
+          },
+          {
+            "id": "e8ee7fe5-c1bb-4f8f-afde-a2fe9dee3cc2",
+            "date": "2026-05-07",
+            "bank": "",
+            "amount": 0,
+            "note": "",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "3fe69203-17a1-447a-ac3c-fc3ad0b4037c",
+            "subBudgetId": "47c5820b-567f-4d70-9b38-98adf8489fa0"
+          },
+          {
+            "id": "293bfec4-d9df-4307-93b9-c940a8c0c556",
+            "date": "2026-05-07",
+            "bank": "",
+            "amount": 156,
+            "note": "2026-05-07",
+            "tags": [
+              "TRAN0003",
+              "Micah and Amber",
+              "Verizon Bill"
+            ],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "3fe69203-17a1-447a-ac3c-fc3ad0b4037c",
+            "subBudgetId": "47c5820b-567f-4d70-9b38-98adf8489fa0"
+          },
+          {
+            "id": "5d20068c-95db-4eff-bddf-ec6064badc6a",
+            "date": "2026-05-12",
+            "bank": "CC - VERIZON VISA",
+            "amount": -78.98,
+            "note": "",
+            "tags": [
+              "CAM SAR"
+            ],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "3fe69203-17a1-447a-ac3c-fc3ad0b4037c",
+            "subBudgetId": "47c5820b-567f-4d70-9b38-98adf8489fa0",
+            "reconciled": "2026-05-15"
+          },
+          {
+            "id": "e2d3a83b-416d-4869-9680-226cd6989725",
+            "date": "2026-05-12",
+            "bank": "CC - VERIZON VISA",
+            "amount": -51.02,
+            "note": "",
+            "tags": [
+              "CAM SAR"
+            ],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "3fe69203-17a1-447a-ac3c-fc3ad0b4037c",
+            "subBudgetId": "47c5820b-567f-4d70-9b38-98adf8489fa0",
+            "reconciled": "2026-05-15"
+          },
+          {
+            "id": "06f9036d-9116-4a26-91aa-48ffafbd346a",
+            "date": "2026-05-06",
+            "bank": "CC - CHASE",
+            "amount": -5,
+            "note": "",
+            "tags": [
+              "CAM SAR"
+            ],
+            "reconciled": "2026-05-15",
+            "planned": false
+          },
+          {
+            "id": "7efda90a-6bde-453d-a45d-d5c2fd1338b5",
+            "date": "2026-05-16",
+            "bank": "CC - CHASE",
+            "amount": -10,
+            "note": "",
+            "tags": [
+              "CAM SAR"
+            ],
+            "reconciled": "2026-05-31",
+            "planned": false
+          },
+          {
+            "id": "294eacc8-a7c7-41f1-ad2e-75539aabcfab",
+            "date": "2026-05-21",
+            "bank": "CC - CHASE",
+            "amount": -10,
+            "note": "",
+            "tags": [
+              "CAM SAR"
+            ],
+            "reconciled": "2026-05-31",
+            "planned": false
+          },
+          {
+            "id": "bdfe9939-9536-448e-912c-8a3877b2dab9",
+            "date": "2026-05-21",
+            "bank": "CC - CHASE",
+            "amount": -10,
+            "note": "",
+            "tags": [
+              "CAM SAR"
+            ],
+            "reconciled": "2026-05-31",
+            "planned": false
+          },
+          {
+            "id": "c094452c-8d0e-4e4a-ad34-913850f466ad",
+            "date": "2026-05-21",
+            "bank": "CC - CHASE",
+            "amount": -20,
+            "note": "",
+            "tags": [
+              "CAM SAR"
+            ],
+            "reconciled": "2026-05-31",
+            "planned": false
+          },
+          {
+            "id": "d4021c81-082a-4163-af50-967a6e5544ea",
+            "date": "2026-05-20",
+            "bank": "FNB - PERSONAL",
+            "amount": 153.09,
+            "note": "",
+            "tags": [
+              "Deacon Expenses",
+              "Jason and Sarah"
+            ],
+            "reconciled": "2026-05-31",
+            "planned": false
+          },
+          {
+            "id": "989e204b-9518-4ffd-8125-a4f85a40a543",
+            "date": "2026-05-21",
+            "bank": "FNB - PERSONAL",
+            "amount": 168,
+            "note": "diapers",
+            "tags": [
+              "Josh and Loraine",
+              "VB2026-05-04",
+              "VB2026-04-04"
+            ],
+            "reconciled": "2026-05-31",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "70d583c8-7ece-4b98-9259-5127d5c801f7",
+            "date": "2026-05-22",
+            "bank": "FNB - PERSONAL",
+            "amount": 130,
+            "note": "",
+            "tags": [
+              "CAM SAR"
+            ],
+            "reconciled": "2026-05-31",
+            "planned": false
+          },
+          {
+            "id": "5005bf2b-e05d-40d2-bf6b-f3e8954ae36b",
+            "date": "2026-06-07",
+            "bank": "Wallet",
+            "amount": 80,
+            "note": "",
+            "tags": [
+              "Josh and Loraine"
+            ],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "3fe69203-17a1-447a-ac3c-fc3ad0b4037c",
+            "subBudgetId": "47c5820b-567f-4d70-9b38-98adf8489fa0",
+            "reconciled": "2026-06-09"
+          },
+          {
+            "id": "d250d348-bb64-4f37-a5fe-c97b0675abbc",
+            "date": "2026-06-09",
+            "bank": "",
+            "amount": 0,
+            "note": "",
+            "tags": [],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "3fe69203-17a1-447a-ac3c-fc3ad0b4037c",
+            "subBudgetId": "47c5820b-567f-4d70-9b38-98adf8489fa0"
+          },
+          {
+            "id": "8dc1b3a5-8303-4093-ad01-67d9fd45635c",
+            "date": "2026-05-31",
+            "bank": "CC - CHASE",
+            "amount": -10,
+            "note": "",
+            "tags": [
+              "CAM SAR"
+            ],
+            "reconciled": "2026-06-09",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "1fa405a8-094b-4d36-97fa-9f9411381d5d",
+            "date": "2026-06-09",
+            "bank": "",
+            "amount": -68,
+            "note": "",
+            "tags": [
+              "Josh and Loraine",
+              "VB2026-06-04"
+            ],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "3fe69203-17a1-447a-ac3c-fc3ad0b4037c",
+            "subBudgetId": "47c5820b-567f-4d70-9b38-98adf8489fa0"
+          },
+          {
+            "id": "9e9ab3df-1252-477f-a0de-7dadf0ec7b33",
+            "date": "2026-06-09",
+            "bank": "",
+            "amount": -78,
+            "note": "",
+            "tags": [
+              "Micah and Amber",
+              "VB2026-06-04"
+            ],
+            "planned": false,
+            "recurring": false,
+            "budgetId": "3fe69203-17a1-447a-ac3c-fc3ad0b4037c",
+            "subBudgetId": "47c5820b-567f-4d70-9b38-98adf8489fa0"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "b5e0b36a-18ab-4727-9529-06c7c9d4f6e6",
+    "name": "Unlinked",
+    "subBudgets": [
+      {
+        "id": "25f325d2-dba2-47db-818d-78ec783efbbc",
+        "name": "General",
+        "transactions": [
+          {
+            "id": "3aa8c983-282d-46da-8cd8-30c652264eca",
+            "date": "2026-05-05",
+            "bank": "CC - AMEX BLUE",
+            "amount": -343.34,
+            "note": "",
+            "reconciled": "2026-05-05",
+            "planned": false
+          },
+          {
+            "id": "2ad8ae37-6c4e-4b17-8133-2a6344c8539e",
+            "date": "2026-05-05",
+            "bank": "CC - AMAZON",
+            "amount": -1.39,
+            "note": "",
+            "reconciled": "2026-05-05",
+            "planned": false
+          },
+          {
+            "id": "e3262c6b-8aed-4692-b172-13dc7c0448cd",
+            "date": "2026-05-05",
+            "bank": "CC - CHASE",
+            "amount": -360.07,
+            "note": "",
+            "reconciled": "2026-05-05",
+            "planned": false
+          },
+          {
+            "id": "4c25fc6e-7055-4c00-82fb-d65a0f05f8c5",
+            "date": "2026-05-05",
+            "bank": "CC - VERIZON VISA",
+            "amount": "-1768.69",
+            "note": "",
+            "reconciled": "2026-05-05",
+            "planned": false,
+            "budgetId": "b5e0b36a-18ab-4727-9529-06c7c9d4f6e6",
+            "budgetName": "Unlinked",
+            "subBudgetId": "25f325d2-dba2-47db-818d-78ec783efbbc",
+            "subBudgetName": "General"
+          },
+          {
+            "id": "7c7829b6-78df-429c-9eca-de3143ed90bb",
+            "date": "2026-05-05",
+            "bank": "FNB - SAVINGS",
+            "amount": 1357.66,
+            "note": "",
+            "reconciled": "2026-05-05",
+            "planned": false
+          },
+          {
+            "id": "bf4e8c85-0934-484c-938d-1a7d6af245ab",
+            "date": "2026-05-05",
+            "bank": "PP - SAVINGS",
+            "amount": 7230.76,
+            "note": "",
+            "reconciled": "2026-05-05",
+            "planned": false
+          },
+          {
+            "id": "df09eccf-df75-4d69-a1ee-a82bdefb5560",
+            "date": "2026-05-05",
+            "bank": "FNB - PERSONAL",
+            "amount": 1070.24,
+            "note": "",
+            "reconciled": "2026-05-05",
+            "planned": false
+          },
+          {
+            "id": "c7ece82f-f77f-41e3-9b7e-47f85fa228e5",
+            "date": "2026-05-05",
+            "bank": "FNB - PERSONAL",
+            "amount": 3337.31,
+            "note": "",
+            "reconciled": "2026-05-05",
+            "planned": false,
+            "budgetId": "b5e0b36a-18ab-4727-9529-06c7c9d4f6e6",
+            "budgetName": "Unlinked",
+            "subBudgetId": "25f325d2-dba2-47db-818d-78ec783efbbc",
+            "subBudgetName": "General",
+            "tags": [],
+            "recurring": false
+          },
+          {
+            "id": "72611741-968c-441d-8756-ece0273e0650",
+            "date": "2026-05-06",
+            "bank": "FNB - PERSONAL",
+            "amount": 2269.26,
+            "note": "Paycheck Deposit (PYCH0001)",
+            "tags": [
+              "PYCH0001"
+            ],
+            "reconciled": "2026-05-15",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "19c64a95-50f5-4faf-957e-9a632435bf59",
+            "date": "2026-05-07",
+            "bank": "CC - AMAZON",
+            "amount": -89.2,
+            "note": "",
+            "tags": [
+              "TRAN0001"
+            ],
+            "reconciled": "2026-05-15",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "d32e88d8-2d5f-48e3-ae5a-b127e7aeb275",
+            "date": "2026-05-07",
+            "bank": "CC - VERIZON VISA",
+            "amount": -233.93,
+            "note": "",
+            "tags": [
+              "TRAN0002"
+            ],
+            "reconciled": "2026-05-15",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "0da166d7-c622-466e-ae99-dbdf7b576cb2",
+            "date": "2026-05-09",
+            "bank": "FNB - PERSONAL",
+            "amount": -103.5,
+            "note": "ATM",
+            "tags": [],
+            "reconciled": "2026-05-15",
+            "planned": false
+          },
+          {
+            "id": "8e310d44-622f-4647-aa8b-051542025df9",
+            "date": "2026-05-09",
+            "bank": "Wallet",
+            "amount": 100,
+            "note": "ATM",
+            "tags": [],
+            "reconciled": "2026-05-15",
+            "planned": false
+          },
+          {
+            "id": "375f4e19-22ed-483b-ba7b-12aab84323d5",
+            "date": "2026-05-11",
+            "bank": "CC - AMEX BLUE",
+            "amount": 42.37,
+            "note": "",
+            "tags": [
+              "CRDT0001"
+            ],
+            "reconciled": "2026-05-15",
+            "planned": false
+          },
+          {
+            "id": "1290de84-f8a7-40ae-bfc8-2d14d5fb18ec",
+            "date": "2026-05-15",
+            "bank": "CC - CHASE",
+            "amount": 29.28,
+            "note": "",
+            "tags": [],
+            "reconciled": "2026-05-15",
+            "planned": false
+          },
+          {
+            "id": "0c86f010-a025-4385-8c19-4ec6bd83c23f",
+            "date": "2026-05-05",
+            "bank": "CC - VERIZON VISA",
+            "amount": -179.72,
+            "note": "",
+            "tags": [
+              "VB2026-05-04"
+            ],
+            "reconciled": "2026-05-15",
+            "planned": false
+          },
+          {
+            "id": "ac0235c1-4c11-44f7-a468-93f67c6b9cce",
+            "date": "2026-05-07",
+            "bank": "CC - VERIZON VISA",
+            "amount": 2167.82,
+            "note": "",
+            "tags": [],
+            "reconciled": "2026-05-15",
+            "planned": false
+          },
+          {
+            "id": "513d0a83-8c59-4cda-aff8-ffac036e4059",
+            "date": "2026-05-07",
+            "bank": "FNB - PERSONAL",
+            "amount": -2167.82,
+            "note": "",
+            "tags": [],
+            "reconciled": "2026-05-15",
+            "planned": false
+          },
+          {
+            "id": "71a02037-e403-46fa-aacc-e02dff0695d5",
+            "date": "2026-05-15",
+            "bank": "CC - VERIZON VISA",
+            "amount": -41.99,
+            "note": "",
+            "tags": [],
+            "reconciled": "2026-05-15",
+            "planned": false
+          },
+          {
+            "id": "7679eb32-26ad-4493-915e-021ec9463b85",
+            "date": "2026-05-11",
+            "bank": "FNB - PERSONAL",
+            "amount": -1,
+            "note": "",
+            "tags": [],
+            "reconciled": "2026-05-15",
+            "planned": false
+          },
+          {
+            "id": "f09f7aae-c428-4af8-9ffc-82f12b59c4e6",
+            "date": "2026-05-13",
+            "bank": "FNB - PERSONAL",
+            "amount": -80,
+            "note": "",
+            "tags": [],
+            "reconciled": "2026-05-15",
+            "planned": false
+          },
+          {
+            "id": "53d8a1b9-3c3f-4f50-b7a0-d145da65a3d0",
+            "date": "2026-05-14",
+            "bank": "PP - SAVINGS",
+            "amount": -6608.5,
+            "note": "",
+            "tags": [],
+            "reconciled": "2026-05-15",
+            "planned": false
+          },
+          {
+            "id": "b2a30f47-d166-45f3-9fca-163d6179a4b7",
+            "date": "2026-05-14",
+            "bank": "FNB - PERSONAL",
+            "amount": 6608.5,
+            "note": "",
+            "tags": [],
+            "reconciled": "2026-05-20",
+            "planned": false
+          },
+          {
+            "id": "a7737e5c-f82f-4f87-bc3d-7b006d2ece69",
+            "date": "2026-05-15",
+            "bank": "Transfers",
+            "amount": -7.03,
+            "note": "",
+            "tags": [],
+            "reconciled": "2026-05-15",
+            "planned": false
+          },
+          {
+            "id": "41994c57-fd0d-4604-8f56-bfaac71d2185",
+            "date": "2026-05-14",
+            "bank": "Wallet",
+            "amount": 15,
+            "note": "",
+            "tags": [],
+            "reconciled": "2026-05-15",
+            "planned": false
+          },
+          {
+            "id": "bde5f32a-77c7-47b5-b150-b69f35375034",
+            "date": "2026-05-15",
+            "bank": "FNB - PERSONAL",
+            "amount": 180,
+            "note": "",
+            "tags": [],
+            "reconciled": "2026-05-15",
+            "planned": false
+          },
+          {
+            "id": "d1ebbf34-1081-4b55-9008-630a3f39795c",
+            "date": "2026-05-14",
+            "bank": "CC - CHASE",
+            "amount": 23.26,
+            "note": "",
+            "tags": [],
+            "reconciled": "2026-05-20",
+            "planned": false
+          },
+          {
+            "id": "886a9302-c83f-4f46-925d-617256e6f19b",
+            "date": "2026-05-20",
+            "bank": "FNB - PERSONAL",
+            "amount": 1447.27,
+            "note": "Paycheck Deposit (PYCH0002)",
+            "tags": [
+              "PYCH0002"
+            ],
+            "reconciled": "2026-05-31",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "cf605554-ccdc-4ca6-bf59-de4a40551c72",
+            "date": "2026-05-18",
+            "bank": "Wallet",
+            "amount": -20,
+            "note": "gift to andre",
+            "tags": [],
+            "reconciled": "2026-05-31",
+            "planned": false
+          },
+          {
+            "id": "c295bebc-e9f7-469b-af92-c85071a9bad8",
+            "date": "2026-05-05",
+            "bank": "CC - CHASE",
+            "amount": -29.28,
+            "note": "",
+            "tags": [],
+            "reconciled": "2026-05-20",
+            "planned": false
+          },
+          {
+            "id": "21950001-493f-40de-b66d-dd10b55745ae",
+            "date": "2026-05-14",
+            "bank": "CC - CHASE",
+            "amount": 1037.12,
+            "note": "",
+            "tags": [],
+            "reconciled": "2026-05-20",
+            "planned": false
+          },
+          {
+            "id": "18a1926a-f6cb-4bd6-8021-30eefd69f1e5",
+            "date": "2026-05-14",
+            "bank": "FNB - PERSONAL",
+            "amount": -1037.12,
+            "note": "chase payment",
+            "tags": [],
+            "reconciled": "2026-05-20",
+            "planned": false
+          },
+          {
+            "id": "28531c31-79eb-4190-bb7e-619d5f8ddc95",
+            "date": "2026-05-22",
+            "bank": "CC - AMAZON",
+            "amount": 1.39,
+            "note": "",
+            "tags": [],
+            "reconciled": "2026-05-27",
+            "planned": false
+          },
+          {
+            "id": "4899a780-1f8e-4ab0-8078-f83a2792d98e",
+            "date": "2026-05-25",
+            "bank": "CC - AMEX BLUE",
+            "amount": 343.34,
+            "note": "amex payment",
+            "tags": [],
+            "reconciled": "2026-05-31",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "45ebd329-fe0b-4aaa-8c37-6c1a6e407aa8",
+            "date": "2026-05-25",
+            "bank": "FNB - PERSONAL",
+            "amount": -343.34,
+            "note": "amex payment",
+            "tags": [],
+            "reconciled": "2026-05-31",
+            "planned": false
+          },
+          {
+            "id": "aedc357b-9488-4f10-aa4d-4fd7e52edec3",
+            "date": "2026-05-29",
+            "bank": "CC - VERIZON VISA",
+            "amount": -32.4,
+            "note": "",
+            "tags": [],
+            "reconciled": "2026-06-09",
+            "planned": false
+          },
+          {
+            "id": "8bf3cca7-6623-43d9-965c-9ee3e20148e6",
+            "date": "2026-05-20",
+            "bank": "FNB - PERSONAL",
+            "amount": 301.8,
+            "note": "pastoral gift",
+            "tags": [],
+            "reconciled": "2026-05-31",
+            "planned": false
+          },
+          {
+            "id": "a765d861-e081-4b63-ba2c-56cd573838f5",
+            "date": "2026-05-26",
+            "bank": "FNB - PERSONAL",
+            "amount": -1.39,
+            "note": "",
+            "tags": [],
+            "reconciled": "2026-05-31",
+            "planned": false
+          },
+          {
+            "id": "3d45b0ae-7e5c-4f3b-9e99-3886d930ea47",
+            "date": "2026-05-27",
+            "bank": "FNB - PERSONAL",
+            "amount": -400,
+            "note": "pushmower",
+            "tags": [],
+            "reconciled": "2026-05-31",
+            "planned": false
+          },
+          {
+            "id": "e9f787ad-e135-4f29-95eb-7945a741bd8b",
+            "date": "2026-05-29",
+            "bank": "FNB - PERSONAL",
+            "amount": -61.64,
+            "note": "#1578",
+            "tags": [],
+            "reconciled": "2026-05-31",
+            "planned": false
+          },
+          {
+            "id": "dd656891-d05e-48bb-8b32-347e97569eca",
+            "date": "2026-05-30",
+            "bank": "FNB - PERSONAL",
+            "amount": -30,
+            "note": "#1579",
+            "tags": [],
+            "reconciled": "2026-06-09",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "63ed8109-f681-41bf-bdca-40d86096637e",
+            "date": "2026-05-31",
+            "bank": "FNB - SAVINGS",
+            "amount": 0.81,
+            "note": "",
+            "tags": [],
+            "reconciled": "2026-05-31",
+            "planned": false
+          },
+          {
+            "id": "1cb5b5a8-badc-4da4-b75c-c7e981368717",
+            "date": "2026-05-29",
+            "bank": "Wallet",
+            "amount": -15,
+            "note": "",
+            "tags": [],
+            "reconciled": "2026-05-31",
+            "planned": false
+          },
+          {
+            "id": "19740977-c754-4d64-90fc-2247bb1d16a4",
+            "date": "2026-05-30",
+            "bank": "Wallet",
+            "amount": -11,
+            "note": "",
+            "tags": [],
+            "reconciled": "2026-05-31",
+            "planned": false
+          },
+          {
+            "id": "bc16d757-92ef-4be6-95d4-d631a5e58221",
+            "date": "2026-06-06",
+            "bank": "CC - CHASE",
+            "amount": -5,
+            "note": "",
+            "tags": [],
+            "reconciled": "2026-06-09",
+            "planned": false
+          },
+          {
+            "id": "dbe003bf-d4fd-47e1-99b4-a6a10ea0aaba",
+            "date": "2026-06-06",
+            "bank": "CC - CHASE",
+            "amount": 41.65,
+            "note": "",
+            "tags": [],
+            "reconciled": "2026-06-12",
+            "planned": false
+          },
+          {
+            "id": "10839912-06aa-467c-a0be-6d56d2301429",
+            "date": "2026-06-01",
+            "bank": "CC - VERIZON VISA",
+            "amount": -73.64,
+            "note": "",
+            "tags": [
+              "TRAN0004"
+            ],
+            "reconciled": "2026-06-09",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "9405fc0c-cfe9-44e9-91d4-5b9895af7655",
+            "date": "2026-06-05",
+            "bank": "CC - VERIZON VISA",
+            "amount": -169.09,
+            "note": "",
+            "tags": [
+              "VB2026-06-04"
+            ],
+            "reconciled": "2026-06-09",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "134ef474-0dcc-4f0f-be0d-38e7767cb987",
+            "date": "2026-06-04",
+            "bank": "FNB - PERSONAL",
+            "amount": 346.8,
+            "note": "pastoral gift",
+            "tags": [],
+            "reconciled": "2026-06-09",
+            "planned": false
+          },
+          {
+            "id": "147fa753-815f-4606-9c15-b6d6744a894b",
+            "date": "2026-06-04",
+            "bank": "FNB - PERSONAL",
+            "amount": 1394.31,
+            "note": "",
+            "tags": [
+              "PYCH0003"
+            ],
+            "reconciled": "2026-06-09",
+            "planned": false
+          },
+          {
+            "id": "abef3266-9b07-470a-902d-c575cb63ac69",
+            "date": "2026-06-01",
+            "bank": "PP - SAVINGS",
+            "amount": 10.26,
+            "note": "interest",
+            "tags": [],
+            "reconciled": "2026-06-09",
+            "planned": false
+          },
+          {
+            "id": "68dd6034-18f6-433e-a44e-831319475f1e",
+            "date": "2026-06-09",
+            "bank": "Transfers",
+            "amount": 60.55,
+            "note": "",
+            "tags": [],
+            "reconciled": "2026-06-09",
+            "planned": false
+          },
+          {
+            "id": "8f48c388-b768-45af-8838-d9ae234f50a3",
+            "date": "2026-06-10",
+            "bank": "CC - VERIZON VISA",
+            "amount": 580.44,
+            "note": "",
+            "tags": [],
+            "reconciled": "2026-06-12",
+            "planned": false
+          },
+          {
+            "id": "0d51dc6e-973b-4521-87c5-2b87ac47cf9d",
+            "date": "2026-06-10",
+            "bank": "FNB - PERSONAL",
+            "amount": -580.44,
+            "note": "",
+            "tags": [],
+            "reconciled": "2026-06-12",
+            "planned": false
+          },
+          {
+            "id": "16f477d8-c695-4f94-af4f-072301351902",
+            "date": "2026-06-11",
+            "bank": "CC - CHASE",
+            "amount": -10,
+            "note": "",
+            "tags": [],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "de2d8e5b-b183-4dad-9400-eef2bfce704a",
+            "date": "2026-06-12",
+            "bank": "CC - CHASE",
+            "amount": -10,
+            "note": "",
+            "tags": [],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "0ecb9c4e-a224-472d-8c86-71d321a24c85",
+            "date": "2026-06-12",
+            "bank": "CC - CHASE",
+            "amount": -63.3,
+            "note": "reconciled",
+            "tags": [],
+            "reconciled": null,
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "c0699e38-acd0-4968-a342-7296338cf129",
+            "date": "2026-06-12",
+            "bank": "CC - VERIZON VISA",
+            "amount": -470.21,
+            "note": "reconciled",
+            "tags": [],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "7660710f-d198-4ee0-b623-70a0edde1be0",
+            "date": "2026-06-12",
+            "bank": "FNB - PERSONAL",
+            "amount": 565,
+            "note": "",
+            "tags": [],
+            "reconciled": "2026-06-12",
+            "planned": false
+          },
+          {
+            "id": "dedb7b72-349a-4ff1-a7ba-fd7c22b532f1",
+            "date": "2026-06-12",
+            "bank": "Transfers",
+            "amount": -95.27,
+            "note": "",
+            "tags": [],
+            "reconciled": null,
+            "planned": false
+          },
+          {
+            "id": "eebebe53-515f-4c13-9694-8e03e2a5330a",
+            "date": "2026-06-12",
+            "bank": "Wallet",
+            "amount": -20,
+            "note": "car tire repair",
+            "tags": [],
+            "reconciled": null,
+            "planned": false
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,952 @@
+[
+  {
+    "id": "a8649a76-d972-4376-a5c7-b216389cf215",
+    "name": "1 - Tithe",
+    "subBudgets": [
+      {
+        "id": "d3668d97-087d-4492-a5d0-b9ba8dc9fffb",
+        "name": "General",
+        "transactions": [
+          {
+            "id": "b9fc273e-3da3-4f65-8603-90fd60ffa665",
+            "date": "2026-05-01",
+            "bank": "",
+            "amount": "65.31",
+            "note": "beginning balance",
+            "planned": false,
+            "recurring": false
+          }
+        ]
+      },
+      {
+        "id": "5b3bd0b7-9ac9-49d3-9b5b-42fdce47b347",
+        "name": "Disciples of Christ",
+        "transactions": [
+          {
+            "id": "45c50064-bed2-4db9-8574-1a933d347e33",
+            "date": "2026-05-01",
+            "bank": "",
+            "amount": "239.4",
+            "note": "beginning balance",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "5b9443d3-9c17-4e7e-82e5-45fd455cbbbe",
+            "date": "2026-05-03",
+            "bank": "FNB - PERSONAL",
+            "amount": "-50",
+            "note": "#1537",
+            "planned": false,
+            "recurring": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "38741f70-87f6-4edd-96b7-95c3da6bd1b3",
+    "name": "2 - Farm",
+    "subBudgets": [
+      {
+        "id": "ed264d13-021f-41e5-a7bd-65b16edb6935",
+        "name": "General",
+        "transactions": []
+      },
+      {
+        "id": "7212c900-2ec1-486b-903d-8459570874ef",
+        "name": "Lean-to Shelter",
+        "transactions": [
+          {
+            "id": "fc517f3a-bb2e-4e4e-b513-8064d8187daa",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "325.02",
+            "note": "",
+            "planned": false,
+            "recurring": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "7fabc6df-5c8c-4d24-9423-f84cf235efd2",
+    "name": "3 - Food",
+    "subBudgets": [
+      {
+        "id": "144778bc-0c91-4cc4-9462-a2081c69c41d",
+        "name": "General",
+        "transactions": []
+      },
+      {
+        "id": "194a03c8-f047-418f-a6db-ee4faaea2955",
+        "name": "Chicken Butchering",
+        "transactions": [
+          {
+            "id": "ecb14ab4-f803-429f-afa8-eb2e097c28e3",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "64.11",
+            "note": "",
+            "planned": false,
+            "recurring": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "a41ceae2-129e-4570-b713-b1e088c9f4ac",
+    "name": "4 - Travel",
+    "subBudgets": [
+      {
+        "id": "7ed880da-4b60-4868-87ae-63e4026b7ad1",
+        "name": "General",
+        "transactions": []
+      },
+      {
+        "id": "cc539309-1e70-45eb-8bdd-e82876c864c1",
+        "name": "Trip Home",
+        "transactions": [
+          {
+            "id": "1830fda9-e680-41a1-a755-5b262167f2c9",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "0394.87",
+            "note": "",
+            "planned": false,
+            "recurring": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "52e30a97-6f1a-4478-8b3c-85499bffb689",
+    "name": "5 - Home",
+    "subBudgets": [
+      {
+        "id": "533685c4-9cf4-4742-a384-4b3a7861fc71",
+        "name": "General",
+        "transactions": []
+      },
+      {
+        "id": "86f92356-a356-4cd4-bfdb-c64780a47e2c",
+        "name": "Car Maintenance",
+        "transactions": [
+          {
+            "id": "3163db6b-6797-48a5-ba99-967260f2403a",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "5.97",
+            "note": "oil changes",
+            "planned": false,
+            "recurring": false
+          }
+        ]
+      },
+      {
+        "id": "3e9434ed-01b8-4690-b480-f671da7b728a",
+        "name": "Truck Maintenance",
+        "transactions": [
+          {
+            "id": "fafaef0c-1812-4404-98ef-c775eab94b7e",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "3.66",
+            "note": "oil changes",
+            "planned": false,
+            "recurring": false
+          }
+        ]
+      },
+      {
+        "id": "82e8d741-46ec-4f76-89cd-d1941999e724",
+        "name": "Bathroom Supplies",
+        "transactions": [
+          {
+            "id": "5c76ffde-0769-48d4-ac06-5f30d49c7e45",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "24.70",
+            "note": "",
+            "planned": false,
+            "recurring": false
+          }
+        ]
+      },
+      {
+        "id": "1e87d04f-73f8-4bb9-a7ee-2c24a6453d90",
+        "name": "Diapers & Wipes",
+        "transactions": [
+          {
+            "id": "ffdb40eb-37af-4d6b-b35d-4e1f15ab3c8e",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "101.90",
+            "note": "",
+            "planned": false,
+            "recurring": false
+          }
+        ]
+      },
+      {
+        "id": "16e2c73a-edbe-48ff-b14d-3b5436d0ca47",
+        "name": "Electric",
+        "transactions": [
+          {
+            "id": "c8019f5a-09c6-4d7d-bedb-ec765a5f8153",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "185.80",
+            "note": "",
+            "planned": false,
+            "recurring": false
+          }
+        ]
+      },
+      {
+        "id": "74af5e51-f73b-45f2-b05c-9888435b07cd",
+        "name": "Vehicle Insurance",
+        "transactions": [
+          {
+            "id": "6b6cfbf4-c954-436b-bdbd-8bf3d4dcd4eb",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "81.99",
+            "note": "",
+            "planned": false,
+            "recurring": false
+          }
+        ]
+      },
+      {
+        "id": "8eda748c-706e-460d-a0e0-172e26754479",
+        "name": "Kitchen Supplies",
+        "transactions": [
+          {
+            "id": "6a977a27-485d-4730-ae86-eab7c708a90b",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "17.69",
+            "note": "",
+            "planned": false,
+            "recurring": false
+          }
+        ]
+      },
+      {
+        "id": "58212605-82cc-435a-a932-2b17b63f14ae",
+        "name": "Laundry Supplies",
+        "transactions": [
+          {
+            "id": "b276a9a8-8d0e-411a-8a5f-918828a134d3",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "10.02",
+            "note": "",
+            "planned": false,
+            "recurring": false
+          }
+        ]
+      },
+      {
+        "id": "f9046e8b-a33a-4326-a9fb-18241a53104a",
+        "name": "Vehicle Tags",
+        "transactions": [
+          {
+            "id": "4b8f077a-09d2-47af-b9af-0f0c8753ccdb",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "76.30",
+            "note": "",
+            "planned": false,
+            "recurring": false
+          }
+        ]
+      },
+      {
+        "id": "4bdfeab0-c365-4640-94d9-0341f98b1b91",
+        "name": "Oven",
+        "transactions": [
+          {
+            "id": "e060a578-afd1-4164-94ec-098e86c7cfb7",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "0200",
+            "note": "",
+            "planned": false,
+            "recurring": false
+          }
+        ]
+      },
+      {
+        "id": "a07018b5-1813-407b-8ac6-b80830b3500b",
+        "name": "Propane Heat",
+        "transactions": [
+          {
+            "id": "453d295d-a576-47ec-b0ee-98870bd8f298",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "0645.84",
+            "note": "",
+            "planned": false,
+            "recurring": false
+          }
+        ]
+      },
+      {
+        "id": "97eb215a-d484-4aee-9dbf-c5e720df07b5",
+        "name": "Propane Tank Rent",
+        "transactions": [
+          {
+            "id": "309d6697-7556-486c-94d4-5d2180d4eb04",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": 0,
+            "note": "",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "fed9b53c-7543-4c91-876c-47fc649d7d54",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "08.13",
+            "note": "",
+            "planned": false,
+            "recurring": false
+          }
+        ]
+      },
+      {
+        "id": "fbc96dac-bf37-4c89-b21a-f5a740fc6e79",
+        "name": "Property Taxes",
+        "transactions": [
+          {
+            "id": "5053a8b3-8694-4f43-b272-b4fcc22da655",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "0131.53",
+            "note": "",
+            "planned": false,
+            "recurring": false
+          }
+        ]
+      },
+      {
+        "id": "58a336a2-395f-4b81-8be2-cf9dcc07d38c",
+        "name": "Tires",
+        "transactions": [
+          {
+            "id": "3f701cc7-3b4f-4342-b682-8c3027533080",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "0108.03",
+            "note": "",
+            "planned": false,
+            "recurring": false
+          }
+        ]
+      },
+      {
+        "id": "db0e323e-1e9c-4a3a-ae2f-4ae36c88a4c4",
+        "name": "Vehicle Replacement",
+        "transactions": [
+          {
+            "id": "bd00e7aa-fd03-4a2e-90c2-412fa9f4dce5",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "0201.18",
+            "note": "",
+            "planned": false,
+            "recurring": false
+          }
+        ]
+      },
+      {
+        "id": "6872711e-41f1-416c-928e-087fd9bebc8a",
+        "name": "Water Softener Salt",
+        "transactions": [
+          {
+            "id": "a6ad33e0-9355-44cd-aabc-bcf98cfc7344",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "021.47",
+            "note": "",
+            "planned": false,
+            "recurring": false
+          }
+        ]
+      },
+      {
+        "id": "5aba0068-d5d6-4afb-bccd-b9b70820b860",
+        "name": "Well/Water Supply",
+        "transactions": [
+          {
+            "id": "7bf79019-2b43-4b9f-8881-5845bad784a1",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "06608.5",
+            "note": "",
+            "planned": false,
+            "recurring": false
+          }
+        ]
+      },
+      {
+        "id": "85d15b08-9ae0-416f-b9a9-00bd4636c2e7",
+        "name": "Verizon Bill",
+        "transactions": [
+          {
+            "id": "58af7a4b-62a4-459e-b387-daea420a26e9",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "042.74",
+            "note": "",
+            "planned": false,
+            "recurring": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "16d1e76c-4051-417d-a67a-85d511ac07b8",
+    "name": "6 - Medical",
+    "subBudgets": [
+      {
+        "id": "23e888cf-0f92-435e-a7db-cd31ffbe5dba",
+        "name": "General",
+        "transactions": []
+      },
+      {
+        "id": "c9dba137-206c-4fe5-bb99-8f3c6f009e1d",
+        "name": "Pregnancy",
+        "transactions": [
+          {
+            "id": "046d1693-f459-4d7d-b664-4e50a64c7261",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "650",
+            "note": "midwifery",
+            "planned": false,
+            "recurring": false
+          }
+        ]
+      },
+      {
+        "id": "875b08d0-ea1f-4601-8b7a-0a64219d1ba6",
+        "name": "Brotherhood Mutual Aid",
+        "transactions": [
+          {
+            "id": "e4088f28-a846-4613-9600-0a0a2031076e",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "371.66",
+            "note": "",
+            "planned": false,
+            "recurring": false
+          }
+        ]
+      },
+      {
+        "id": "4cfaad73-bd62-4c3a-8bbf-88f3fd50b86c",
+        "name": "Dental Expenses",
+        "transactions": [
+          {
+            "id": "38da0a81-f7b5-4abf-be59-a00825eabe3d",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "66.66",
+            "note": "",
+            "planned": false,
+            "recurring": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ae91c4f1-d658-4169-85bf-d73ae67b8046",
+    "name": "7 - Other",
+    "subBudgets": [
+      {
+        "id": "b3e51986-f580-49d8-b19e-8a0af712a6bd",
+        "name": "General",
+        "transactions": [
+          {
+            "id": "9dad7dc6-99a2-45f9-9a4f-75e0229e0cb2",
+            "date": "2026-05-05",
+            "bank": "FNB - SAVINGS",
+            "amount": 0,
+            "note": "",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "a70c6111-101d-4e61-ba60-000c3091af64",
+            "date": "2026-05-05",
+            "bank": "CC - AMEX BLUE",
+            "amount": 0,
+            "note": "",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "1ade53a8-1ed9-4195-bfd4-9977b39230b6",
+            "date": "2026-05-05",
+            "bank": "CC - CHASE",
+            "amount": 0,
+            "note": "",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "7ace3f1e-54f9-4878-af26-d991eac1f01d",
+            "date": "2026-05-05",
+            "bank": "CC - VERIZON VISA",
+            "amount": 0,
+            "note": "",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "6b6a438c-c8bc-43b0-9452-9f901ea681e3",
+            "date": "2026-05-05",
+            "bank": "CC - AMAZON",
+            "amount": 0,
+            "note": "",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "7c9d851a-3e09-4d46-91a6-f34affbb4fe7",
+            "date": "2026-05-05",
+            "bank": "PP - CREDIT",
+            "amount": 0,
+            "note": "",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "4e56fda1-1d09-4521-a8f5-bbd9e78f90e7",
+            "date": "2026-05-05",
+            "bank": "PP - SAVINGS",
+            "amount": 0,
+            "note": "",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "79a3f672-7ae7-4f98-94a0-204252708be3",
+            "date": "2026-05-05",
+            "bank": "FNB - BUSINESS",
+            "amount": 0,
+            "note": "",
+            "planned": false,
+            "recurring": false
+          }
+        ]
+      },
+      {
+        "id": "f8c45bc7-842f-45ff-b9d8-a96b99df33d3",
+        "name": "Software Subscriptions",
+        "transactions": [
+          {
+            "id": "d76bde30-be85-4603-a2de-20eb34928286",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "0.83",
+            "note": "Adblock Plus",
+            "planned": false,
+            "recurring": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bef3861f-accc-42ca-a3e6-9f911f0d1539",
+    "name": "8 - Business",
+    "subBudgets": [
+      {
+        "id": "077a8c51-de11-4a02-a628-0de8bb06ae5f",
+        "name": "General",
+        "transactions": []
+      },
+      {
+        "id": "f7b35561-55d8-4a79-b473-7534347d0d9d",
+        "name": "Cottage Scrubbies",
+        "transactions": [
+          {
+            "id": "f50db0ae-278c-4a1b-9107-0691c98d78b9",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "-2.34",
+            "note": "tithe",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "882781e9-1b2c-495e-a863-2ef85237b816",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "018",
+            "note": "income",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "d36ef66a-c37a-4ce8-96fd-f5c575a7b036",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "-6",
+            "note": "expenses",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "3ba5b0ea-618d-445a-89d5-898556ace349",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "-5.57",
+            "note": "supplies",
+            "planned": false,
+            "recurring": false
+          }
+        ]
+      },
+      {
+        "id": "965d7181-1a75-4de5-870a-235910e0d595",
+        "name": "Jam",
+        "transactions": [
+          {
+            "id": "03beeecd-5e90-4eaa-8da4-c1f3a53100c5",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "0160",
+            "note": "income",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "7ba25834-81ee-4052-a0ca-40b45c62bf62",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "-160",
+            "note": "payouts",
+            "planned": false,
+            "recurring": false
+          }
+        ]
+      },
+      {
+        "id": "a4e37499-0dab-46c4-a7bc-7b3dd15de717",
+        "name": "Poplar Lake Furniture",
+        "transactions": [
+          {
+            "id": "cec1be40-f014-45a9-ba8f-514933acac14",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "0870",
+            "note": "income",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "7b71c26b-abe9-4e21-afb6-66b1360f31a5",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "-342.62",
+            "note": "materials",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "81a29c9d-3606-452c-b8c3-a7fc40e25188",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "-527.38",
+            "note": "payouts",
+            "planned": false,
+            "recurring": false
+          }
+        ]
+      },
+      {
+        "id": "e4d94df3-47b0-4280-8f22-e539ced7a429",
+        "name": "Snow Removal",
+        "transactions": [
+          {
+            "id": "486d66a5-ee47-4378-9fbc-853f7cdb3ac8",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "-7.37",
+            "note": "expenses - Meals",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "29c12f39-bd78-4eb7-89c6-b98f009ce7ed",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "1650",
+            "note": "income - Lutheran Campus Ministries",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "429e10ed-9976-43c6-b686-aa2708837856",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "-9.9",
+            "note": "expenses - Automobile",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "c0e71fc1-599a-4578-80d4-79656ea76869",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "-8.83",
+            "note": "expenses - Automobile",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "d7054ce6-650b-4c2b-addb-7b8a64e7a491",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "-150",
+            "note": "equipment - Snowblower",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "44df0918-2171-48ab-8f70-a17d38c54fe5",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "200",
+            "note": "income - Keith Johnson",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "8bb441eb-dce4-41ab-a958-f02e3c1c5995",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "-726.67",
+            "note": "payouts - Joshua",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "e5027a84-3192-43b5-ac24-00e3d6d9ede0",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "-7.15",
+            "note": "expenses - Meals",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "b8da8f61-3221-4ad1-8edb-a3672dad235c",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "-7.58",
+            "note": "expenses - Snowblower Gas",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "d8822177-c868-49b9-896a-b136dd33e072",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "-932.5",
+            "note": "payouts - Jeremiah",
+            "planned": false,
+            "recurring": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "3fe69203-17a1-447a-ac3c-fc3ad0b4037c",
+    "name": "9 - Savings",
+    "subBudgets": [
+      {
+        "id": "1d015590-bebc-4424-b224-fe8337189b55",
+        "name": "General",
+        "transactions": []
+      },
+      {
+        "id": "5c748eb8-1f30-4164-be13-7ddfa2f5cb19",
+        "name": "Loan Payment Fund",
+        "transactions": [
+          {
+            "id": "43b004ef-c0a7-4a2a-8ae7-2115968da3fc",
+            "date": "2026-05-02",
+            "bank": "",
+            "amount": "0250",
+            "note": "",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "89c01533-843d-469e-a637-72c07cc6ada8",
+            "date": "2026-05-05",
+            "bank": "FNB - PERSONAL",
+            "amount": "-250",
+            "note": "T1005",
+            "planned": false,
+            "recurring": false
+          }
+        ]
+      },
+      {
+        "id": "2a0706d1-b19d-4e08-9328-02e1be99353d",
+        "name": "Beck and Julia",
+        "transactions": [
+          {
+            "id": "23fd5306-014f-44f9-a7df-4e9a88614a87",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "-337.5",
+            "note": "labor owed to Beck",
+            "planned": false,
+            "recurring": false
+          }
+        ]
+      },
+      {
+        "id": "3d745ded-4e0d-4941-ba3b-1d590bbc611a",
+        "name": "Bob and Doris",
+        "transactions": [
+          {
+            "id": "5d5b652b-8110-4bdd-ba1a-f685766fddd6",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "-52",
+            "note": "3 hrs labor owed to Grandpa",
+            "planned": false,
+            "recurring": false
+          }
+        ]
+      },
+      {
+        "id": "2326920f-c499-4a28-b71f-1360acc5eb16",
+        "name": "Japheth and Aimee",
+        "transactions": [
+          {
+            "id": "1a5474b9-4b52-4db4-ab4c-4fb2d17a67f5",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "-23780",
+            "note": "",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "c6833cbb-99c9-46cd-8abc-e002c1f20f28",
+            "date": "2026-05-05",
+            "bank": "Loan - Japheth and Aimee",
+            "amount": "250",
+            "note": "T1005",
+            "planned": false,
+            "recurring": false
+          }
+        ]
+      },
+      {
+        "id": "47c5820b-567f-4d70-9b38-98adf8489fa0",
+        "name": "Ode to Us",
+        "transactions": [
+          {
+            "id": "5cf33a7f-1d4b-40db-8be4-5356d897608a",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "-30",
+            "note": "CAM SAR",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "8d4d88ef-dd0c-4e3c-8827-b3cc43830020",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "-16",
+            "note": "Josh and Loraine - diapers",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "2fa3b341-380e-4225-9fdf-fb1bbbfe9fb3",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "-8.99",
+            "note": "Wesley Nolt - Skippy's pantry bib",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "6e6034dd-de78-4c93-a13c-e07110090a82",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "-78",
+            "note": "Micah and Amber - verizon bill 2026-04-04",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "2c548b07-e0ba-4b0d-ac64-3732374c38a3",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "-78",
+            "note": "Micah and Amber - verizon bill 2026-05-04",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "4267a212-8cba-410c-94b8-cd93cff36afd",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "-100",
+            "note": "Customers - Keith Johnson",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "308ed3b3-7941-49f6-b696-bf092a15103b",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "-143.32",
+            "note": "Deacon Expenses - Jason and Sarah",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "35249161-f770-483b-8b90-2f58c63f8618",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "-68",
+            "note": "Josh and Loraine - verizon bill 2026-04-04",
+            "planned": false,
+            "recurring": false
+          },
+          {
+            "id": "7f1a49eb-88a4-4650-910b-966572d96abe",
+            "date": "2026-05-05",
+            "bank": "",
+            "amount": "-68",
+            "note": "Josh and Loraine - verizon bill 2026-05-04",
+            "planned": false,
+            "recurring": false
+          }
+        ]
+      }
+    ]
+  }
+]

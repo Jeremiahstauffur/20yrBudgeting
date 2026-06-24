@@ -1,0 +1,6 @@
+To use this website offline:
+1. Open start.html in any modern web browser (Chrome, Edge, Firefox).
+2. All data is saved automatically to your browser's local storage.
+3. To back up your data or move it between devices, use the Gear icon (⚙️) in the bottom right corner to "Export to JSON".
+4. You can save your exported files in this 'data' folder for safe keeping.
+5. To restore data, use the "Import from JSON" option and select your saved file.
