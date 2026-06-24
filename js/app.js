@@ -1,6 +1,18 @@
 document.addEventListener('alpine:init', () => {
     Alpine.data('budgetApp', () => ({
         // State
+        themeColors: JSON.parse(localStorage.getItem('budgetColors')) || {
+            'bg-tan': '#2d241e',
+            'card-tan': '#3d3228',
+            'light-tan': '#f5e6d3',
+            'border-tan': '#5c4a3c'
+        },
+        themeFonts: JSON.parse(localStorage.getItem('budgetFonts')) || {
+            'headers': { family: 'system-ui', size: '' },
+            'report-headers': { family: 'system-ui', size: '' },
+            'body': { family: 'system-ui', size: '' },
+            'report-body': { family: 'system-ui', size: '' }
+        },
         budgets: [],
         fileHandle: null,
         isSyncing: false,
@@ -29,6 +41,11 @@ document.addEventListener('alpine:init', () => {
         flashingId: null,
         displayedBalances: {}, // budgetId -> amount
 
+        // Report Page State
+        reportYear: new Date().getFullYear().toString(),
+        reportStartDate: '', // Will be set to 2 weeks ago initially
+        reportEndDate: new Date().toISOString().split('T')[0],
+
         // Scan Page State
         scanSearchQuery: '',
         scanSelectedTags: [],
@@ -55,6 +72,11 @@ document.addEventListener('alpine:init', () => {
             this.loadData();
             this.lastState = JSON.stringify(this.budgets);
             this.refreshBanks();
+            
+            // Set default report start date to 2 weeks ago
+            let twoWeeksAgo = new Date();
+            twoWeeksAgo.setDate(twoWeeksAgo.getDate() - 14);
+            this.reportStartDate = twoWeeksAgo.toISOString().split('T')[0];
 
             // load navigation state
             const savedPage = localStorage.getItem('current_page');
@@ -153,6 +175,56 @@ document.addEventListener('alpine:init', () => {
 
         saveData() {
             localStorage.setItem('budget_data', JSON.stringify(this.budgets));
+        },
+
+        openEditColorsModal() {
+            this.modalType = 'editColors';
+            this.modalData = {
+                'bg-tan': this.themeColors['bg-tan'],
+                'card-tan': this.themeColors['card-tan'],
+                'light-tan': this.themeColors['light-tan'],
+                'border-tan': this.themeColors['border-tan']
+            };
+            this.modalOpen = true;
+        },
+
+        saveColors() {
+            this.themeColors = { ...this.modalData };
+            localStorage.setItem('budgetColors', JSON.stringify(this.themeColors));
+            this.modalOpen = false;
+            window.location.reload();
+        },
+
+        openEditFontsModal() {
+            this.modalType = 'editFonts';
+            // Copy deep to avoid reactive changes before save
+            this.modalData = JSON.parse(JSON.stringify(this.themeFonts));
+            this.modalOpen = true;
+            
+            // Try to load system fonts for datalist
+            if ('queryLocalFonts' in window) {
+                window.queryLocalFonts().then(fonts => {
+                    const list = document.getElementById('font-list');
+                    if(list && list.options.length < 20) { // simple check to avoid re-adding
+                        const added = new Set();
+                        fonts.forEach(font => {
+                            if (!added.has(font.family)) {
+                                let opt = document.createElement('option');
+                                opt.value = font.family;
+                                list.appendChild(opt);
+                                added.add(font.family);
+                            }
+                        });
+                    }
+                }).catch(err => console.log("Local font access not available/denied", err));
+            }
+        },
+
+        saveFonts() {
+            this.themeFonts = JSON.parse(JSON.stringify(this.modalData));
+            localStorage.setItem('budgetFonts', JSON.stringify(this.themeFonts));
+            this.modalOpen = false;
+            window.location.reload();
         },
 
         async exportData() {
@@ -437,6 +509,160 @@ document.addEventListener('alpine:init', () => {
             return this.budgets
                 .filter(b => b.name !== 'Unlinked')
                 .reduce((sum, budget) => sum + this.getDisplayedBudgetTotal(budget), 0);
+        },
+
+        // Report Logic
+        getReportData() {
+            const year = parseInt(this.reportYear) || new Date().getFullYear();
+            const start = this.reportStartDate;
+            const end = this.reportEndDate;
+            const yearStart = `${year}-01-01`;
+
+            let beginningYearBalance = 0;
+            let totalYearIncome = 0;
+            let budgetExpenses = []; 
+            let finalOverallBalance = 0;
+            let periodBudgets = [];
+
+            for (const budget of this.budgets) {
+                if (budget.name === 'Unlinked') continue;
+                
+                let budgetYearExp = 0;
+                let budgetStartBalance = 0;
+                let budgetEndBalance = 0;
+                let budgetPeriodTxs = [];
+                let subBudgetTotals = [];
+
+                for (const sub of budget.subBudgets) {
+                    let subEndBalance = 0;
+                    for (const tx of sub.transactions) {
+                        if (tx.planned) continue;
+                        const amt = parseFloat(tx.amount || 0);
+                        
+                        if (tx.date <= end) {
+                            subEndBalance += amt;
+                        }
+
+                        if (tx.date < yearStart) {
+                            beginningYearBalance += amt;
+                        }
+                        
+                        if (tx.date >= yearStart && tx.date <= end) {
+                            if (amt > 0) {
+                                totalYearIncome += amt;
+                            } else {
+                                budgetYearExp += Math.abs(amt);
+                            }
+                        }
+
+                        if (tx.date < start) {
+                            budgetStartBalance += amt;
+                        }
+                        
+                        if (tx.date >= start && tx.date <= end) {
+                            budgetPeriodTxs.push({
+                                ...tx,
+                                subBudget: sub.name,
+                                subBudgetId: sub.id,
+                                budgetId: budget.id
+                            });
+                        }
+                        
+                        if (tx.date <= end) {
+                            budgetEndBalance += amt;
+                            finalOverallBalance += amt;
+                        }
+                    }
+                    subBudgetTotals.push({
+                        name: sub.name,
+                        endBalance: subEndBalance
+                    });
+                }
+                
+                budgetExpenses.push({ name: budget.name, amount: budgetYearExp });
+                
+                periodBudgets.push({
+                    id: budget.id,
+                    name: budget.name,
+                    startBalance: budgetStartBalance,
+                    endBalance: budgetEndBalance,
+                    subBudgetTotals: subBudgetTotals,
+                    transactions: budgetPeriodTxs.sort((a, b) => a.date.localeCompare(b.date))
+                });
+            }
+            
+            let unreconciledByBank = {};
+            let totalUnreconciled = 0;
+            let currentBankBalance = this.getTotalBankBalance();
+            
+            for (const budget of this.budgets) {
+                for (const sub of budget.subBudgets) {
+                    for (const tx of sub.transactions) {
+                        if (tx.planned) continue;
+                        if (!tx.reconciled) {
+                            const bank = (tx.bank || '').trim();
+                            if (!bank) continue; // consider no bank transactions to be reconciled
+
+                            if (!unreconciledByBank[bank]) unreconciledByBank[bank] = [];
+                            unreconciledByBank[bank].push({
+                                ...tx,
+                                subBudget: sub.name,
+                                subBudgetId: sub.id,
+                                budgetId: budget.id
+                            });
+                            totalUnreconciled += parseFloat(tx.amount || 0);
+                        }
+                    }
+                }
+            }
+            
+            const expectedBudgetTotal = currentBankBalance - totalUnreconciled;
+            const actualBudgetTotal = this.budgets.reduce((sum, budget) => sum + this.getDisplayedBudgetTotal(budget), 0);
+            const discrepancy = actualBudgetTotal - expectedBudgetTotal;
+
+            return {
+                year,
+                start,
+                end,
+                beginningYearBalance,
+                totalYearIncome,
+                budgetExpenses,
+                finalOverallBalance,
+                periodBudgets,
+                unreconciledByBank,
+                totalUnreconciled,
+                currentBankBalance,
+                expectedBudgetTotal,
+                actualBudgetTotal,
+                discrepancy
+            };
+        },
+        
+        setReportDates(range) {
+            const today = new Date();
+            if (range === 'weekPlusLast') {
+                // this week to date plus full last week
+                // assuming week starts on Sunday
+                const dayOfWeek = today.getDay(); 
+                const start = new Date(today);
+                start.setDate(today.getDate() - dayOfWeek - 7); // Go back to Sunday of last week
+                this.reportStartDate = start.toISOString().split('T')[0];
+                this.reportEndDate = today.toISOString().split('T')[0];
+            } else if (range === 'monthToDate') {
+                const start = new Date(today.getFullYear(), today.getMonth(), 1);
+                this.reportStartDate = start.toISOString().split('T')[0];
+                this.reportEndDate = today.toISOString().split('T')[0];
+            } else if (range === 'lastMonth') {
+                const start = new Date(today.getFullYear(), today.getMonth() - 1, 1);
+                const end = new Date(today.getFullYear(), today.getMonth(), 0);
+                this.reportStartDate = start.toISOString().split('T')[0];
+                this.reportEndDate = end.toISOString().split('T')[0];
+            } else if (range === 'thisYear') {
+                const start = new Date(today.getFullYear(), 0, 1);
+                this.reportStartDate = start.toISOString().split('T')[0];
+                this.reportEndDate = today.toISOString().split('T')[0];
+                this.reportYear = today.getFullYear().toString();
+            }
         },
 
         // CRUD Budgets
