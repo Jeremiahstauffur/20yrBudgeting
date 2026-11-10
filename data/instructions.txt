@@ -1,6 +1,7 @@
-To use this website offline:
-1. Open start.html in any modern web browser (Chrome, Edge, Firefox).
-2. All data is saved automatically to your browser's local storage.
-3. To back up your data or move it between devices, use the Gear icon (⚙️) in the bottom right corner to "Export to JSON".
-4. You can save your exported files in this 'data' folder for safe keeping.
-5. To restore data, use the "Import from JSON" option and select your saved file.
+To use this website or Android app offline and online:
+1. Open start.html in any modern web browser, or install the Android app from the `android/` project (`com.twentyyearbudgeting.app`).
+2. First Login & Biometrics: On your first visit, sign in with your Username and Password. Afterwards, you can log in with a single tap using your phone's Biometrics (fingerprint / face unlock).
+3. Offline + Online Railway Sync: All data is saved automatically to local storage on your phone/browser AND synced automatically to the Railway database when online (`server/index.js`).
+4. Conflict Resolution: If two users make conflicting offline changes to the same item, the system automatically accepts the changes of whichever user logged in FIRST EVER before the other user (tracked via `firstLoginOrder` / `firstLoginAt`).
+5. Bottom Navigation Bar: Use the bottom navigation bar with icons to switch between Home, Banking, Paycheck, Scan, and Report pages.
+6. Backups: Use the Gear icon (⚙️) in the bottom right corner to configure your Railway API URL, lock the app for biometrics, or Export/Import JSON backups.

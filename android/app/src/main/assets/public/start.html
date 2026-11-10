@@ -1,0 +1,1991 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:x-transition="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>20yr Budgeting</title>
+    <script src="lib/tailwind.js"></script>
+    <script defer src="lib/alpine.js"></script>
+    <script src="js/app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+    <script>
+        function hexToRgb(hex) {
+            let r = 0, g = 0, b = 0;
+            if (hex.length === 4) {
+                r = parseInt(hex[1] + hex[1], 16);
+                g = parseInt(hex[2] + hex[2], 16);
+                b = parseInt(hex[3] + hex[3], 16);
+            } else if (hex.length === 7) {
+                r = parseInt(hex[1] + hex[2], 16);
+                g = parseInt(hex[3] + hex[4], 16);
+                b = parseInt(hex[5] + hex[6], 16);
+            }
+            return `${r} ${g} ${b}`;
+        }
+
+        let savedColors = JSON.parse(localStorage.getItem('budgetColors')) || {
+            'bg-tan': '#2d241e',
+            'card-tan': '#3d3228',
+            'light-tan': '#f5e6d3',
+            'border-tan': '#5c4a3c'
+        };
+        
+        let root = document.documentElement;
+        root.style.setProperty('--bg-tan', hexToRgb(savedColors['bg-tan']));
+        root.style.setProperty('--card-tan', hexToRgb(savedColors['card-tan']));
+        root.style.setProperty('--light-tan', hexToRgb(savedColors['light-tan']));
+        root.style.setProperty('--border-tan', hexToRgb(savedColors['border-tan']));
+        
+        root.style.setProperty('--bg-tan-hex', savedColors['bg-tan']);
+        root.style.setProperty('--card-tan-hex', savedColors['card-tan']);
+        root.style.setProperty('--light-tan-hex', savedColors['light-tan']);
+        root.style.setProperty('--border-tan-hex', savedColors['border-tan']);
+
+        let savedFonts = JSON.parse(localStorage.getItem('budgetFonts')) || {
+            'headers': { family: 'system-ui', size: '' },
+            'report-headers': { family: 'Arial, sans-serif', size: '' },
+            'body': { family: 'system-ui', size: '' },
+            'report-body': { family: 'Arial, sans-serif', size: '' }
+        };
+
+        if(savedFonts['body'].family) root.style.setProperty('--font-body', savedFonts['body'].family);
+        if(savedFonts['body'].size) root.style.setProperty('--size-body', savedFonts['body'].size + 'px');
+
+        if(savedFonts['headers'].family) root.style.setProperty('--font-headers', savedFonts['headers'].family);
+        if(savedFonts['headers'].size) root.style.setProperty('--size-headers', savedFonts['headers'].size + 'px');
+
+        if(savedFonts['report-body'].family) root.style.setProperty('--font-report-body', savedFonts['report-body'].family);
+        if(savedFonts['report-body'].size) root.style.setProperty('--size-report-body', savedFonts['report-body'].size + 'px');
+
+        if(savedFonts['report-headers'].family) root.style.setProperty('--font-report-headers', savedFonts['report-headers'].family);
+        if(savedFonts['report-headers'].size) root.style.setProperty('--size-report-headers', savedFonts['report-headers'].size + 'px');
+
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'bg-tan': 'rgb(var(--bg-tan) / <alpha-value>)',
+                        'card-tan': 'rgb(var(--card-tan) / <alpha-value>)',
+                        'light-tan': 'rgb(var(--light-tan) / <alpha-value>)',
+                        'border-tan': 'rgb(var(--border-tan) / <alpha-value>)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --bg-tan-hex: #2d241e;
+            --card-tan-hex: #3d3228;
+            --light-tan-hex: #f5e6d3;
+            --border-tan-hex: #5c4a3c;
+            --bg-tan: 45 36 30;
+            --card-tan: 61 50 40;
+            --light-tan: 245 230 211;
+            --border-tan: 92 74 60;
+            --font-body: system-ui, sans-serif;
+            --size-body: 16px;
+            --font-headers: system-ui, sans-serif;
+            --size-headers: 24px;
+            --font-report-body: Arial, sans-serif;
+            --size-report-body: 16px;
+            --font-report-headers: Arial, sans-serif;
+            --size-report-headers: 24px;
+            --dx: 0px;
+            --dy: 0px;
+        }
+        [x-cloak] { display: none !important; }
+        body { background-color: var(--bg-tan-hex); color: var(--light-tan-hex); font-family: var(--font-body, system-ui), sans-serif; }
+        :root[style*="--size-body"] body { font-size: var(--size-body) !important; }
+        
+        h1, h2, h3, h4, h5, h6 { font-family: var(--font-headers, system-ui), sans-serif; }
+        :root[style*="--size-headers"] h1, :root[style*="--size-headers"] h2, :root[style*="--size-headers"] h3, :root[style*="--size-headers"] h4, :root[style*="--size-headers"] h5, :root[style*="--size-headers"] h6 {
+            font-size: var(--size-headers) !important;
+        }
+
+        .report-pages { font-family: var(--font-report-body, Arial), sans-serif !important; }
+        :root[style*="--size-report-body"] .report-pages {
+            font-size: var(--size-report-body) !important;
+        }
+
+        .report-pages h1, .report-pages h2, .report-pages h3, .report-pages h4, .report-pages h5, .report-pages h6 {
+            font-family: var(--font-report-headers, Arial), sans-serif !important;
+        }
+        :root[style*="--size-report-headers"] .report-pages h1, :root[style*="--size-report-headers"] .report-pages h2, :root[style*="--size-report-headers"] .report-pages h3, :root[style*="--size-report-headers"] .report-pages h4, :root[style*="--size-report-headers"] .report-pages h5, :root[style*="--size-report-headers"] .report-pages h6 {
+            font-size: var(--size-report-headers) !important;
+        }
+
+        input, select, textarea, button { border-radius: 9999px !important; }
+        input, select, textarea { background-color: var(--card-tan-hex); border: 1px solid var(--border-tan-hex); color: var(--light-tan-hex); padding: 5px 20px !important; }
+        
+        /* Custom Checkbox Styling */
+        input[type="checkbox"] {
+            appearance: none;
+            -webkit-appearance: none;
+            background-color: var(--card-tan-hex);
+            border: 1px solid var(--border-tan-hex);
+            width: 1.25rem;
+            height: 1.25rem;
+            border-radius: 9999px;
+            display: inline-grid;
+            place-content: center;
+            cursor: pointer;
+            vertical-align: middle;
+            position: relative;
+        }
+
+        input[type="checkbox"]:checked {
+            background-color: var(--light-tan-hex);
+            border-color: var(--light-tan-hex);
+        }
+
+        input[type="checkbox"]:checked::after {
+            content: "";
+            width: 0.65rem;
+            height: 0.65rem;
+            clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+            background-color: var(--bg-tan-hex);
+        }
+
+        input[type="checkbox"]:focus {
+            outline: 2px solid var(--border-tan-hex);
+            outline-offset: 2px;
+        }
+
+        /* Toggle Switch Styling */
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 40px;
+            height: 20px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--card-tan-hex);
+            transition: .4s;
+            border-radius: 9999px;
+            border: 1px solid var(--border-tan-hex);
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 14px;
+            width: 14px;
+            left: 2px;
+            bottom: 2px;
+            background-color: var(--border-tan-hex);
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: var(--light-tan-hex);
+            border-color: var(--light-tan-hex);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(20px);
+            background-color: var(--bg-tan-hex);
+        }
+        .pill-row { border: 1px solid var(--border-tan-hex); border-radius: 9999px; padding: 0.5rem 1.5rem; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: space-between; }
+        
+        /* Remove number spinners */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+        @keyframes flash {
+            0% { background-color: rgba(var(--light-tan), 0.4); }
+            100% { background-color: transparent; }
+        }
+        /* noinspection CssUnusedSymbol */
+        .flash-item {
+            animation: flash 2s ease-out forwards;
+        }
+
+        @keyframes coin-fly {
+            0% {
+                transform: translate(0, 0) scale(1) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--dx), var(--dy)) scale(0.5) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* noinspection CssUnusedSymbol */
+        .coin {
+            position: fixed;
+            width: 24px;
+            height: 24px;
+            background: radial-gradient(circle, #e2e2e2 0%, #999 100%);
+            border: 2px solid #777;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: #555;
+            font-weight: bold;
+        }
+
+        .pill-tag {
+            display: inline-flex;
+            align-items: center;
+            background-color: #5c4a3c;
+            color: #f5e6d3;
+            padding: 2px 10px;
+            border-radius: 9999px;
+            font-size: 11px;
+            font-weight: bold;
+            margin-right: 4px;
+            margin-top: 4px;
+        }
+        .pill-tag .remove-tag {
+            margin-left: 6px;
+            cursor: pointer;
+            opacity: 0.6;
+            font-size: 14px;
+            line-height: 1;
+        }
+        .pill-tag .remove-tag:hover {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body x-data="budgetApp" class="min-h-screen font-sans" @click="resetDelete()">
+
+    <!-- AUTHENTICATION & PHONE BIOMETRIC UNLOCK SCREEN -->
+    <div x-show="!authSessionUnlocked" x-cloak class="fixed inset-0 z-[200] bg-bg-tan flex items-center justify-center p-4 overflow-y-auto print:hidden">
+        <div class="bg-card-tan border-2 border-border-tan rounded-3xl p-8 w-full max-w-md shadow-2xl space-y-6">
+            <div class="text-center space-y-2">
+                <div class="w-16 h-16 mx-auto bg-bg-tan border border-border-tan rounded-full flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-light-tan" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4" />
+                    </svg>
+                </div>
+                <h1 class="text-2xl font-bold">20yr Budgeting</h1>
+                <p class="text-xs opacity-70" x-text="authUser && biometricEnabled ? 'Welcome back, ' + authUser.username + '. Unlock with phone biometrics.' : 'Sign in with your username and password to enable phone biometrics & Railway cloud sync.'"></p>
+            </div>
+
+            <div x-show="authError" x-cloak class="bg-red-900/40 border border-red-700 text-red-200 text-xs px-4 py-3 rounded-2xl text-center" x-text="authError"></div>
+
+            <!-- Subsequent logins: Phone Biometric Quick Unlock -->
+            <template x-if="authUser && biometricEnabled">
+                <div class="space-y-4">
+                    <button @click="loginWithBiometrics(false)" :disabled="authLoading"
+                            class="w-full bg-light-tan text-bg-tan py-4 px-6 rounded-full font-bold text-lg flex items-center justify-center space-x-3 shadow-lg hover:opacity-95 transition-opacity">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4" />
+                        </svg>
+                        <span x-text="authLoading ? 'Verifying Biometrics...' : 'Login with Phone Biometrics'"></span>
+                    </button>
+
+                    <div class="text-center pt-2">
+                        <button @click="switchAccountLogout()" class="text-xs opacity-60 hover:opacity-100 underline">
+                            Use Username &amp; Password or Switch Account
+                        </button>
+                    </div>
+                </div>
+            </template>
+
+            <!-- First login (or switched account): Username & Password -->
+            <template x-if="!authUser || !biometricEnabled">
+                <form @submit.prevent="loginWithPassword()" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-bold opacity-70 mb-1">Username</label>
+                        <input type="text" x-model="loginUsername" placeholder="Enter username" required autocomplete="username" class="w-full">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold opacity-70 mb-1">Password</label>
+                        <input type="password" x-model="loginPassword" placeholder="Enter password" required autocomplete="current-password" class="w-full">
+                    </div>
+                    <button type="submit" :disabled="authLoading"
+                            class="w-full bg-light-tan text-bg-tan py-3 px-6 rounded-full font-bold text-base shadow-lg hover:opacity-95 transition-opacity">
+                        <span x-text="authLoading ? 'Signing In...' : 'Login & Enable Biometrics'"></span>
+                    </button>
+                </form>
+            </template>
+
+            <!-- Railway Sync Server Status Footer -->
+            <div class="pt-4 border-t border-border-tan text-[11px] opacity-60 flex items-center justify-between">
+                <span x-text="isOnline ? '● Online (Railway Sync Ready)' : '○ Offline Mode (Local Storage Active)'"
+                      :class="isOnline ? 'text-green-400' : 'text-yellow-300'"></span>
+                <span x-show="authUser" x-text="'Login Priority #' + (authUser?.firstLoginOrder || 1)"></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="bg-card-tan border-b border-border-tan p-4 sticky top-0 z-50 print:hidden">
+        <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-4">
+            <h1 class="text-2xl font-bold cursor-pointer" @click="goHome()">20yr Budgeting</h1>
+                
+            <div class="flex items-center space-x-6">
+                <label class="flex items-center space-x-2 text-sm cursor-pointer" id="label-sort-by-amount">
+                    <div class="toggle-switch">
+                        <input type="checkbox" x-model="sortByAmount" aria-labelledby="label-sort-by-amount" @mousedown="isLoading = true">
+                        <span class="slider"></span>
+                    </div>
+                    <span>Sort by amount (abs desc)</span>
+                </label>
+                <div class="flex items-center space-x-2 text-xs">
+                    <span class="px-2 py-0.5 rounded-full border border-border-tan bg-bg-tan flex items-center space-x-1"
+                          :title="lastSyncConflictInfo || ('User: ' + (authUser?.username || 'Guest') + ' (First-login priority #' + (authUser?.firstLoginOrder || 1) + ')')">
+                        <span class="inline-block w-2 h-2 rounded-full"
+                              :class="isSyncing ? 'bg-blue-400 animate-ping' : (isOnline && !pendingOnlineSync ? 'bg-green-400' : 'bg-yellow-400')"></span>
+                        <span x-text="isSyncing ? 'Syncing...' : (isOnline ? (pendingOnlineSync ? 'Pending Sync' : 'Synced') : 'Offline')"></span>
+                    </span>
+                </div>
+                <div class="hidden md:flex items-center space-x-6">
+                    <button @click="goHome()" :class="currentPage === 'home' ? 'font-bold underline' : ''">Home</button>
+                    <button @click="currentPage = 'banking'; selectedBank = null; bankingSearchQuery = ''; bankingSelectedTags = []; bankingTagInput = ''" :class="currentPage === 'banking' ? 'font-bold underline text-light-tan' : 'opacity-60 hover:opacity-100'">Banking</button>
+                    <button @click="currentPage = 'paycheck'; paycheckSelectedBudget = null; paycheckSelectedSubBudget = null" :class="currentPage === 'paycheck' ? 'font-bold underline text-light-tan' : 'opacity-60 hover:opacity-100'">Paycheck</button>
+                    <button @click="currentPage = 'scan'; scanCheckedTransactions = []; scanSearchQuery = ''; scanSelectedTags = []" :class="currentPage === 'scan' ? 'font-bold underline' : ''">Scan</button>
+                    <button @click="currentPage = 'report';" :class="currentPage === 'report' ? 'font-bold underline text-light-tan' : 'opacity-60 hover:opacity-100'">Report</button>
+                </div>
+            </div>
+
+            <div class="flex-1 flex justify-center">
+                <div class="text-xs space-x-2 bg-bg-tan px-3 py-1 rounded-full border border-border-tan">
+                    <span class="opacity-60">Unbudgeted:</span>
+                    <span :class="(getTotalBankBalance() - getTotalBudgetBalance()) > 0 ? 'text-green-400 font-bold' : (getTotalBankBalance() - getTotalBudgetBalance()) < 0 ? 'text-red-400 font-bold' : 'text-green-400'" 
+                          x-text="formatCurrency(getTotalBankBalance() - getTotalBudgetBalance())"></span>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-4">
+                <div class="relative">
+                    <label for="search-input" class="sr-only">Search</label>
+                    <input type="text" id="search-input" x-model="searchQuery" placeholder="Search..." class="w-64"
+                           @keydown.enter="if (searchQuery) { currentPage = 'scan'; scanSearchQuery = searchQuery; searchQuery = ''; scanCheckedTransactions = []; scanSelectedTags = [] }"
+                           @dragover.prevent
+                           @drop="
+                               let tag = $event.dataTransfer.getData('text/plain');
+                               if (tag) {
+                                   currentPage = 'scan';
+                                   if (!scanSelectedTags.includes(tag)) scanSelectedTags.push(tag);
+                                   searchQuery = '';
+                                   scanSearchQuery = '';
+                                   scanCheckedTransactions = [];
+                               }
+                           ">
+                    <div x-show="searchQuery" x-cloak class="absolute right-0 mt-2 w-96 bg-card-tan border border-border-tan rounded-lg shadow-xl max-h-96 overflow-y-auto z-[60]">
+                        <template x-for="res in getfilteredResults()">
+                            <div class="p-3 border-b border-border-tan hover:bg-bg-tan cursor-pointer" @click="
+                                if (res.type === 'Budget') { selectBudget(res.budget); currentPage = 'home'; flashElement(res.budget.id); }
+                                if (res.type === 'Sub-Budget') { selectBudget(res.budget); selectSubBudget(res.subBudget); currentPage = 'home'; flashElement(res.subBudget.id); }
+                                if (res.type === 'Transaction') { 
+                                    if (res.transaction.planned) {
+                                        currentPage = 'paycheck';
+                                        paycheckSelectedBudget = res.budget;
+                                        paycheckSelectedSubBudget = res.subBudget;
+                                    } else {
+                                        selectBudget(res.budget); 
+                                        selectSubBudget(res.subBudget); 
+                                        currentPage = 'home'; 
+                                    }
+                                    flashElement(res.transaction.id); 
+                                }
+                                searchQuery = '';
+                            ">
+                                <div class="text-xs opacity-60" x-text="res.type"></div>
+                                <div class="font-bold flex items-center gap-1">
+                                    <template x-for="tag in (res.transaction?.tags || [])">
+                                        <span class="pill-tag !mt-0 !mr-0 !text-[9px] !px-1.5" x-text="tag" draggable="true" @dragstart="$event.dataTransfer.setData('text/plain', tag)"></span>
+                                    </template>
+                                    <span x-text="res.name"></span>
+                                </div>
+                                <div class="text-xs" x-show="res.budget" x-text="res.budget?.name + (res.subBudget ? ' > ' + res.subBudget.name : '')"></div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+
+                <button x-show="undoHistory.length > 0" 
+                        @click="undo()" 
+                        class="text-xs bg-bg-tan border border-border-tan px-4 py-2 rounded-full hover:bg-border-tan transition-colors flex items-center"
+                        title="Undo last edit">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
+                    </svg>
+                    Undo (<span x-text="undoHistory.length"></span>)
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto p-6 pb-32">
+
+        <!-- HOME PAGE: BUDGET LIST -->
+        <div x-show="currentPage === 'home' && !selectedBudget" x-cloak>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <template x-for="budget in sortedBudgets().filter(b => b.name !== 'Unlinked')" :key="budget.id">
+                    <div :id="'budget-' + budget.id" class="bg-card-tan border-2 rounded-2xl p-6 cursor-pointer hover:scale-105 transition-transform relative group"
+                         :class="{
+                            'opacity-50': getDisplayedBudgetTotal(budget) === 0,
+                            'border-green-800': getDisplayedBudgetTotal(budget) > 0,
+                            'border-red-800': getDisplayedBudgetTotal(budget) < 0,
+                            'border-border-tan': getDisplayedBudgetTotal(budget) === 0,
+                            'flash-item': flashingId === budget.id
+                         }"
+                         draggable="true"
+                         @dragstart="draggingBudget = budget"
+                         @dragover.prevent
+                         @drop="mergeBudgets(draggingBudget.id, budget.id); draggingBudget = null">
+                        <div @click="selectBudget(budget)" class="text-center">
+                            <h2 class="text-xl font-bold mb-4" x-text="budget.name"></h2>
+                            <p class="text-3xl" x-text="formatCurrency(getDisplayedBudgetTotal(budget))"></p>
+                        </div>
+                        <div class="mt-4 flex space-x-2 justify-center">
+                            <button @click.stop="openModal('transfer', { toBudget: budget, toSubBudget: budget.subBudgets[0] })" class="text-xs bg-bg-tan border border-border-tan px-2 py-1 rounded">Transfer In</button>
+                            <button @click.stop="openModal('editBudget', { id: budget.id, name: budget.name })" class="text-xs opacity-0 group-hover:opacity-100 transition-opacity">Edit</button>
+                            <div @click.stop>
+                                <button @click.stop="deleteBudget(budget.id)" 
+                                        x-show="pendingDelete.type !== 'budget' || pendingDelete.id !== budget.id"
+                                        class="text-xs opacity-0 group-hover:opacity-100 transition-opacity text-red-400">Delete</button>
+                                <button @click.stop="executeDelete('budget', budget.id)"
+                                        x-show="pendingDelete.type === 'budget' && pendingDelete.id === budget.id"
+                                        class="text-red-600 hover:scale-110 transition-transform">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+                
+                <!-- Create Budget Card -->
+                <div @click="openModal('createBudget')" class="bg-bg-tan border-2 border-dashed border-border-tan rounded-2xl p-6 flex flex-col items-center justify-center cursor-pointer hover:bg-card-tan min-h-[160px]">
+                    <span class="text-4xl mb-2">+</span>
+                    <span class="font-bold">New Budget</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- HOME PAGE: SUB-BUDGET LIST -->
+        <div x-show="currentPage === 'home' && selectedBudget && !selectedSubBudget" x-cloak>
+            <div class="mb-6 flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <button @click="selectedBudget = null" class="bg-card-tan border border-border-tan px-4 py-2 rounded">Back</button>
+                    <h2 class="text-3xl font-bold" x-text="selectedBudget?.name"></h2>
+                </div>
+                <div class="text-2xl" x-text="formatCurrency(getBudgetTotal(selectedBudget))"></div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <template x-for="sub in sortedSubBudgets(selectedBudget)" :key="sub.id">
+                    <div class="bg-card-tan border-2 rounded-2xl p-6 cursor-pointer hover:scale-105 transition-transform relative group"
+                         :class="{
+                            'opacity-50': getSubBudgetTotal(sub) === 0,
+                            'border-green-800': getSubBudgetTotal(sub) > 0,
+                            'border-red-800': getSubBudgetTotal(sub) < 0,
+                            'border-border-tan': getSubBudgetTotal(sub) === 0,
+                            'flash-item': flashingId === sub.id
+                         }"
+                         draggable="true"
+                         @dragstart="draggingSubBudget = { budgetId: selectedBudget.id, id: sub.id, name: sub.name }"
+                         @dragover.prevent
+                         @drop="mergeSubBudgets(draggingSubBudget.budgetId, draggingSubBudget.id, sub.id, selectedBudget.id); draggingSubBudget = null">
+                        <div @click="selectSubBudget(sub)" class="text-center">
+                            <h3 class="text-xl font-bold mb-4" x-text="sub.name"></h3>
+                            <p class="text-2xl" x-text="formatCurrency(getSubBudgetTotal(sub))"></p>
+                        </div>
+                        <div class="mt-4 flex space-x-2 justify-center">
+                            <button @click.stop="openModal('transfer', { toBudget: selectedBudget, toSubBudget: sub })" class="text-xs bg-bg-tan border border-border-tan px-2 py-1 rounded">Transfer In</button>
+                            <button @click.stop="openModal('editSubBudget', { budgetId: selectedBudget.id, id: sub.id, name: sub.name, newBudgetId: selectedBudget.id })" class="text-xs opacity-0 group-hover:opacity-100 transition-opacity">Edit</button>
+                            <div @click.stop>
+                                <button @click.stop="deleteSubBudget(selectedBudget.id, sub.id)" 
+                                        x-show="pendingDelete.type !== 'subBudget' || pendingDelete.subId !== sub.id"
+                                        class="text-xs opacity-0 group-hover:opacity-100 transition-opacity text-red-400">Delete</button>
+                                <button @click.stop="executeDelete('subBudget', selectedBudget.id, sub.id)"
+                                        x-show="pendingDelete.type === 'subBudget' && pendingDelete.subId === sub.id"
+                                        class="text-red-600 hover:scale-110 transition-transform">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+
+                <div @click="openModal('createSubBudget', { budgetId: selectedBudget?.id })" class="bg-bg-tan border-2 border-dashed border-border-tan rounded-2xl p-6 flex flex-col items-center justify-center cursor-pointer hover:bg-card-tan">
+                    <span class="text-4xl mb-2">+</span>
+                    <span class="font-bold">New Sub-Budget</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- HOME PAGE: TRANSACTION LIST -->
+        <div x-show="currentPage === 'home' && selectedSubBudget" x-cloak>
+            <div class="mb-6 flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <button @click="selectedSubBudget = null" class="bg-card-tan border border-border-tan px-4 py-2 rounded">Back</button>
+                    <div>
+                        <div class="text-sm opacity-60" x-text="selectedBudget?.name"></div>
+                        <h2 class="text-3xl font-bold" x-text="selectedSubBudget?.name"></h2>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div x-show="subBudgetSearchQuery" x-cloak class="text-sm bg-bg-tan px-3 py-1 rounded-full border border-border-tan flex items-center space-x-2">
+                        <span class="opacity-60">Subtotal:</span>
+                        <span class="font-bold text-light-tan" x-text="formatCurrency(getFilteredTransactionsTotal(selectedSubBudget))"></span>
+                    </div>
+                    <input type="text" x-model="subBudgetSearchQuery" placeholder="Filter transactions..." class="text-sm w-48">
+                    <div class="text-2xl" x-text="formatCurrency(getSubBudgetTotal(selectedSubBudget))"></div>
+                    <button @click="addTransaction(selectedSubBudget, { budgetId: selectedBudget?.id, subBudgetId: selectedSubBudget?.id })" class="bg-light-tan text-bg-tan px-4 py-1 rounded-full font-bold text-sm">+ Transaction</button>
+                </div>
+            </div>
+
+            <div class="bg-card-tan rounded-2xl p-6 border border-border-tan">
+                <div class="grid grid-cols-5 gap-4 mb-4 px-6 text-sm font-bold opacity-60">
+                    <div>Date</div>
+                    <div>Bank</div>
+                    <div class="text-right">Amount</div>
+                    <div class="col-span-2">Note</div>
+                </div>
+
+                <template x-for="tx in sortedTransactions(selectedSubBudget)" :key="tx.id">
+                    <div class="pill-row group hover:bg-bg-tan cursor-pointer" :class="{ 'flash-item': flashingId === tx.id }" @click="openModal('editTransaction', tx)">
+                        <div class="grid grid-cols-5 gap-4 w-full items-center">
+                            <div x-text="tx.date"></div>
+                            <div x-text="tx.bank"></div>
+                            <div class="text-right" :class="tx.amount < 0 ? 'text-red-400' : 'text-green-400'" x-text="formatCurrency(tx.amount)"></div>
+                            <div class="col-span-2 flex justify-between items-center">
+                                <div class="flex flex-wrap items-center gap-1">
+                                    <template x-for="tag in (tx.tags || [])">
+                                        <span class="pill-tag !mt-0 !mr-0 !text-[10px] cursor-pointer hover:bg-[#6d5a4a]" 
+                                              @click.stop="subBudgetSearchQuery = tag"
+                                              x-text="tag"
+                                              draggable="true" @dragstart="$event.dataTransfer.setData('text/plain', tag)"></span>
+                                    </template>
+                                    <span x-text="tx.note"></span>
+                                </div>
+                                <div @click.stop>
+                                    <button @click.stop="deleteTransaction(tx.id)" 
+                                            x-show="pendingDelete.type !== 'transaction' || pendingDelete.id !== tx.id"
+                                            class="text-xs text-red-400 opacity-0 group-hover:opacity-100">Delete</button>
+                                    <button @click.stop="executeDelete('transaction', tx.id)"
+                                            x-show="pendingDelete.type === 'transaction' && pendingDelete.id === tx.id"
+                                            class="text-red-600 hover:scale-110 transition-transform">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+
+        <!-- BANKING PAGE -->
+        <div x-show="currentPage === 'banking'" x-cloak x-data="{ 
+            selectedBank: null, 
+            unreconciledOnly: false, 
+            reconcileList: [],
+            draggingBank: null 
+        }">
+            <h2 class="text-3xl font-bold mb-8">Banking</h2>
+            
+            <!-- Bank Cards -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                        <template x-for="bankName in sortedBanks()">
+                            <div @click="selectedBank = bankName; reconcileList = []; bankingSearchQuery = ''; bankingSelectedTags = []; bankingTagInput = ''" 
+                                 :class="{
+                                    'ring-2 ring-light-tan': selectedBank === bankName,
+                                    'opacity-50': getBankBalance(bankName) === 0,
+                                    'border-green-800': getBankBalance(bankName) > 0,
+                                    'border-red-800': getBankBalance(bankName) < 0,
+                                    'border-border-tan': getBankBalance(bankName) === 0
+                                 }"
+                                 class="bg-card-tan border p-4 rounded-xl cursor-pointer hover:bg-opacity-80"
+                                 draggable="true"
+                                 @dragstart="$event.dataTransfer.setData('text/plain', bankName); draggingBank = bankName"
+                                 @dragover.prevent
+                                 @drop="mergeBanks(draggingBank, bankName); draggingBank = null">
+                                <div class="font-bold text-lg" x-text="bankName"></div>
+                                <div class="text-sm opacity-60">Balance: <span x-text="formatCurrency(getBankBalance(bankName))"></span></div>
+                            </div>
+                        </template>
+            </div>
+
+            <div x-show="selectedBank">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="flex flex-col">
+                        <div class="flex items-center space-x-4">
+                            <h3 class="text-2xl font-bold" x-text="selectedBank"></h3>
+                            <label class="flex items-center space-x-2 cursor-pointer">
+                                <div class="toggle-switch">
+                                    <input type="checkbox" x-model="unreconciledOnly" @mousedown="isLoading = true" @change="
+                                        setTimeout(() => {
+                                            if(unreconciledOnly) { 
+                                                reconcileList = getTransactionsForBank(selectedBank, true).map(t => t.id);
+                                            }
+                                            isLoading = false;
+                                        }, 600);
+                                    ">
+                                    <span class="slider"></span>
+                                </div>
+                                <span class="text-sm">Unreconciled Only</span>
+                            </label>
+                        </div>
+                        <div class="mt-2 text-sm space-x-4">
+                            <span class="opacity-60">Reconciled: <span class="text-light-tan" x-text="formatCurrency(getBankReconciledTotal(selectedBank))"></span></span>
+                            <span class="font-bold">Preview Reconciled: <span class="text-green-400" x-text="formatCurrency(getBankPreviewTotal(selectedBank, reconcileList))"></span></span>
+                        </div>
+                    </div>
+                    <div class="flex space-x-4">
+                        <button @click="openModal('bankAddTransaction', { bank: selectedBank, date: new Date().toISOString().split('T')[0], amount: 0, note: '' })" class="bg-card-tan border border-border-tan px-4 py-2 rounded font-bold hover:bg-bg-tan">+ New Transaction</button>
+                        <button x-show="reconcileList.length > 0" @click="reconcile(reconcileList); reconcileList = []" class="bg-green-600 px-4 py-2 rounded font-bold">Reconcile Selected</button>
+                    </div>
+                </div>
+
+                <div class="bg-card-tan rounded-2xl p-6 border border-border-tan">
+                    <!-- Filter Bar -->
+                    <div class="mb-6 flex flex-col gap-3">
+                        <div class="flex flex-wrap items-center gap-2">
+                            <template x-for="(tag, index) in bankingSelectedTags" :key="tag">
+                                <span class="pill-tag" draggable="true" @dragstart="$event.dataTransfer.setData('text/plain', tag)">
+                                    <span x-text="tag"></span>
+                                    <span class="remove-tag" @click="removeBankingTag(index)">&times;</span>
+                                </span>
+                            </template>
+                        </div>
+                        <div class="relative flex-1">
+                            <input type="text" 
+                                   x-model="bankingTagInput" 
+                                   @input="bankingSearchQuery = bankingTagInput; showBankingTagSuggestions = true"
+                                   @keydown.enter.prevent="addBankingTag()"
+                                   @focus="showBankingTagSuggestions = true"
+                                   @click.away="showBankingTagSuggestions = false"
+                                   @dragover.prevent
+                                   @drop.prevent="addBankingTag($event.dataTransfer.getData('text/plain'))"
+                                   placeholder="Filter by tags, budgets, banks, notes..." 
+                                   class="w-full">
+                            
+                            <div x-show="showBankingTagSuggestions && getBankingSuggestedTags().length > 0" 
+                                 class="absolute left-0 right-0 mt-1 bg-card-tan border border-border-tan rounded-lg shadow-xl z-50 max-h-48 overflow-y-auto">
+                                <template x-for="tag in getBankingSuggestedTags()" :key="tag">
+                                    <div @click="addBankingTag(tag)" 
+                                         class="px-4 py-2 hover:bg-bg-tan cursor-pointer text-sm" 
+                                         x-text="tag"></div>
+                                </template>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-7 gap-4 mb-4 px-6 text-sm font-bold opacity-60">
+                        <div class="w-8"></div>
+                        <div>Date</div>
+                        <div>Rec?</div>
+                        <div>Budget</div>
+                        <div>Sub-Budget</div>
+                        <div class="text-right">Amount</div>
+                        <div>Note</div>
+                    </div>
+
+                    <template x-for="tx in getTransactionsForBank(selectedBank, unreconciledOnly)" :key="tx.id">
+                        <div class="pill-row group hover:bg-bg-tan cursor-pointer" @click="openModal('editTransaction', tx)">
+                            <div class="grid grid-cols-7 gap-4 w-full items-center">
+                                <div class="w-8 flex items-center justify-center">
+                                    <input type="checkbox" x-show="!tx.reconciled" :value="tx.id" x-model="reconcileList" @click.stop>
+                                </div>
+                                <div x-text="tx.date"></div>
+                                <div>
+                                    <span x-show="tx.reconciled" class="text-xs bg-green-900 text-green-200 px-2 py-1 rounded" x-text="tx.reconciled"></span>
+                                    <span x-show="!tx.reconciled" class="text-xs bg-red-900 text-red-200 px-2 py-1 rounded">No</span>
+                                </div>
+                                <div x-text="tx.budgetName" class="truncate cursor-pointer hover:underline" 
+                                     @click.stop="toggleBankingTag(tx.budgetName)"
+                                     draggable="true" @dragstart="$event.dataTransfer.setData('text/plain', tx.budgetName)"></div>
+                                <div x-text="tx.subBudgetName" class="truncate cursor-pointer hover:underline" 
+                                     @click.stop="toggleBankingTag(tx.subBudgetName)"
+                                     draggable="true" @dragstart="$event.dataTransfer.setData('text/plain', tx.subBudgetName)"></div>
+                                <div class="text-right" x-text="formatCurrency(tx.amount)"></div>
+                                <div class="flex flex-wrap items-center gap-1 overflow-hidden">
+                                    <template x-for="tag in (tx.tags || [])">
+                                        <span class="pill-tag !mt-0 !mr-0 !text-[9px] !px-1.5 whitespace-nowrap cursor-pointer hover:bg-opacity-80" 
+                                              @click.stop="toggleBankingTag(tag)"
+                                              x-text="tag"
+                                              draggable="true" @dragstart="$event.dataTransfer.setData('text/plain', tag)"></span>
+                                    </template>
+                                    <div x-text="tx.note" class="truncate flex-1"></div>
+                                    <button @click.stop="deleteTransaction(tx.id)"
+                                            x-show="pendingDelete.type !== 'transaction' || pendingDelete.id !== tx.id"
+                                            class="text-xs text-red-400 opacity-0 group-hover:opacity-100 ml-2">Delete</button>
+                                    <button @click.stop="executeDelete('transaction', tx.id)"
+                                            x-show="pendingDelete.type === 'transaction' && pendingDelete.id === tx.id"
+                                            class="text-xs bg-red-600 text-white px-2 py-0.5 rounded ml-2">Confirm</button>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAYCHECK PAGE -->
+        <div x-show="currentPage === 'paycheck'" x-cloak x-data="{ paycheckAmount: 0 }">
+            <div class="flex flex-wrap items-center justify-between mb-8 gap-4">
+                <h2 class="text-3xl font-bold">Paycheck Planning</h2>
+                <div class="flex flex-wrap items-center gap-4">
+                    <div class="flex flex-col">
+                        <label class="text-xs opacity-60 mb-1">Deposit Date</label>
+                        <input type="date" x-model="paycheckDate" class="w-48">
+                    </div>
+                    <div class="flex flex-col">
+                        <div class="flex justify-between items-center mb-1">
+                            <label class="text-xs opacity-60">Deposit To Bank</label>
+                            <span class="text-[10px] font-mono opacity-50 ml-2" x-text="formatCurrency(getBankBalance(paycheckBank))"></span>
+                        </div>
+                        <select x-model="paycheckBank" class="w-48">
+                            <option value="">-- Use Planned Bank --</option>
+                            <template x-for="bank in sortedBanks()">
+                                <option :value="bank" x-text="bank"></option>
+                            </template>
+                        </select>
+                    </div>
+                    <div class="flex flex-col">
+                        <label class="text-xs opacity-60 mb-1">Paycheck Amount</label>
+                        <input type="number" step="0.01" x-model="paycheckAmount" placeholder="0.00" class="text-xl w-48">
+                    </div>
+                    <button id="deposit-button" @click="depositPaycheck(paycheckAmount)" class="bg-green-600 px-6 py-2 rounded-xl font-bold self-end">Deposit Paycheck</button>
+                </div>
+            </div>
+
+            <!-- Total Planned -->
+            <div class="mb-8 p-6 bg-card-tan rounded-2xl border border-border-tan flex justify-between items-center">
+                <div class="flex flex-col">
+                    <span class="text-xl">Total Planned This Paycheck:</span>
+                    <span class="text-sm opacity-60" :class="paycheckAmount - budgets.filter(b => b.name !== 'Unlinked').reduce((s,b) => s + getBudgetTotal(b, true), 0) < 0 ? 'text-red-400' : ''">
+                        Remaining: <span x-text="formatCurrency(paycheckAmount - budgets.filter(b => b.name !== 'Unlinked').reduce((s,b) => s + getBudgetTotal(b, true), 0))"></span>
+                    </span>
+                </div>
+                <span class="text-3xl" x-text="formatCurrency(budgets.filter(b => b.name !== 'Unlinked').reduce((s,b) => s + getBudgetTotal(b, true), 0))"></span>
+            </div>
+
+            <!-- Paycheck Budgets (Card View) -->
+            <div x-show="!paycheckSelectedBudget">
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    <template x-for="budget in sortedBudgets(true).filter(b => b.name !== 'Unlinked')" :key="budget.id">
+                        <div @click="paycheckSelectedBudget = budget" 
+                             :class="{
+                                'opacity-50': getBudgetTotal(budget, true) === 0,
+                                'border-green-800': getBudgetTotal(budget, true) > 0,
+                                'border-red-800': getBudgetTotal(budget, true) < 0,
+                                'border-border-tan': getBudgetTotal(budget, true) === 0,
+                                'flash-item': flashingId === budget.id
+                             }"
+                             class="bg-card-tan border-2 rounded-2xl p-6 cursor-pointer hover:scale-105 transition-transform text-center">
+                            <h3 class="text-xl font-bold mb-4" x-text="budget.name"></h3>
+                            <p class="text-2xl" x-text="formatCurrency(getBudgetTotal(budget, true))"></p>
+                        </div>
+                    </template>
+                </div>
+            </div>
+
+            <!-- Paycheck Sub-Budgets (Card View) -->
+            <div x-show="paycheckSelectedBudget && !paycheckSelectedSubBudget" x-cloak>
+                <div class="mb-6 flex items-center justify-between">
+                    <div class="flex items-center space-x-4">
+                        <button @click="paycheckSelectedBudget = null" class="bg-card-tan border border-border-tan px-4 py-2 rounded">Back to Budgets</button>
+                        <h2 class="text-3xl font-bold" x-text="paycheckSelectedBudget?.name"></h2>
+                    </div>
+                    <div class="text-2xl" x-text="formatCurrency(getBudgetTotal(paycheckSelectedBudget, true))"></div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    <template x-for="sub in sortedSubBudgets(paycheckSelectedBudget, true)" :key="sub.id">
+                        <div @click="paycheckSelectedSubBudget = sub" 
+                             :class="{
+                                'opacity-50': getSubBudgetTotal(sub, true) === 0,
+                                'border-green-800': getSubBudgetTotal(sub, true) > 0,
+                                'border-red-800': getSubBudgetTotal(sub, true) < 0,
+                                'border-border-tan': getSubBudgetTotal(sub, true) === 0,
+                                'flash-item': flashingId === sub.id
+                             }"
+                             class="bg-card-tan border-2 rounded-2xl p-6 cursor-pointer hover:scale-105 transition-transform text-center">
+                            <h3 class="text-xl font-bold mb-4" x-text="sub.name"></h3>
+                            <p class="text-2xl" x-text="formatCurrency(getSubBudgetTotal(sub, true))"></p>
+                        </div>
+                    </template>
+                </div>
+            </div>
+
+            <!-- Paycheck Planned Transactions -->
+            <div x-show="paycheckSelectedSubBudget" x-cloak>
+                <div class="mb-6 flex items-center justify-between">
+                    <div class="flex items-center space-x-4">
+                        <button @click="paycheckSelectedSubBudget = null" class="bg-card-tan border border-border-tan px-4 py-2 rounded">Back to Sub-Budgets</button>
+                        <div>
+                            <div class="text-sm opacity-60" x-text="paycheckSelectedBudget?.name"></div>
+                            <h2 class="text-3xl font-bold" x-text="paycheckSelectedSubBudget?.name"></h2>
+                        </div>
+                    </div>
+                    <div class="text-2xl" x-text="formatCurrency(getSubBudgetTotal(paycheckSelectedSubBudget, true))"></div>
+                </div>
+
+                <div class="bg-card-tan rounded-2xl p-6 border border-border-tan">
+                    <div class="grid grid-cols-3 gap-4 mb-4 px-6 text-sm font-bold opacity-60">
+                        <div class="text-left">Amount</div>
+                        <div class="col-span-2">Note</div>
+                    </div>
+
+                    <template x-for="tx in (paycheckSelectedSubBudget?.transactions || []).filter(t => t.planned).sort((a, b) => b.date.localeCompare(a.date))" :key="tx.id">
+                        <div class="pill-row group hover:bg-bg-tan cursor-pointer" :class="{ 'flash-item': flashingId === tx.id }" @click="openModal('editTransaction', tx)">
+                            <div class="grid grid-cols-3 gap-4 w-full items-center">
+                                <div class="text-left text-green-400" x-text="formatCurrency(tx.amount)"></div>
+                                <div class="col-span-2 flex justify-between items-center">
+                                    <div class="flex flex-wrap items-center gap-1">
+                                        <template x-for="tag in (tx.tags || [])">
+                                            <span class="pill-tag !mt-0 !mr-0 !text-[9px] !px-1.5" x-text="tag" draggable="true" @dragstart="$event.dataTransfer.setData('text/plain', tag)"></span>
+                                        </template>
+                                        <span x-text="tx.note"></span>
+                                        <template x-if="tx.recurring">
+                                            <span class="text-[10px] bg-border-tan px-2 py-0.5 rounded-full opacity-60">Recurring</span>
+                                        </template>
+                                    </div>
+                                    <div @click.stop>
+                                        <button @click.stop="deleteTransaction(tx.id)" 
+                                                x-show="pendingDelete.type !== 'transaction' || pendingDelete.id !== tx.id"
+                                                class="text-xs text-red-400 opacity-0 group-hover:opacity-100">Delete</button>
+                                        <button @click.stop="executeDelete('transaction', tx.id)"
+                                                x-show="pendingDelete.type === 'transaction' && pendingDelete.id === tx.id"
+                                                class="text-red-600 hover:scale-110 transition-transform">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+
+                    <div class="mt-6">
+                        <button @click="addTransaction(paycheckSelectedSubBudget, { date: new Date().toISOString().split('T')[0], bank: '', amount: 0, note: '', planned: true, recurring: false })" 
+                                class="w-full border-2 border-dashed border-border-tan p-2 rounded-full hover:bg-bg-tan">+ Add Planned Transaction</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SCAN PAGE -->
+        <div x-show="currentPage === 'scan'" x-cloak class="space-y-6">
+            <h2 class="text-3xl font-bold">Scan Transactions</h2>
+            
+            <!-- Search & Filter Section -->
+            <div class="bg-card-tan p-6 rounded-2xl border border-border-tan space-y-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Search Bar -->
+                    <div>
+                        <label class="block text-sm font-bold opacity-60 mb-1">Search</label>
+                        <input type="text" x-model="scanSearchQuery" placeholder="Date, amount, note, bank, budget, tags..." class="w-full">
+                    </div>
+                    
+                    <!-- Tag Bar -->
+                    <div class="relative">
+                        <label class="block text-sm font-bold opacity-60 mb-1">Tags</label>
+                        <div class="flex flex-wrap items-center gap-2 p-2 border border-border-tan rounded-full bg-bg-tan min-h-[42px]"
+                             @dragover.prevent
+                             @drop="
+                                let tag = $event.dataTransfer.getData('text/plain');
+                                if (tag && !scanSelectedTags.includes(tag)) scanSelectedTags.push(tag);
+                             ">
+                            <template x-for="(tag, index) in scanSelectedTags" :key="index">
+                                <span class="pill-tag !mt-0" draggable="true" @dragstart="$event.dataTransfer.setData('text/plain', tag)">
+                                    <span x-text="tag"></span>
+                                    <span class="remove-tag" @click="scanSelectedTags.splice(index, 1)">&times;</span>
+                                </span>
+                            </template>
+                            <select class="bg-transparent border-none outline-none text-sm flex-1 min-w-[100px] cursor-pointer appearance-none px-2" 
+                                    @change="if($event.target.value) { if(!scanSelectedTags.includes($event.target.value)) scanSelectedTags.push($event.target.value); $event.target.value = '' }">
+                                <option value="" class="bg-card-tan">Add tag...</option>
+                                <template x-for="tag in getAllTags().filter(t => !scanSelectedTags.includes(t))" :key="tag">
+                                    <option :value="tag" x-text="tag" class="bg-card-tan"></option>
+                                </template>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Subtotal Header -->
+            <div class="flex flex-wrap gap-8 py-4 border-y border-border-tan items-center justify-between">
+                <div class="flex flex-wrap gap-x-12 gap-y-4 items-center">
+                    <!-- Bank Totals -->
+                    <div class="flex gap-8">
+                        <div>
+                            <div class="text-xs font-bold opacity-60 uppercase tracking-wider text-blue-400">Bank Filtered</div>
+                            <div class="text-2xl font-bold" x-text="formatCurrency(getScanSubtotal('bank'))"></div>
+                        </div>
+                        <div>
+                            <div class="text-xs font-bold opacity-60 uppercase tracking-wider text-blue-400">Bank Checked</div>
+                            <div class="text-2xl font-bold text-green-400" x-text="formatCurrency(getScanCheckedSubtotal('bank'))"></div>
+                        </div>
+                    </div>
+
+                    <!-- Divider for larger screens -->
+                    <div class="hidden md:block h-10 w-px bg-border-tan"></div>
+
+                    <!-- Budget Totals -->
+                    <div class="flex gap-8">
+                        <div>
+                            <div class="text-xs font-bold opacity-60 uppercase tracking-wider text-orange-400">Budget Filtered</div>
+                            <div class="text-2xl font-bold" x-text="formatCurrency(getScanSubtotal('budget'))"></div>
+                        </div>
+                        <div>
+                            <div class="text-xs font-bold opacity-60 uppercase tracking-wider text-orange-400">Budget Checked</div>
+                            <div class="text-2xl font-bold text-green-400" x-text="formatCurrency(getScanCheckedSubtotal('budget'))"></div>
+                        </div>
+                    </div>
+
+                    <!-- Combined Totals -->
+                    <div class="hidden lg:block h-10 w-px bg-border-tan"></div>
+                    <div class="flex gap-8">
+                        <div>
+                            <div class="text-xs font-bold opacity-60 uppercase tracking-wider">Total Filtered</div>
+                            <div class="text-2xl font-bold" x-text="formatCurrency(getScanSubtotal('all'))"></div>
+                        </div>
+                    </div>
+
+                    <button @click="openModal('scanAddTransaction')" class="bg-light-tan text-bg-tan px-4 py-2 rounded-full font-bold text-sm hover:opacity-90 transition-opacity">
+                        + New Transaction
+                    </button>
+                </div>
+                <div class="flex items-center gap-2">
+                    <input type="checkbox" id="check-all-scan" x-model="allScanTransactionsChecked" @change="toggleAllScanTransactions()" class="w-5 h-5">
+                    <label for="check-all-scan" class="font-bold cursor-pointer">Check/Uncheck All Filtered</label>
+                </div>
+            </div>
+
+            <!-- Results List -->
+            <div class="bg-card-tan rounded-2xl border border-border-tan overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-bg-tan text-xs font-bold opacity-60 uppercase">
+                            <th class="p-4 w-10"></th>
+                            <th class="p-4">Date</th>
+                            <th class="p-4">Bank</th>
+                            <th class="p-4">Budget > Sub-Budget</th>
+                            <th class="p-4">Amount</th>
+                            <th class="p-4">Note / Tags</th>
+                            <th class="p-4 text-right">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template x-for="tx in getFilteredScanTransactions()" :key="tx.id">
+                            <tr class="border-t border-border-tan hover:bg-bg-tan transition-colors group" :class="{ 'flash-item': flashingId === tx.id }">
+                                <td class="p-4">
+                                    <input type="checkbox" :checked="scanCheckedTransactions.includes(tx.id)" @change="toggleScanTransaction(tx.id)" class="w-4 h-4">
+                                </td>
+                                <td class="p-4 text-sm" x-text="tx.date"></td>
+                                <td class="p-4 text-sm" x-text="tx.bank"></td>
+                                <td class="p-4 text-sm" x-text="tx.budget.name + ' > ' + tx.subBudget.name"></td>
+                                <td class="p-4 font-bold" :class="tx.amount >= 0 ? 'text-green-400' : 'text-red-400'" x-text="formatCurrency(tx.amount)"></td>
+                                <td class="p-4 text-sm">
+                                    <div class="flex flex-wrap items-center gap-1">
+                                        <template x-for="tag in (tx.tags || [])">
+                                            <span class="pill-tag !mt-0 !mr-0 !text-[9px] !px-1.5 cursor-pointer hover:bg-opacity-80 transition-colors" 
+                                                  x-text="tag"
+                                                  draggable="true" @dragstart="$event.dataTransfer.setData('text/plain', tag)"
+                                                  @click="if(!scanSelectedTags.includes(tag)) scanSelectedTags.push(tag)"></span>
+                                        </template>
+                                        <span x-text="tx.note"></span>
+                                    </div>
+                                </td>
+                                <td class="p-4 text-right space-x-2 whitespace-nowrap">
+                                    <button @click="openModal('editTransaction', tx)" class="text-xs bg-bg-tan border border-border-tan px-2 py-1 rounded hover:bg-border-tan">Edit</button>
+                                    <button @click="deleteScanTransaction(tx.id)" class="text-xs text-red-400 hover:text-red-300">Delete</button>
+                                </td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+                <div x-show="getFilteredScanTransactions().length === 0" class="p-12 text-center opacity-40 italic">
+                    No transactions matching your filters.
+                </div>
+            </div>
+        </div>
+
+        <!-- Report Page -->
+        <div x-show="currentPage === 'report'" x-cloak class="space-y-6">
+            
+            <div class="print:hidden bg-card-tan p-6 rounded-2xl border border-border-tan space-y-4 mb-6">
+                <div class="flex flex-wrap gap-4 items-center">
+                    <div>
+                        <label class="block text-sm font-bold opacity-60 mb-1">Year</label>
+                        <select x-model="reportYear" class="w-32 bg-card-tan border border-border-tan px-2 py-1 rounded">
+                            <template x-for="y in [new Date().getFullYear()+1, new Date().getFullYear(), new Date().getFullYear()-1, new Date().getFullYear()-2, new Date().getFullYear()-3]">
+                                <option :value="y" x-text="y"></option>
+                            </template>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold opacity-60 mb-1">Start Date</label>
+                        <input type="date" x-model="reportStartDate" class="bg-card-tan border border-border-tan px-2 py-1 rounded">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold opacity-60 mb-1">End Date</label>
+                        <input type="date" x-model="reportEndDate" class="bg-card-tan border border-border-tan px-2 py-1 rounded">
+                    </div>
+                    <div class="flex gap-2 items-end pt-5">
+                        <button @click="setReportDates('weekPlusLast')" class="bg-bg-tan border border-border-tan px-3 py-1.5 rounded-full text-sm hover:bg-border-tan">Week + Last</button>
+                        <button @click="setReportDates('monthToDate')" class="bg-bg-tan border border-border-tan px-3 py-1.5 rounded-full text-sm hover:bg-border-tan">Month to Date</button>
+                        <button @click="setReportDates('lastMonth')" class="bg-bg-tan border border-border-tan px-3 py-1.5 rounded-full text-sm hover:bg-border-tan">Last Month</button>
+                        <button @click="setReportDates('thisYear')" class="bg-bg-tan border border-border-tan px-3 py-1.5 rounded-full text-sm hover:bg-border-tan">This Year</button>
+                    </div>
+                    <div class="flex-1 text-right pt-5 space-x-2">
+                        <button @click="openModal('scanAddTransaction')" class="bg-bg-tan border border-border-tan px-4 py-2 rounded-full font-bold hover:bg-border-tan">+ New Transaction</button>
+                        <button onclick="window.print()" class="bg-light-tan text-bg-tan px-4 py-2 rounded-full font-bold">Print Report</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="report-pages-wrapper" x-data="{ r: null, reportCurrentPage: 0 }" x-effect="r = getReportData()">
+                <div class="print:hidden flex justify-between items-center bg-card-tan p-4 rounded-2xl border border-border-tan mb-6">
+                    <button @click="if(reportCurrentPage > 0) reportCurrentPage--" :disabled="reportCurrentPage === 0" class="bg-bg-tan px-4 py-2 rounded font-bold hover:bg-border-tan disabled:opacity-50">← Previous Page</button>
+                    <span class="font-bold" x-text="'Page ' + (reportCurrentPage + 1) + ' of ' + (r?.periodBudgets?.length ? r.periodBudgets.length + 2 : 2)"></span>
+                    <button @click="if(reportCurrentPage < (r?.periodBudgets?.length ? r.periodBudgets.length + 1 : 1)) reportCurrentPage++" :disabled="reportCurrentPage >= (r?.periodBudgets?.length ? r.periodBudgets.length + 1 : 1)" class="bg-bg-tan px-4 py-2 rounded font-bold hover:bg-border-tan disabled:opacity-50">Next Page →</button>
+                </div>
+
+                <div class="report-pages bg-white text-black text-sm" style="font-family: Arial, sans-serif;">
+                    
+                    <style>
+                        @media print {
+                            body { background: white !important; color: black !important; }
+                            body > *:not(main) { display: none !important; }
+                            #app > *:not(main) { display: none !important; }
+                            main { overflow: visible !important; height: auto !important; display: block !important; }
+                            main > div:not([x-show="currentPage === 'report'"]) { display: none !important; }
+                            .print\:hidden { display: none !important; }
+                            .report-pages-wrapper { display: block !important; }
+                            .report-pages { position: static !important; max-width: none !important; box-shadow: none !important; margin: 0 !important; padding: 0 !important; }
+                            .report-page { display: block !important; page-break-before: always; padding: 0 !important; min-height: auto !important; }
+                            .print-action-btn { display: none !important; }
+                            @page { size: letter; margin: 0.5in; }
+                        }
+                        .report-pages { max-width: 8.5in; margin: 0 auto; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+                        .report-page { padding: 0.5in; background: white; color: black; min-height: 11in; box-sizing: border-box; }
+                        .report-table { width: 100%; border-collapse: collapse; margin-top: 1rem; margin-bottom: 1rem; }
+                        .report-table th, .report-table td { border: 1px solid #ccc; padding: 6px; text-align: left; }
+                        .report-table th { background: #f0f0f0; }
+                        @media screen {
+                            .print-action-btn { cursor: pointer; color: blue; text-decoration: underline; margin-right: 5px; }
+                            .print-action-btn.delete { color: red; }
+                        }
+                    </style>
+                    
+                    <!-- Page 1: Summary -->
+                    <div class="report-page page-break" x-show="reportCurrentPage === 0">
+                        <h1 class="text-2xl font-bold text-center mb-6" x-text="'Budget Report - ' + r?.year"></h1>
+                    
+                    <div class="mb-4">
+                        <span class="font-bold">Period: </span>
+                        <span x-text="r?.start + ' to ' + r?.end"></span>
+                    </div>
+
+                    <table class="report-table">
+                        <tbody>
+                            <tr>
+                                <td class="font-bold w-2/3">Beginning Balance of the Year</td>
+                                <td class="text-right" x-text="formatCurrency(r?.beginningYearBalance)"></td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold">Sum of All Incomes (Year to End Date)</td>
+                                <td class="text-right text-green-600" x-text="formatCurrency(r?.totalYearIncome)"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h2 class="text-xl font-bold mt-8 mb-4">Budget Expenses (Year to End Date)</h2>
+                    <table class="report-table">
+                        <thead>
+                            <tr>
+                                <th>Budget</th>
+                                <th class="text-right">Total Expense</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template x-for="exp in r?.budgetExpenses" :key="exp.name">
+                                <tr>
+                                    <td x-text="exp.name"></td>
+                                    <td class="text-right text-red-600" x-text="formatCurrency(-exp.amount)"></td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+
+                    <table class="report-table mt-8">
+                        <tbody>
+                            <tr>
+                                <td class="font-bold w-2/3 text-lg">Final Current Overall Balance</td>
+                                <td class="text-right font-bold text-lg" x-text="formatCurrency(r?.finalOverallBalance)"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Next Pages: Budgets -->
+                <template x-for="(budget, bIndex) in r?.periodBudgets" :key="budget.id">
+                    <div class="report-page page-break" x-show="reportCurrentPage === bIndex + 1">
+                        <h2 class="text-xl font-bold mb-4" x-text="'Budget: ' + budget.name"></h2>
+                        <div class="mb-4 flex justify-between">
+                            <div>
+                                <span class="font-bold">Beginning Balance: </span>
+                                <span x-text="formatCurrency(budget.startBalance)"></span>
+                            </div>
+                            <div class="text-sm text-gray-500" x-text="r?.start + ' to ' + r?.end"></div>
+                        </div>
+                        
+                        <table class="report-table">
+                            <thead>
+                                <tr>
+                                    <th class="w-24">Date</th>
+                                    <th class="w-32">Sub-Budget</th>
+                                    <th class="w-24 text-right">Amount</th>
+                                    <th>Description / Tags</th>
+                                    <th class="w-24 print-action-btn">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <template x-for="tx in budget.transactions" :key="tx.id">
+                                    <tr>
+                                        <td x-text="tx.date"></td>
+                                        <td x-text="tx.subBudget"></td>
+                                        <td class="text-right" :class="tx.amount >= 0 ? 'text-green-600' : 'text-red-600'" x-text="formatCurrency(tx.amount)"></td>
+                                        <td>
+                                            <span x-text="tx.note"></span>
+                                            <template x-if="tx.tags && tx.tags.length">
+                                                <span class="text-xs text-gray-500 ml-2" x-text="'[' + tx.tags.join(', ') + ']'"></span>
+                                            </template>
+                                        </td>
+                                        <td class="print-action-btn">
+                                            <span class="print-action-btn" @click="openModal('editTransaction', tx)">Edit</span>
+                                            <span class="print-action-btn delete" @click="deleteTransaction(tx.id)">Del</span>
+                                        </td>
+                                    </tr>
+                                </template>
+                                <tr x-show="budget.transactions.length === 0">
+                                    <td colspan="5" class="text-center text-gray-500 italic">No transactions in this period.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="mt-4 text-right">
+                            <span class="font-bold">Ending Balance: </span>
+                            <span class="font-bold" x-text="formatCurrency(budget.endBalance)"></span>
+                        </div>
+
+                        <h3 class="text-lg font-bold mt-8 mb-4">Sub-Budget Category Totals (Up to End Date)</h3>
+                        <table class="report-table w-1/2">
+                            <thead>
+                                <tr>
+                                    <th>Sub-Budget</th>
+                                    <th class="w-32 text-right">Ending Balance</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <template x-for="sub in budget.subBudgetTotals" :key="sub.name">
+                                    <tr>
+                                        <td x-text="sub.name"></td>
+                                        <td class="text-right font-bold" :class="sub.endBalance >= 0 ? 'text-green-600' : 'text-red-600'" x-text="formatCurrency(sub.endBalance)"></td>
+                                    </tr>
+                                </template>
+                            </tbody>
+                        </table>
+                    </div>
+                </template>
+
+                <!-- Last Page: Bank Reconciliation -->
+                <div class="report-page page-break" x-show="reportCurrentPage === (r?.periodBudgets?.length || 0) + 1">
+                    <h2 class="text-xl font-bold mb-6">Bank Reconciliation</h2>
+                    
+                    <div class="mb-4 text-lg">
+                        <span class="font-bold">Actual Bank Balance: </span>
+                        <span x-text="formatCurrency(r?.actualBankBalance)"></span>
+                    </div>
+
+                    <h3 class="text-lg font-bold mt-6 mb-2">Outstanding Transactions</h3>
+                    <template x-for="bank in Object.keys(r?.unreconciledByBank || {})" :key="bank">
+                        <div class="mb-4">
+                            <h4 class="font-bold text-md mb-2" x-text="bank"></h4>
+                            <table class="report-table">
+                                <thead>
+                                    <tr>
+                                        <th class="w-24">Date</th>
+                                        <th class="w-32">Budget > Sub</th>
+                                        <th class="w-24 text-right">Amount</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <template x-for="tx in r.unreconciledByBank[bank]" :key="tx.id">
+                                        <tr>
+                                            <td x-text="tx.date"></td>
+                                            <td x-text="tx.budgetName ? (tx.budgetName + ' > ' + tx.subBudget) : 'Unlinked'"></td>
+                                            <td class="text-right" :class="tx.amount >= 0 ? 'text-green-600' : 'text-red-600'" x-text="formatCurrency(tx.amount)"></td>
+                                            <td x-text="tx.note"></td>
+                                        </tr>
+                                    </template>
+                                </tbody>
+                            </table>
+                        </div>
+                    </template>
+                    <div x-show="Object.keys(r?.unreconciledByBank || {}).length === 0" class="italic text-gray-500 mb-6">
+                        No outstanding transactions found.
+                    </div>
+
+                    <table class="report-table mt-8">
+                        <tbody>
+                            <tr>
+                                <td class="font-bold w-2/3">Sum of Outstanding Transactions</td>
+                                <td class="text-right" x-text="formatCurrency(r?.totalUnreconciled)"></td>
+                            </tr>
+                            <tr class="bg-gray-100">
+                                <td class="font-bold">Expected Budget Total <span class="font-normal text-xs">(Actual Bank Balance + Outstanding)</span></td>
+                                <td class="text-right font-bold" x-text="formatCurrency(r?.expectedBudgetTotal)"></td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold">Actual Budget Total</td>
+                                <td class="text-right font-bold" x-text="formatCurrency(r?.actualBudgetTotal)"></td>
+                            </tr>
+                            <tr :class="r?.discrepancy !== 0 ? 'text-red-600 bg-red-50' : 'text-green-600'">
+                                <td class="font-bold">Discrepancy <span class="font-normal text-xs">(Expected - Actual)</span></td>
+                                <td class="text-right font-bold" x-text="formatCurrency(r?.discrepancy)"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER STATS (positioned above bottom navigation bar) -->
+    <footer x-show="selectedBudget" class="fixed bottom-16 left-0 right-0 bg-card-tan border-t border-border-tan px-4 py-2 z-40 print:hidden">
+        <div class="max-w-7xl mx-auto flex justify-between items-center text-sm">
+            <div>
+                <span class="opacity-60">Viewing: </span>
+                <span class="font-bold" x-text="selectedBudget?.name"></span>
+                <template x-if="selectedSubBudget">
+                    <span> > <span class="font-bold" x-text="selectedSubBudget.name"></span></span>
+                </template>
+            </div>
+            <div class="text-lg font-bold">
+                <span class="text-xs opacity-60 mr-2 font-normal">Total:</span>
+                <span x-text="formatCurrency(selectedSubBudget ? getSubBudgetTotal(selectedSubBudget) : getBudgetTotal(selectedBudget))"></span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- BOTTOM OF THE APP NAVIGATION BAR WITH ICONS -->
+    <nav id="bottom-app-nav" aria-label="Bottom Navigation" class="fixed bottom-0 left-0 right-0 bg-card-tan border-t border-border-tan z-50 print:hidden shadow-2xl">
+        <div class="max-w-3xl mx-auto grid grid-cols-5 h-16 items-center">
+            <!-- Home -->
+            <button @click="goHome()"
+                    class="flex flex-col items-center justify-center py-1 px-2 !rounded-none transition-colors"
+                    :class="currentPage === 'home' ? 'text-light-tan font-bold' : 'opacity-60 hover:opacity-100'">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mb-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                </svg>
+                <span class="text-[11px] leading-tight">Home</span>
+            </button>
+
+            <!-- Banking -->
+            <button @click="currentPage = 'banking'; selectedBank = null; bankingSearchQuery = ''; bankingSelectedTags = []; bankingTagInput = ''"
+                    class="flex flex-col items-center justify-center py-1 px-2 !rounded-none transition-colors"
+                    :class="currentPage === 'banking' ? 'text-light-tan font-bold' : 'opacity-60 hover:opacity-100'">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mb-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" />
+                </svg>
+                <span class="text-[11px] leading-tight">Banking</span>
+            </button>
+
+            <!-- Paycheck -->
+            <button @click="currentPage = 'paycheck'; paycheckSelectedBudget = null; paycheckSelectedSubBudget = null"
+                    class="flex flex-col items-center justify-center py-1 px-2 !rounded-none transition-colors"
+                    :class="currentPage === 'paycheck' ? 'text-light-tan font-bold' : 'opacity-60 hover:opacity-100'">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mb-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span class="text-[11px] leading-tight">Paycheck</span>
+            </button>
+
+            <!-- Scan -->
+            <button @click="currentPage = 'scan'; scanCheckedTransactions = []; scanSearchQuery = ''; scanSelectedTags = []"
+                    class="flex flex-col items-center justify-center py-1 px-2 !rounded-none transition-colors"
+                    :class="currentPage === 'scan' ? 'text-light-tan font-bold' : 'opacity-60 hover:opacity-100'">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mb-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                <span class="text-[11px] leading-tight">Scan</span>
+            </button>
+
+            <!-- Report -->
+            <button @click="currentPage = 'report'"
+                    class="flex flex-col items-center justify-center py-1 px-2 !rounded-none transition-colors"
+                    :class="currentPage === 'report' ? 'text-light-tan font-bold' : 'opacity-60 hover:opacity-100'">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mb-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                <span class="text-[11px] leading-tight">Report</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- MODAL SYSTEM -->
+    <div x-show="modalOpen" 
+         x-cloak 
+         class="fixed inset-0 bg-black bg-opacity-70 flex items-end justify-center z-[100] p-0 overflow-hidden print:hidden"
+         x-transition:enter="transition ease-out duration-300"
+         x-transition:enter-start="opacity-0"
+         x-transition:enter-end="opacity-100"
+         x-transition:leave="transition ease-in duration-200"
+         x-transition:leave-start="opacity-100"
+         x-transition:leave-end="opacity-0">
+        
+        <div @click.away="modalOpen = false" 
+             class="bg-card-tan border-t border-l border-r border-border-tan p-8 rounded-t-3xl w-full max-w-2xl shadow-2xl relative"
+             x-show="modalOpen"
+             x-transition:enter="transition ease-out duration-300 transform"
+             x-transition:enter-start="translate-y-full"
+             x-transition:enter-end="translate-y-0"
+             x-transition:leave="transition ease-in duration-200 transform"
+             x-transition:leave-start="translate-y-0"
+             x-transition:leave-end="translate-y-full">
+            
+            <!-- Close button for better UX in bottom modal -->
+            <button @click="modalOpen = false" class="absolute top-4 right-6 text-2xl opacity-60 hover:opacity-100">&times;</button>
+            
+            <!-- Edit Colors -->
+            <template x-if="modalType === 'editColors'">
+                <div>
+                    <h2 class="text-2xl font-bold mb-6">Edit Theme Colors</h2>
+                    <div class="space-y-4">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block mb-1 text-sm opacity-60" for="color-bg-tan">Background Tan</label>
+                                <div class="flex items-center gap-2">
+                                    <input type="color" id="color-bg-tan" x-model="modalData['bg-tan']" class="h-10 w-20 cursor-pointer !p-1 !rounded-md">
+                                    <span class="text-xs opacity-70" x-text="modalData['bg-tan']"></span>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block mb-1 text-sm opacity-60" for="color-card-tan">Card Tan</label>
+                                <div class="flex items-center gap-2">
+                                    <input type="color" id="color-card-tan" x-model="modalData['card-tan']" class="h-10 w-20 cursor-pointer !p-1 !rounded-md">
+                                    <span class="text-xs opacity-70" x-text="modalData['card-tan']"></span>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block mb-1 text-sm opacity-60" for="color-light-tan">Light Tan (Text)</label>
+                                <div class="flex items-center gap-2">
+                                    <input type="color" id="color-light-tan" x-model="modalData['light-tan']" class="h-10 w-20 cursor-pointer !p-1 !rounded-md">
+                                    <span class="text-xs opacity-70" x-text="modalData['light-tan']"></span>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block mb-1 text-sm opacity-60" for="color-border-tan">Border Tan</label>
+                                <div class="flex items-center gap-2">
+                                    <input type="color" id="color-border-tan" x-model="modalData['border-tan']" class="h-10 w-20 cursor-pointer !p-1 !rounded-md">
+                                    <span class="text-xs opacity-70" x-text="modalData['border-tan']"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex justify-end space-x-4 mt-8">
+                            <button @click="modalOpen = false">Cancel</button>
+                            <button @click="saveColors()" class="bg-light-tan text-bg-tan px-6 py-2 rounded-xl font-bold">Save & Reload</button>
+                        </div>
+                    </div>
+                </div>
+            </template>
+
+            <!-- Edit Fonts -->
+            <template x-if="modalType === 'editFonts'">
+                <div>
+                    <h2 class="text-2xl font-bold mb-6">Edit Theme Fonts</h2>
+                    <datalist id="font-list"></datalist>
+                    <div class="space-y-4">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block mb-1 text-sm opacity-60">Headers Font</label>
+                                <input type="text" list="font-list" x-model="modalData['headers'].family" class="w-full mb-2" placeholder="e.g. Arial">
+                                <label class="block mb-1 text-sm opacity-60">Headers Size (px)</label>
+                                <input type="number" x-model="modalData['headers'].size" class="w-full !appearance-auto" placeholder="Default">
+                            </div>
+                            <div>
+                                <label class="block mb-1 text-sm opacity-60">Body Text Font</label>
+                                <input type="text" list="font-list" x-model="modalData['body'].family" class="w-full mb-2" placeholder="e.g. system-ui">
+                                <label class="block mb-1 text-sm opacity-60">Body Size (px)</label>
+                                <input type="number" x-model="modalData['body'].size" class="w-full !appearance-auto" placeholder="Default">
+                            </div>
+                            <div>
+                                <label class="block mb-1 text-sm opacity-60">Report Headers Font</label>
+                                <input type="text" list="font-list" x-model="modalData['report-headers'].family" class="w-full mb-2" placeholder="e.g. Arial">
+                                <label class="block mb-1 text-sm opacity-60">Report Headers Size (px)</label>
+                                <input type="number" x-model="modalData['report-headers'].size" class="w-full !appearance-auto" placeholder="Default">
+                            </div>
+                            <div>
+                                <label class="block mb-1 text-sm opacity-60">Report Body Font</label>
+                                <input type="text" list="font-list" x-model="modalData['report-body'].family" class="w-full mb-2" placeholder="e.g. Arial">
+                                <label class="block mb-1 text-sm opacity-60">Report Body Size (px)</label>
+                                <input type="number" x-model="modalData['report-body'].size" class="w-full !appearance-auto" placeholder="Default">
+                            </div>
+                        </div>
+
+                        <div class="flex justify-end space-x-4 mt-8">
+                            <button @click="modalOpen = false">Cancel</button>
+                            <button @click="saveFonts()" class="bg-light-tan text-bg-tan px-6 py-2 rounded-xl font-bold">Save & Reload</button>
+                        </div>
+                    </div>
+                </div>
+            </template>
+
+            <!-- Create/Edit Budget -->
+            <template x-if="modalType === 'createBudget' || modalType === 'editBudget'">
+                <div>
+                    <h2 class="text-2xl font-bold mb-6" x-text="modalType === 'createBudget' ? 'Create New Budget' : 'Edit Budget'"></h2>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block mb-1 text-sm opacity-60" for="edit-budget-name">Budget Name</label>
+                            <input type="text" id="edit-budget-name" x-model="modalData.name" class="w-full text-xl" autofocus @keyup.enter="modalType === 'createBudget' ? createBudget(modalData.name) : updateBudget(modalData.id, modalData.name)">
+                        </div>
+                        
+                        <div x-show="modalType === 'editBudget'" class="pt-4 border-t border-border-tan">
+                            <label class="block mb-1 text-sm opacity-60" for="merge-budget-select">Merge this budget into:</label>
+                            <div class="flex space-x-2">
+                                <select x-model="modalData.targetBudgetId" class="flex-1" id="merge-budget-select">
+                                    <option value="">-- Select Target Budget --</option>
+                                <template x-for="b in sortedBudgets().filter(b => b.name !== 'Unlinked')">
+                                        <option :value="b.id" x-text="b.name + ' (' + formatCurrency(getBudgetTotal(b)) + ')'"></option>
+                                    </template>
+                                </select>
+                                <button @click="mergeBudgets(modalData.id, modalData.targetBudgetId)" 
+                                        :disabled="!modalData.targetBudgetId"
+                                        class="bg-red-900 text-red-100 px-4 py-2 rounded-xl text-sm font-bold disabled:opacity-50">Merge</button>
+                            </div>
+                        </div>
+
+                        <div class="flex justify-end space-x-4 mt-8">
+                            <button @click="modalOpen = false">Cancel</button>
+                            <button @click="modalType === 'createBudget' ? createBudget(modalData.name) : updateBudget(modalData.id, modalData.name)" 
+                                    class="bg-light-tan text-bg-tan px-6 py-2 rounded-xl font-bold">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </template>
+
+            <!-- Create/Edit Sub-Budget -->
+            <template x-if="modalType === 'createSubBudget' || modalType === 'editSubBudget'">
+                <div>
+                    <h2 class="text-2xl font-bold mb-6" x-text="modalType === 'createSubBudget' ? 'Create Sub-Budget' : 'Edit Sub-Budget'"></h2>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block mb-1 text-sm opacity-60" for="edit-subbudget-name">Sub-Budget Name</label>
+                            <input type="text" id="edit-subbudget-name" x-model="modalData.name" class="w-full text-xl" autofocus @keyup.enter="modalType === 'createSubBudget' ? createSubBudget(modalData.budgetId, modalData.name) : updateSubBudget(modalData.budgetId, modalData.id, modalData.name)">
+                        </div>
+
+                        <div x-show="modalType === 'editSubBudget'" class="pt-4 border-t border-border-tan space-y-4">
+                            <div>
+                                <label class="block mb-1 text-sm opacity-60" for="move-subbudget-select">Move this sub-budget to:</label>
+                                <div class="flex space-x-2">
+                                    <select id="move-subbudget-select" x-model="modalData.newBudgetId" class="flex-1">
+                                        <template x-for="b in sortedBudgets()">
+                                            <option :value="b.id" x-text="b.name" :selected="b.id === modalData.budgetId"></option>
+                                        </template>
+                                    </select>
+                                    <button @click="moveSubBudget(modalData.budgetId, modalData.id, modalData.newBudgetId, modalData.name)" 
+                                            class="bg-blue-900 text-blue-100 px-4 py-2 rounded-xl text-sm font-bold">Move</button>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block mb-1 text-sm opacity-60" for="merge-subbudget-select">Merge this sub-budget into:</label>
+                                <div class="flex space-x-2">
+                                    <select id="merge-subbudget-select" x-model="modalData.targetId" class="flex-1" @change="
+                                        const ids = modalData.targetId.split('|');
+                                        modalData.targetBudgetId = ids[0];
+                                        modalData.targetSubId = ids[1];
+                                    ">
+                                        <option value="">-- Select Target Sub-Budget --</option>
+                                        <template x-for="b in sortedBudgets()">
+                                            <optgroup :label="b.name + ' (' + formatCurrency(getBudgetTotal(b)) + ')'" label="Budget">
+                                                <template x-for="s in sortedSubBudgets(b).filter(s => s.id !== modalData.id)">
+                                                    <option :value="b.id + '|' + s.id" x-text="s.name + ' (' + formatCurrency(getSubBudgetTotal(s)) + ')'"></option>
+                                                </template>
+                                            </optgroup>
+                                        </template>
+                                    </select>
+                                    <button @click="mergeSubBudgets(modalData.budgetId, modalData.id, modalData.targetSubId, modalData.targetBudgetId)" 
+                                            :disabled="!modalData.targetSubId"
+                                            class="bg-red-900 text-red-100 px-4 py-2 rounded-xl text-sm font-bold disabled:opacity-50">Merge</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex justify-end space-x-4 mt-8">
+                            <button @click="modalOpen = false">Cancel</button>
+                            <button @click="modalType === 'createSubBudget' ? createSubBudget(modalData.budgetId, modalData.name) : updateSubBudget(modalData.budgetId, modalData.id, modalData.name)" 
+                                    class="bg-light-tan text-bg-tan px-6 py-2 rounded-xl font-bold">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </template>
+
+            <!-- Edit Transaction -->
+            <template x-if="modalType === 'editTransaction'">
+                <div>
+                    <h2 class="text-2xl font-bold mb-6">Edit Transaction</h2>
+                    <div class="space-y-4">
+                        <div x-show="!modalData.planned">
+                            <label class="block mb-1 text-sm opacity-60">Target Budget/Sub-Budget</label>
+                            <select x-model="modalData.targetId" class="w-full" @change="
+                                if (modalData.targetId) {
+                                    const ids = modalData.targetId.split('|');
+                                    modalData.budgetId = ids[0];
+                                    modalData.subBudgetId = ids[1];
+                                } else {
+                                    modalData.budgetId = null;
+                                    modalData.subBudgetId = null;
+                                }
+                            ">
+                                <option value="" x-show="!selectedSubBudget">-- Unlinked --</option>
+                                <template x-for="b in sortedBudgets().filter(b => b.name !== 'Unlinked')">
+                                    <optgroup :label="b.name + ' (' + formatCurrency(getBudgetTotal(b)) + ')'" label="Budget">
+                                        <template x-for="s in sortedSubBudgets(b)">
+                                            <option :value="b.id + '|' + s.id" x-text="s.name + ' (' + formatCurrency(getSubBudgetTotal(s)) + ')'"></option>
+                                        </template>
+                                    </optgroup>
+                                </template>
+                            </select>
+                        </div>
+                        <div x-show="!modalData.planned">
+                            <label class="block mb-1 text-sm opacity-60">Date</label>
+                            <input type="date" x-model="modalData.date" class="w-full">
+                        </div>
+                        <div class="relative" x-show="!modalData.planned">
+                            <div class="flex justify-between items-center mb-1">
+                                <label class="text-sm opacity-60">Bank</label>
+                                <span class="text-[10px] font-mono opacity-50" x-text="'Balance: ' + formatCurrency(getBankBalance(modalData.bank))"></span>
+                            </div>
+                            <input type="text" x-model="modalData.bank" class="w-full" list="bank-list">
+                        </div>
+                        <div>
+                            <label class="block mb-1 text-sm opacity-60">Amount</label>
+                            <input type="number" step="0.01" x-model="modalData.amount" class="w-full text-xl">
+                        </div>
+                        <div>
+                            <label class="block mb-1 text-sm opacity-60">Note & Tags (Tab to create tag)</label>
+                            <div class="w-full bg-card-tan border border-border-tan rounded-[20px] p-2 flex flex-wrap items-center gap-1 focus-within:ring-1 focus-within:ring-light-tan/30">
+                                <template x-for="(tag, index) in modalData.tags" :key="index">
+                                    <span class="pill-tag !mt-0" draggable="true" @dragstart="$event.dataTransfer.setData('text/plain', tag)">
+                                        <span x-text="tag"></span>
+                                        <span class="remove-tag" @click="removeTag(index)">&times;</span>
+                                    </span>
+                                </template>
+                                <div class="relative flex-1 min-w-[120px]">
+                                    <input type="text" 
+                                           x-model="modalData.note" 
+                                           @keydown.tab.prevent="addTag()" 
+                                           @keydown.enter.prevent="addTag()"
+                                           class="w-full !border-none !p-1 !bg-transparent focus:outline-none"
+                                           placeholder="Type note or tag..."
+                                           @focus="showTagSuggestions = true"
+                                           @blur="setTimeout(() => showTagSuggestions = false, 250)">
+                                    
+                                    <!-- Suggestions -->
+                                    <div x-show="showTagSuggestions && getSuggestedTags().length > 0" 
+                                         class="absolute z-50 w-full mt-2 bg-card-tan border border-border-tan rounded-xl shadow-xl overflow-hidden left-0">
+                                        <template x-for="suggestion in getSuggestedTags()" :key="suggestion">
+                                            <div @click="addTag(suggestion)" 
+                                                 class="px-4 py-2 hover:bg-bg-tan cursor-pointer text-sm"
+                                                 x-text="suggestion"></div>
+                                        </template>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div x-show="modalData.planned">
+                            <label class="flex items-center space-x-2 text-sm cursor-pointer">
+                                <div class="toggle-switch">
+                                    <input type="checkbox" x-model="modalData.recurring" @mousedown="isLoading = true" @change="
+                                        setTimeout(() => { isLoading = false; }, 400);
+                                    ">
+                                    <span class="slider"></span>
+                                </div>
+                                <span>Recurring (Keep in planned list after deposit)</span>
+                            </label>
+                        </div>
+                        <div class="flex justify-between items-center mt-8">
+                            <div>
+                                <button @click="deleteTransaction(modalData.id); modalOpen = false" 
+                                        x-show="pendingDelete.type !== 'transaction' || pendingDelete.id !== modalData.id"
+                                        class="text-red-400 font-bold">Delete</button>
+                                <button @click="executeDelete('transaction', modalData.id); modalOpen = false"
+                                        x-show="pendingDelete.type === 'transaction' && pendingDelete.id === modalData.id"
+                                        class="bg-red-600 text-white px-4 py-1 rounded font-bold">Confirm Delete</button>
+                            </div>
+                            <div class="flex space-x-4">
+                                <button @click="modalOpen = false">Cancel</button>
+                                <button @click="updateTransaction(modalData.id, modalData)" class="bg-light-tan text-bg-tan px-6 py-2 rounded-xl font-bold">Save Changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </template>
+
+            <!-- Bank Add Transaction Modal -->
+            <template x-if="modalType === 'bankAddTransaction'">
+                <div>
+                    <h2 class="text-2xl font-bold mb-6">New Transaction</h2>
+                    <div class="space-y-4">
+                        <div class="relative">
+                            <div class="flex justify-between items-center mb-1">
+                                <label class="text-sm opacity-60">Bank</label>
+                                <span class="text-[10px] font-mono opacity-50" x-text="'Balance: ' + formatCurrency(getBankBalance(modalData.bank))"></span>
+                            </div>
+                            <input type="text" x-model="modalData.bank" class="w-full" list="bank-list">
+                        </div>
+                        <div>
+                            <label class="block mb-1 text-sm opacity-60">Target Budget/Sub-Budget</label>
+                            <select x-model="modalData.targetId" class="w-full" @change="
+                                if (modalData.targetId) {
+                                    const ids = modalData.targetId.split('|');
+                                    modalData.budgetId = ids[0];
+                                    modalData.subBudgetId = ids[1];
+                                } else {
+                                    modalData.budgetId = null;
+                                    modalData.subBudgetId = null;
+                                }
+                            ">
+                                <option value="" x-show="!selectedSubBudget">-- Select Target --</option>
+                                <template x-for="b in sortedBudgets().filter(b => b.name !== 'Unlinked')">
+                                    <optgroup :label="b.name + ' (' + formatCurrency(getBudgetTotal(b)) + ')'" label="Budget">
+                                        <template x-for="s in sortedSubBudgets(b)">
+                                            <option :value="b.id + '|' + s.id" x-text="s.name + ' (' + formatCurrency(getSubBudgetTotal(s)) + ')'"></option>
+                                        </template>
+                                    </optgroup>
+                                </template>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block mb-1 text-sm opacity-60">Date</label>
+                            <input type="date" x-model="modalData.date" class="w-full">
+                        </div>
+                        <div>
+                            <label class="block mb-1 text-sm opacity-60">Amount</label>
+                            <input type="number" step="0.01" x-model="modalData.amount" class="w-full text-xl">
+                        </div>
+                        <div>
+                            <label class="block mb-1 text-sm opacity-60">Note & Tags (Tab to create tag)</label>
+                            <div class="w-full bg-card-tan border border-border-tan rounded-[20px] p-2 flex flex-wrap items-center gap-1 focus-within:ring-1 focus-within:ring-light-tan/30">
+                                <template x-for="(tag, index) in modalData.tags" :key="index">
+                                    <span class="pill-tag !mt-0" draggable="true" @dragstart="$event.dataTransfer.setData('text/plain', tag)">
+                                        <span x-text="tag"></span>
+                                        <span class="remove-tag" @click="removeTag(index)">&times;</span>
+                                    </span>
+                                </template>
+                                <div class="relative flex-1 min-w-[120px]">
+                                    <input type="text" 
+                                           x-model="modalData.note" 
+                                           @keydown.tab.prevent="addTag()" 
+                                           @keydown.enter.prevent="addTag()"
+                                           class="w-full !border-none !p-1 !bg-transparent focus:outline-none"
+                                           placeholder="Type note or tag..."
+                                           @focus="showTagSuggestions = true"
+                                           @blur="setTimeout(() => showTagSuggestions = false, 250)">
+                                    
+                                    <!-- Suggestions -->
+                                    <div x-show="showTagSuggestions && getSuggestedTags().length > 0" 
+                                         class="absolute z-50 w-full mt-2 bg-card-tan border border-border-tan rounded-xl shadow-xl overflow-hidden left-0">
+                                        <template x-for="suggestion in getSuggestedTags()" :key="suggestion">
+                                            <div @click="addTag(suggestion)" 
+                                                 class="px-4 py-2 hover:bg-bg-tan cursor-pointer text-sm"
+                                                 x-text="suggestion"></div>
+                                        </template>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-end space-x-4 mt-8">
+                            <button @click="modalOpen = false">Cancel</button>
+                            <button @click="addBankTransaction(modalData.budgetId, modalData.subBudgetId, modalData)" 
+                                    class="bg-light-tan text-bg-tan px-6 py-2 rounded-xl font-bold">Add Transaction</button>
+                        </div>
+                    </div>
+                </div>
+            </template>
+
+            <!-- Scan Add Transaction Modal -->
+            <template x-if="modalType === 'scanAddTransaction'">
+                <div>
+                    <h2 class="text-2xl font-bold mb-6">New Transaction</h2>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block mb-1 text-sm opacity-60">Date</label>
+                            <input type="date" x-model="scanNewTransaction.date" class="w-full">
+                        </div>
+                        <div>
+                            <label class="block mb-1 text-sm opacity-60">Bank</label>
+                            <input type="text" x-model="scanNewTransaction.bank" list="bank-list" class="w-full" placeholder="Bank name">
+                        </div>
+                        <div>
+                            <label class="block mb-1 text-sm opacity-60">Target Budget/Sub-Budget</label>
+                            <select x-model="scanNewTransaction.targetId" class="w-full">
+                                <option value="">-- Select Target --</option>
+                                <template x-for="budget in budgets" :key="budget.id">
+                                    <optgroup :label="budget.name">
+                                        <template x-for="sub in budget.subBudgets" :key="sub.id">
+                                            <option :value="budget.id + '|' + sub.id" x-text="sub.name"></option>
+                                        </template>
+                                    </optgroup>
+                                </template>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block mb-1 text-sm opacity-60">Amount</label>
+                            <input type="number" step="0.01" x-model="scanNewTransaction.amount" class="w-full text-xl" placeholder="0.00">
+                        </div>
+                        <div>
+                            <label class="block mb-1 text-sm opacity-60">Note & Tags (Tab to create tag)</label>
+                            <div class="w-full bg-card-tan border border-border-tan rounded-[20px] p-2 flex flex-wrap items-center gap-1 focus-within:ring-1 focus-within:ring-light-tan/30">
+                                <template x-for="(tag, index) in scanNewTransaction.tags" :key="index">
+                                    <span class="pill-tag !mt-0" draggable="true" @dragstart="$event.dataTransfer.setData('text/plain', tag)">
+                                        <span x-text="tag"></span>
+                                        <span class="remove-tag" @click="scanNewTransaction.tags.splice(index, 1)">&times;</span>
+                                    </span>
+                                </template>
+                                <div class="relative flex-1 min-w-[120px]">
+                                    <input type="text" 
+                                           x-model="scanNewTransaction.note" 
+                                           @keydown.tab.prevent="if(scanNewTransaction.note.trim()) { if(!scanNewTransaction.tags.includes(scanNewTransaction.note.trim())) scanNewTransaction.tags.push(scanNewTransaction.note.trim()); scanNewTransaction.note = ''; }"
+                                           @keydown.enter.prevent="if(scanNewTransaction.note.trim()) { if(!scanNewTransaction.tags.includes(scanNewTransaction.note.trim())) scanNewTransaction.tags.push(scanNewTransaction.note.trim()); scanNewTransaction.note = ''; }"
+                                           class="w-full !border-none !p-1 !bg-transparent focus:outline-none"
+                                           placeholder="Type note or tag...">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-end space-x-4 mt-8">
+                            <button @click="modalOpen = false">Cancel</button>
+                            <button @click="addScanTransaction()" class="bg-light-tan text-bg-tan px-6 py-2 rounded-xl font-bold">Add Transaction</button>
+                        </div>
+                    </div>
+                </div>
+            </template>
+
+            <!-- Transfer -->
+            <template x-if="modalType === 'transfer'">
+                <div>
+                    <h2 class="text-2xl font-bold mb-6">Transfer Money</h2>
+                    <p class="text-sm mb-4 opacity-60">Moving money into: <span class="font-bold text-light-tan" x-text="modalData.toBudget.name + ' > ' + modalData.toSubBudget.name"></span></p>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block mb-1 text-sm opacity-60">From Budget/Sub-Budget</label>
+                            <select x-model="modalData.fromSubBudgetId" class="w-full">
+                                <option value="">-- Select Source --</option>
+                                <template x-for="b in sortedBudgets().filter(b => b.name !== 'Unlinked')">
+                                    <optgroup :label="b.name + ' (' + formatCurrency(getBudgetTotal(b)) + ')'" label="Budget">
+                                        <template x-for="s in sortedSubBudgets(b)">
+                                            <option :value="b.id + '|' + s.id" x-text="b.name + '/' + s.name + ' (' + formatCurrency(getSubBudgetTotal(s)) + ')'"></option>
+                                        </template>
+                                    </optgroup>
+                                </template>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block mb-1 text-sm opacity-60">Amount</label>
+                            <input type="number" step="0.01" x-model="modalData.amount" class="w-full text-xl">
+                        </div>
+                        <div>
+                            <label class="block mb-1 text-sm opacity-60">Date</label>
+                            <input type="date" x-model="modalData.date" class="w-full">
+                        </div>
+                        <template x-if="modalData.fromSubBudgetId && modalData.amount > 0">
+                            <div class="flex justify-center space-x-2 mt-4">
+                                <div class="bg-red-900/40 px-3 py-1 rounded-full text-xs border border-red-800/50 flex items-center space-x-1">
+                                    <span class="opacity-60 truncate max-w-[80px]" x-text="getSubBudgetById(modalData.fromSubBudgetId).name"></span>
+                                    <span class="opacity-60">:</span>
+                                    <span class="font-bold whitespace-nowrap" x-text="formatCurrency(getSubBudgetTotal(getSubBudgetById(modalData.fromSubBudgetId)) - modalData.amount)"></span>
+                                </div>
+                                <div class="bg-green-900/40 px-3 py-1 rounded-full text-xs border border-green-800/50 flex items-center space-x-1">
+                                    <span class="opacity-60 truncate max-w-[80px]" x-text="modalData.toSubBudget.name"></span>
+                                    <span class="opacity-60">:</span>
+                                    <span class="font-bold whitespace-nowrap" x-text="formatCurrency(getSubBudgetTotal(modalData.toSubBudget) + parseFloat(modalData.amount))"></span>
+                                </div>
+                            </div>
+                        </template>
+                        <div class="flex justify-end space-x-4 mt-8">
+                            <button @click="modalOpen = false">Cancel</button>
+                            <button @click="transfer(modalData.fromSubBudgetId, modalData.toSubBudget.id, modalData.amount, modalData.date)" 
+                                    class="bg-light-tan text-bg-tan px-6 py-2 rounded-xl font-bold">Transfer Now</button>
+                        </div>
+                    </div>
+                </div>
+            </template>
+
+            <!-- Railway Cloud Sync & Account Modal -->
+            <template x-if="modalType === 'railwaySync'">
+                <div>
+                    <h2 class="text-2xl font-bold mb-4">Railway Cloud &amp; Biometric Sync</h2>
+                    <div class="space-y-4 text-sm">
+                        <div class="bg-bg-tan border border-border-tan rounded-2xl p-4 space-y-1">
+                            <div class="flex justify-between">
+                                <span class="opacity-60">Logged-in User:</span>
+                                <span class="font-bold" x-text="authUser?.username || 'Not signed in'"></span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="opacity-60">First-Ever Login Priority:</span>
+                                <span class="font-bold text-green-400" x-text="'#' + (authUser?.firstLoginOrder || 1)"></span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="opacity-60">First-Ever User on Server:</span>
+                                <span class="font-bold" x-text="seniorMostUser?.username ? (seniorMostUser.username + ' (#1)') : (authUser?.username || 'You')"></span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="opacity-60">Phone Biometrics:</span>
+                                <span class="font-bold text-green-400" x-text="biometricEnabled ? 'Enabled' : 'Disabled'"></span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="opacity-60">Last Online Sync:</span>
+                                <span x-text="lastSyncedAt || 'Pending'"></span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block mb-1 text-sm opacity-60">Railway Database API URL</label>
+                            <input type="url" x-model="railwayApiUrl" class="w-full" placeholder="https://your-app.up.railway.app">
+                            <p class="text-[11px] opacity-60 mt-1">
+                                Changes are saved offline immediately and synced online to Railway when connected. If conflicts occur, the user who logged in first ever (#1) wins.
+                            </p>
+                        </div>
+
+                        <div class="flex justify-between items-center pt-4">
+                            <button @click="syncWithServer(false)" class="bg-bg-tan border border-border-tan px-4 py-2 rounded-full font-bold text-xs">
+                                Sync Now
+                            </button>
+                            <div class="flex space-x-3">
+                                <button @click="modalOpen = false">Cancel</button>
+                                <button @click="saveRailwaySettings()" class="bg-light-tan text-bg-tan px-6 py-2 rounded-xl font-bold">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </template>
+        </div>
+    </div>
+
+    <div class="fixed bottom-20 right-4 print:hidden z-50" x-data="{ open: false }" @click.away="open = false">
+        <button @click="open = !open" class="bg-card-tan border border-border-tan p-2 rounded-full opacity-40 hover:opacity-100 transition-opacity shadow-lg">⚙️</button>
+        <div x-show="open" x-cloak class="absolute bottom-12 right-0 bg-card-tan border border-border-tan p-4 rounded-xl shadow-xl w-56 z-[70]">
+            <h4 class="font-bold mb-2 border-b border-border-tan pb-1">Data &amp; Cloud Settings</h4>
+
+            <button @click="openModal('railwaySync'); open = false" class="w-full text-left py-1 hover:text-light-tan flex items-center justify-between mb-2">
+                <span>Railway Sync</span>
+                <span class="text-xs" :class="isOnline && !pendingOnlineSync ? 'text-green-400' : 'text-yellow-400'">☁️</span>
+            </button>
+
+            <button @click="lockAppForBiometrics(); open = false" class="w-full text-left py-1 hover:text-light-tan flex items-center justify-between mb-2">
+                <span>Lock (Biometrics)</span>
+                <span class="text-xs opacity-50">🔒</span>
+            </button>
+            
+            <button @click="openEditColorsModal(); open = false" class="w-full text-left py-1 hover:text-light-tan flex items-center justify-between mb-2">
+                <span>Edit Colors</span>
+                <span class="text-xs opacity-50">🎨</span>
+            </button>
+            <button @click="openEditFontsModal(); open = false" class="w-full text-left py-1 hover:text-light-tan flex items-center justify-between mb-2">
+                <span>Edit Fonts</span>
+                <span class="text-xs opacity-50">🔤</span>
+            </button>
+
+            <div class="flex items-center justify-between py-1 mb-2">
+                <span class="text-sm">Delete Mode</span>
+                <label class="toggle-switch">
+                    <input type="checkbox" x-model="deleteMode">
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <button @click="exportData()" class="w-full text-left py-1 hover:text-light-tan flex items-center justify-between">
+                <span>Export to JSON</span>
+                <span class="text-xs opacity-50">↓</span>
+            </button>
+            
+            <label class="w-full text-left py-1 hover:text-light-tan cursor-pointer block flex items-center justify-between">
+                <span>Import from JSON</span>
+                <span class="text-xs opacity-50">↑</span>
+                <input type="file" class="hidden" @change="importData($event)">
+            </label>
+
+            <button @click="linkSyncFile()" class="w-full text-left py-1 hover:text-light-tan border-t border-border-tan mt-1 pt-1 flex flex-col">
+                <div class="flex items-center justify-between w-full">
+                    <span x-text="fileHandle ? 'Change Sync File' : 'Link Sync File'"></span>
+                    <span x-show="fileHandle" class="text-[10px] text-green-400">● Active</span>
+                </div>
+                <div x-show="fileHandle" class="text-[9px] opacity-40 truncate w-full" x-text="'File: ' + fileHandle.name"></div>
+            </button>
+
+            <button @click="printReport()" class="w-full text-left py-1 hover:text-light-tan flex items-center justify-between border-t border-border-tan mt-1 pt-1">
+                <span>Print Report</span>
+                <span class="text-xs opacity-50">⎙</span>
+            </button>
+
+            <button @click="if(confirm('Clear all data?')) { localStorage.clear(); location.reload(); }" class="w-full text-left py-2 text-red-400 hover:text-red-300 border-t border-border-tan mt-2">Reset All</button>
+        </div>
+    </div>
+
+    <!-- Global Datalists -->
+    <datalist id="bank-list">
+        <template x-for="bank in sortedBanks()">
+            <option :value="bank"></option>
+        </template>
+    </datalist>
+
+    <!-- Loading Overlay -->
+    <div x-show="isLoading" 
+         x-transition:enter="transition ease-out duration-300"
+         x-transition:enter-start="opacity-0"
+         x-transition:enter-end="opacity-100"
+         x-transition:leave="transition ease-in duration-200"
+         x-transition:leave-start="opacity-100"
+         x-transition:leave-end="opacity-0"
+         class="fixed inset-0 z-[100] flex items-center justify-center bg-[#2d241e]/80 backdrop-blur-sm pointer-events-none print:hidden"
+         x-cloak>
+        <div class="flex flex-col items-center">
+            <div class="w-16 h-16 border-4 border-[#f5e6d3]/20 border-t-[#f5e6d3] rounded-full animate-spin mb-4"></div>
+            <p class="text-light-tan font-bold tracking-widest text-sm uppercase">Calculating</p>
+        </div>
+    </div>
+
+</body>
+</html>

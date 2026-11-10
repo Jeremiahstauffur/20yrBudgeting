@@ -1,0 +1,9 @@
+{
+  "appId": "com.twentyyearbudgeting.app",
+  "appName": "20yr Budgeting",
+  "webDir": "www",
+  "bundledWebRuntime": false,
+  "server": {
+    "androidScheme": "https"
+  }
+}

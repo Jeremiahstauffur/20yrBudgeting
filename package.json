@@ -1,0 +1,27 @@
+{
+  "name": "20yr-budgeting",
+  "version": "1.0.0",
+  "description": "20yr Budgeting - Offline/Online Sync Budget App & Android Google Play App with Railway Database",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js",
+    "test": "node --test tests/sync.test.js",
+    "build:www": "node scripts/prepare-www.js",
+    "cap:sync": "npm run build:www && npx cap sync android"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@capacitor/android": "^6.1.2",
+    "@capacitor/cli": "^6.1.2",
+    "@capacitor/core": "^6.1.2",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.12.0"
+  }
+}

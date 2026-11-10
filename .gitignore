@@ -1,0 +1,11 @@
+node_modules/
+.env
+*.sqlite
+*.sqlite-journal
+*.db
+android/app/build/
+android/build/
+android/.gradle/
+android/local.properties
+www/
+dist/

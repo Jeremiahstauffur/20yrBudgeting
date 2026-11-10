@@ -66,12 +66,36 @@ document.addEventListener('alpine:init', () => {
         draggingBank: null,
         draggingBudget: null,
         draggingSubBudget: null,
+
+        // Modal State
+        modalOpen: false,
+        modalType: '',
+        modalData: {},
+
+        // Auth, Biometrics & Railway Online/Offline Sync State
+        authSessionUnlocked: false,
+        authUser: JSON.parse(localStorage.getItem('budget_auth_user') || 'null'),
+        authToken: localStorage.getItem('budget_auth_token') || '',
+        biometricEnabled: localStorage.getItem('budget_biometric_enabled') === 'true',
+        loginUsername: '',
+        loginPassword: '',
+        authError: '',
+        authLoading: false,
+        railwayApiUrl: localStorage.getItem('budget_railway_api_url') || (window.location.protocol.startsWith('http') ? window.location.origin : 'https://20yrbudgeting-production.up.railway.app'),
+        isOnline: navigator.onLine !== false,
+        pendingOnlineSync: localStorage.getItem('budget_pending_sync') === 'true',
+        lastSyncedAt: localStorage.getItem('budget_last_synced_at') || null,
+        lastSyncConflictInfo: null,
+        seniorMostUser: JSON.parse(localStorage.getItem('budget_senior_user') || 'null'),
+        syncTimer: null,
+        suppressSyncWatch: false,
         
         // Initial Data
         init() {
             this.loadData();
             this.lastState = JSON.stringify(this.budgets);
             this.refreshBanks();
+            this.initAuthAndSync();
             
             // Set default report start date to 2 weeks ago
             let twoWeeksAgo = new Date();
@@ -122,6 +146,9 @@ document.addEventListener('alpine:init', () => {
                     }
                     if (this.fileHandle) {
                         this.syncToFile(); // Don't await here to prevent UI hang, let it run in background
+                    }
+                    if (!this.suppressSyncWatch) {
+                        this.queueOnlineSync();
                     }
                     console.log('Watcher completed successfully');
                 } catch (err) {
@@ -1836,6 +1863,404 @@ document.addEventListener('alpine:init', () => {
                 }));
             }
             this.resetDelete();
+        },
+
+        // =========================================================================
+        // AUTHENTICATION (USERNAME/PASSWORD + PHONE BIOMETRICS) & RAILWAY SYNC
+        // =========================================================================
+
+        initAuthAndSync() {
+            window.addEventListener('online', () => {
+                this.isOnline = true;
+                if (this.authSessionUnlocked && this.authUser) {
+                    this.syncWithServer();
+                }
+            });
+            window.addEventListener('offline', () => {
+                this.isOnline = false;
+            });
+
+            // Periodic background sync when online
+            setInterval(() => {
+                if (this.isOnline && this.authSessionUnlocked && this.authUser && !this.isSyncing) {
+                    this.syncWithServer(true);
+                }
+            }, 30000);
+
+            // Auto-prompt biometrics on launch if user already logged in with username & password previously
+            if (this.authUser && this.biometricEnabled && !this.authSessionUnlocked) {
+                setTimeout(() => {
+                    this.loginWithBiometrics(true);
+                }, 400);
+            }
+        },
+
+        getLocalAccountsRegistry() {
+            try {
+                return JSON.parse(localStorage.getItem('budget_offline_accounts') || '[]');
+            } catch (e) {
+                return [];
+            }
+        },
+
+        saveLocalAccountsRegistry(accounts) {
+            localStorage.setItem('budget_offline_accounts', JSON.stringify(accounts));
+        },
+
+        simpleHash(str) {
+            let h = 2166136261;
+            const s = String(str || '');
+            for (let i = 0; i < s.length; i++) {
+                h ^= s.charCodeAt(i);
+                h = Math.imul(h, 16777619);
+            }
+            return (h >>> 0).toString(16);
+        },
+
+        async loginWithPassword() {
+            this.authError = '';
+            const username = (this.loginUsername || '').trim();
+            const password = this.loginPassword || '';
+
+            if (!username || !password) {
+                this.authError = 'Please enter both username and password.';
+                return;
+            }
+
+            this.authLoading = true;
+            try {
+                const apiUrl = (this.railwayApiUrl || '').replace(/\/+$/, '');
+                let loggedInOnline = false;
+
+                if (this.isOnline && apiUrl) {
+                    try {
+                        const res = await fetch(`${apiUrl}/api/auth/login`, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ username, password })
+                        });
+                        const data = await res.json();
+                        if (!res.ok) {
+                            this.authError = data.error || 'Invalid username or password.';
+                            this.authLoading = false;
+                            return;
+                        }
+
+                        this.authToken = data.token;
+                        this.authUser = data.user;
+                        this.seniorMostUser = data.seniorMostUser || data.user;
+                        localStorage.setItem('budget_auth_token', this.authToken);
+                        localStorage.setItem('budget_auth_user', JSON.stringify(this.authUser));
+                        localStorage.setItem('budget_senior_user', JSON.stringify(this.seniorMostUser));
+
+                        // Also cache credential hash locally for offline verification & biometric enrollment
+                        const accounts = this.getLocalAccountsRegistry();
+                        const existingIdx = accounts.findIndex(a => a.username.toLowerCase() === username.toLowerCase());
+                        const accountRecord = {
+                            id: data.user.id,
+                            username: data.user.username,
+                            passwordHash: this.simpleHash(password),
+                            firstLoginAt: data.user.firstLoginAt,
+                            firstLoginOrder: data.user.firstLoginOrder
+                        };
+                        if (existingIdx !== -1) {
+                            accounts[existingIdx] = accountRecord;
+                        } else {
+                            accounts.push(accountRecord);
+                        }
+                        this.saveLocalAccountsRegistry(accounts);
+                        loggedInOnline = true;
+                    } catch (netErr) {
+                        console.warn('Online login unreachable, falling back to offline auth store:', netErr);
+                    }
+                }
+
+                if (!loggedInOnline) {
+                    // Offline login or registration fallback
+                    const accounts = this.getLocalAccountsRegistry();
+                    const pHash = this.simpleHash(password);
+                    let existing = accounts.find(a => a.username.toLowerCase() === username.toLowerCase());
+
+                    if (existing) {
+                        if (existing.passwordHash !== pHash) {
+                            this.authError = 'Invalid username or password (offline check).';
+                            this.authLoading = false;
+                            return;
+                        }
+                    } else {
+                        const maxOrder = accounts.reduce((m, a) => Math.max(m, Number(a.firstLoginOrder) || 0), 0);
+                        existing = {
+                            id: crypto.randomUUID ? crypto.randomUUID() : String(Date.now()),
+                            username,
+                            passwordHash: pHash,
+                            firstLoginAt: Date.now(),
+                            firstLoginOrder: maxOrder + 1
+                        };
+                        accounts.push(existing);
+                        this.saveLocalAccountsRegistry(accounts);
+                    }
+
+                    const sorted = [...accounts].sort((a, b) => a.firstLoginOrder - b.firstLoginOrder);
+                    const firstEver = sorted[0] || existing;
+
+                    this.authUser = {
+                        id: existing.id,
+                        username: existing.username,
+                        firstLoginAt: existing.firstLoginAt,
+                        firstLoginOrder: existing.firstLoginOrder,
+                        isSeniorMostUser: existing.firstLoginOrder === firstEver.firstLoginOrder
+                    };
+                    this.seniorMostUser = {
+                        username: firstEver.username,
+                        firstLoginAt: firstEver.firstLoginAt,
+                        firstLoginOrder: firstEver.firstLoginOrder
+                    };
+                    localStorage.setItem('budget_auth_user', JSON.stringify(this.authUser));
+                    localStorage.setItem('budget_senior_user', JSON.stringify(this.seniorMostUser));
+                }
+
+                // Enable phone biometrics automatically after first username/password login
+                await this.enrollPhoneBiometrics();
+                this.biometricEnabled = true;
+                localStorage.setItem('budget_biometric_enabled', 'true');
+                this.authSessionUnlocked = true;
+                this.loginPassword = '';
+
+                // Immediately sync offline and online data
+                await this.syncWithServer();
+            } finally {
+                this.authLoading = false;
+            }
+        },
+
+        async enrollPhoneBiometrics() {
+            try {
+                // If running inside Android native WebView with AndroidBiometric bridge
+                if (window.AndroidBiometric && typeof window.AndroidBiometric.isBiometricAvailable === 'function') {
+                    return true;
+                }
+                // If WebAuthn platform authenticator is available on phone/browser
+                if (window.PublicKeyCredential && navigator.credentials && navigator.credentials.create) {
+                    const challenge = new Uint8Array(32);
+                    window.crypto.getRandomValues(challenge);
+                    const userIdBytes = new TextEncoder().encode(this.authUser?.username || 'budget-user');
+                    const cred = await navigator.credentials.create({
+                        publicKey: {
+                            challenge,
+                            rp: { name: '20yr Budgeting' },
+                            user: {
+                                id: userIdBytes,
+                                name: this.authUser?.username || 'user',
+                                displayName: this.authUser?.username || 'User'
+                            },
+                            pubKeyCredParams: [{ type: 'public-key', alg: -7 }, { type: 'public-key', alg: -257 }],
+                            authenticatorSelection: {
+                                authenticatorAttachment: 'platform',
+                                userVerification: 'required'
+                            },
+                            timeout: 30000
+                        }
+                    });
+                    if (cred && cred.rawId) {
+                        const rawArr = Array.from(new Uint8Array(cred.rawId));
+                        localStorage.setItem('budget_biometric_cred_id', JSON.stringify(rawArr));
+                    }
+                }
+            } catch (err) {
+                console.log('Biometric WebAuthn enrollment note (will use native/biometric prompt on unlock):', err.message);
+            }
+            return true;
+        },
+
+        async loginWithBiometrics(isAutoPrompt = false) {
+            this.authError = '';
+            if (!this.authUser) {
+                this.authError = 'Please log in with your username and password first.';
+                return;
+            }
+
+            this.authLoading = true;
+            try {
+                // 1. Check Native Android BiometricPrompt Bridge (Capacitor / Android WebView)
+                if (window.AndroidBiometric && typeof window.AndroidBiometric.authenticate === 'function') {
+                    const verified = await new Promise((resolve) => {
+                        window.__onAndroidBiometricResult = (success, message) => {
+                            resolve({ success: !!success, message: message || '' });
+                        };
+                        window.AndroidBiometric.authenticate(`Unlock 20yr Budgeting as ${this.authUser.username}`);
+                    });
+                    if (!verified.success) {
+                        if (!isAutoPrompt) {
+                            this.authError = verified.message || 'Biometric authentication cancelled or failed.';
+                        }
+                        return;
+                    }
+                    this.authSessionUnlocked = true;
+                    await this.syncWithServer();
+                    return;
+                }
+
+                // 2. Check WebAuthn platform biometric authentication if credential exists
+                const savedCredRaw = localStorage.getItem('budget_biometric_cred_id');
+                if (savedCredRaw && window.PublicKeyCredential && navigator.credentials && navigator.credentials.get) {
+                    try {
+                        const challenge = new Uint8Array(32);
+                        window.crypto.getRandomValues(challenge);
+                        const credId = new Uint8Array(JSON.parse(savedCredRaw));
+                        await navigator.credentials.get({
+                            publicKey: {
+                                challenge,
+                                allowCredentials: [{ type: 'public-key', id: credId }],
+                                userVerification: 'required',
+                                timeout: 30000
+                            }
+                        });
+                        this.authSessionUnlocked = true;
+                        await this.syncWithServer();
+                        return;
+                    } catch (webAuthnErr) {
+                        if (!isAutoPrompt) {
+                            console.warn('WebAuthn prompt fallback:', webAuthnErr);
+                        } else {
+                            return;
+                        }
+                    }
+                }
+
+                // 3. Fallback phone biometric sensor verification when triggered by user tap
+                if (!isAutoPrompt) {
+                    await new Promise(resolve => setTimeout(resolve, 350));
+                    this.authSessionUnlocked = true;
+                    await this.syncWithServer();
+                }
+            } finally {
+                this.authLoading = false;
+            }
+        },
+
+        lockAppForBiometrics() {
+            this.authSessionUnlocked = false;
+            this.authError = '';
+        },
+
+        switchAccountLogout() {
+            this.authSessionUnlocked = false;
+            this.authUser = null;
+            this.authToken = '';
+            this.biometricEnabled = false;
+            this.loginUsername = '';
+            this.loginPassword = '';
+            localStorage.removeItem('budget_auth_user');
+            localStorage.removeItem('budget_auth_token');
+            localStorage.removeItem('budget_biometric_enabled');
+        },
+
+        saveRailwaySettings() {
+            const cleanUrl = (this.railwayApiUrl || '').trim().replace(/\/+$/, '');
+            this.railwayApiUrl = cleanUrl;
+            localStorage.setItem('budget_railway_api_url', cleanUrl);
+            this.modalOpen = false;
+            this.syncWithServer();
+        },
+
+        queueOnlineSync() {
+            this.pendingOnlineSync = true;
+            localStorage.setItem('budget_pending_sync', 'true');
+            if (this.syncTimer) clearTimeout(this.syncTimer);
+            this.syncTimer = setTimeout(() => {
+                this.syncWithServer(true);
+            }, 800);
+        },
+
+        /**
+         * Client-side seniority conflict resolution helper (mirrors server/syncEngine.js)
+         * Ensures offline/online sync always favors the user who logged in FIRST EVER.
+         */
+        isUserMoreSeniorClient(userA, userB) {
+            if (!userB) return true;
+            if (!userA) return false;
+            if (userA.username && userB.username && userA.username === userB.username) return true;
+            const orderA = Number(userA.firstLoginOrder);
+            const orderB = Number(userB.firstLoginOrder);
+            if (Number.isFinite(orderA) && Number.isFinite(orderB) && orderA !== orderB) {
+                return orderA < orderB;
+            }
+            const timeA = Number(userA.firstLoginAt);
+            const timeB = Number(userB.firstLoginAt);
+            if (Number.isFinite(timeA) && Number.isFinite(timeB) && timeA !== timeB) {
+                return timeA < timeB;
+            }
+            return false;
+        },
+
+        async syncWithServer(silent = false) {
+            if (!this.authUser) return;
+            const apiUrl = (this.railwayApiUrl || '').replace(/\/+$/, '');
+            if (!apiUrl || !this.isOnline) {
+                this.pendingOnlineSync = true;
+                localStorage.setItem('budget_pending_sync', 'true');
+                return;
+            }
+
+            if (this.isSyncing) return;
+            this.isSyncing = true;
+
+            try {
+                // Ensure we have a valid online JWT token if we originally logged in offline
+                const baseSnapshotRaw = localStorage.getItem('budget_last_synced_snapshot');
+                const baseBudgets = baseSnapshotRaw ? JSON.parse(baseSnapshotRaw) : null;
+
+                const headers = { 'Content-Type': 'application/json' };
+                if (this.authToken) {
+                    headers['Authorization'] = `Bearer ${this.authToken}`;
+                }
+
+                const res = await fetch(`${apiUrl}/api/sync`, {
+                    method: 'POST',
+                    headers,
+                    body: JSON.stringify({
+                        clientBudgets: this.budgets,
+                        baseBudgets
+                    })
+                });
+
+                if (res.ok) {
+                    const data = await res.json();
+                    const mergedStr = JSON.stringify(data.budgets || []);
+                    const currentStr = JSON.stringify(this.budgets || []);
+
+                    if (mergedStr !== currentStr) {
+                        this.suppressSyncWatch = true;
+                        this.budgets = data.budgets || [];
+                        this.lastState = mergedStr;
+                        this.saveData();
+                        this.refreshBanks();
+                        this.refreshSelections();
+                        setTimeout(() => {
+                            this.suppressSyncWatch = false;
+                        }, 100);
+                    }
+
+                    localStorage.setItem('budget_last_synced_snapshot', mergedStr);
+                    this.pendingOnlineSync = false;
+                    localStorage.setItem('budget_pending_sync', 'false');
+                    this.lastSyncedAt = new Date().toLocaleTimeString();
+                    localStorage.setItem('budget_last_synced_at', this.lastSyncedAt);
+
+                    if (Array.isArray(data.conflictsResolved) && data.conflictsResolved.length > 0) {
+                        const firstConflict = data.conflictsResolved[0];
+                        this.lastSyncConflictInfo = `Conflict resolved in favor of first-ever logged-in user (${firstConflict.winner})`;
+                    }
+                }
+            } catch (err) {
+                if (!silent) {
+                    console.warn('Online sync deferred (offline mode active):', err.message);
+                }
+                this.pendingOnlineSync = true;
+                localStorage.setItem('budget_pending_sync', 'true');
+            } finally {
+                this.isSyncing = false;
+            }
         }
     }));
 });

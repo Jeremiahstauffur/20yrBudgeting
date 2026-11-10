@@ -276,6 +276,67 @@
 </head>
 <body x-data="budgetApp" class="min-h-screen font-sans" @click="resetDelete()">
 
+    <!-- AUTHENTICATION & PHONE BIOMETRIC UNLOCK SCREEN -->
+    <div x-show="!authSessionUnlocked" x-cloak class="fixed inset-0 z-[200] bg-bg-tan flex items-center justify-center p-4 overflow-y-auto print:hidden">
+        <div class="bg-card-tan border-2 border-border-tan rounded-3xl p-8 w-full max-w-md shadow-2xl space-y-6">
+            <div class="text-center space-y-2">
+                <div class="w-16 h-16 mx-auto bg-bg-tan border border-border-tan rounded-full flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-light-tan" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4" />
+                    </svg>
+                </div>
+                <h1 class="text-2xl font-bold">20yr Budgeting</h1>
+                <p class="text-xs opacity-70" x-text="authUser && biometricEnabled ? 'Welcome back, ' + authUser.username + '. Unlock with phone biometrics.' : 'Sign in with your username and password to enable phone biometrics & Railway cloud sync.'"></p>
+            </div>
+
+            <div x-show="authError" x-cloak class="bg-red-900/40 border border-red-700 text-red-200 text-xs px-4 py-3 rounded-2xl text-center" x-text="authError"></div>
+
+            <!-- Subsequent logins: Phone Biometric Quick Unlock -->
+            <template x-if="authUser && biometricEnabled">
+                <div class="space-y-4">
+                    <button @click="loginWithBiometrics(false)" :disabled="authLoading"
+                            class="w-full bg-light-tan text-bg-tan py-4 px-6 rounded-full font-bold text-lg flex items-center justify-center space-x-3 shadow-lg hover:opacity-95 transition-opacity">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4" />
+                        </svg>
+                        <span x-text="authLoading ? 'Verifying Biometrics...' : 'Login with Phone Biometrics'"></span>
+                    </button>
+
+                    <div class="text-center pt-2">
+                        <button @click="switchAccountLogout()" class="text-xs opacity-60 hover:opacity-100 underline">
+                            Use Username &amp; Password or Switch Account
+                        </button>
+                    </div>
+                </div>
+            </template>
+
+            <!-- First login (or switched account): Username & Password -->
+            <template x-if="!authUser || !biometricEnabled">
+                <form @submit.prevent="loginWithPassword()" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-bold opacity-70 mb-1">Username</label>
+                        <input type="text" x-model="loginUsername" placeholder="Enter username" required autocomplete="username" class="w-full">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold opacity-70 mb-1">Password</label>
+                        <input type="password" x-model="loginPassword" placeholder="Enter password" required autocomplete="current-password" class="w-full">
+                    </div>
+                    <button type="submit" :disabled="authLoading"
+                            class="w-full bg-light-tan text-bg-tan py-3 px-6 rounded-full font-bold text-base shadow-lg hover:opacity-95 transition-opacity">
+                        <span x-text="authLoading ? 'Signing In...' : 'Login & Enable Biometrics'"></span>
+                    </button>
+                </form>
+            </template>
+
+            <!-- Railway Sync Server Status Footer -->
+            <div class="pt-4 border-t border-border-tan text-[11px] opacity-60 flex items-center justify-between">
+                <span x-text="isOnline ? '● Online (Railway Sync Ready)' : '○ Offline Mode (Local Storage Active)'"
+                      :class="isOnline ? 'text-green-400' : 'text-yellow-300'"></span>
+                <span x-show="authUser" x-text="'Login Priority #' + (authUser?.firstLoginOrder || 1)"></span>
+            </div>
+        </div>
+    </div>
+
     <!-- Navigation Bar -->
     <nav class="bg-card-tan border-b border-border-tan p-4 sticky top-0 z-50 print:hidden">
         <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-4">
@@ -289,18 +350,21 @@
                     </div>
                     <span>Sort by amount (abs desc)</span>
                 </label>
-                <div x-show="isSyncing" x-cloak class="flex items-center text-xs text-green-400">
-                    <svg class="animate-spin h-4 w-4 mr-2" viewBox="0 0 24 24">
-                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none"></circle>
-                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                    <span>Syncing...</span>
+                <div class="flex items-center space-x-2 text-xs">
+                    <span class="px-2 py-0.5 rounded-full border border-border-tan bg-bg-tan flex items-center space-x-1"
+                          :title="lastSyncConflictInfo || ('User: ' + (authUser?.username || 'Guest') + ' (First-login priority #' + (authUser?.firstLoginOrder || 1) + ')')">
+                        <span class="inline-block w-2 h-2 rounded-full"
+                              :class="isSyncing ? 'bg-blue-400 animate-ping' : (isOnline && !pendingOnlineSync ? 'bg-green-400' : 'bg-yellow-400')"></span>
+                        <span x-text="isSyncing ? 'Syncing...' : (isOnline ? (pendingOnlineSync ? 'Pending Sync' : 'Synced') : 'Offline')"></span>
+                    </span>
                 </div>
-                <button @click="goHome()" :class="currentPage === 'home' ? 'font-bold underline' : ''">Home</button>
-                <button @click="currentPage = 'banking'; selectedBank = null; bankingSearchQuery = ''; bankingSelectedTags = []; bankingTagInput = ''" :class="currentPage === 'banking' ? 'font-bold underline text-light-tan' : 'opacity-60 hover:opacity-100'">Banking</button>
-                <button @click="currentPage = 'paycheck'; paycheckSelectedBudget = null; paycheckSelectedSubBudget = null" :class="currentPage === 'paycheck' ? 'font-bold underline text-light-tan' : 'opacity-60 hover:opacity-100'">Paycheck</button>
-                <button @click="currentPage = 'scan'; scanCheckedTransactions = []; scanSearchQuery = ''; scanSelectedTags = []" :class="currentPage === 'scan' ? 'font-bold underline' : ''">Scan</button>
-                <button @click="currentPage = 'report';" :class="currentPage === 'report' ? 'font-bold underline text-light-tan' : 'opacity-60 hover:opacity-100'">Report</button>
+                <div class="hidden md:flex items-center space-x-6">
+                    <button @click="goHome()" :class="currentPage === 'home' ? 'font-bold underline' : ''">Home</button>
+                    <button @click="currentPage = 'banking'; selectedBank = null; bankingSearchQuery = ''; bankingSelectedTags = []; bankingTagInput = ''" :class="currentPage === 'banking' ? 'font-bold underline text-light-tan' : 'opacity-60 hover:opacity-100'">Banking</button>
+                    <button @click="currentPage = 'paycheck'; paycheckSelectedBudget = null; paycheckSelectedSubBudget = null" :class="currentPage === 'paycheck' ? 'font-bold underline text-light-tan' : 'opacity-60 hover:opacity-100'">Paycheck</button>
+                    <button @click="currentPage = 'scan'; scanCheckedTransactions = []; scanSearchQuery = ''; scanSelectedTags = []" :class="currentPage === 'scan' ? 'font-bold underline' : ''">Scan</button>
+                    <button @click="currentPage = 'report';" :class="currentPage === 'report' ? 'font-bold underline text-light-tan' : 'opacity-60 hover:opacity-100'">Report</button>
+                </div>
             </div>
 
             <div class="flex-1 flex justify-center">
@@ -1226,9 +1290,9 @@
         </div>
     </main>
 
-    <!-- FOOTER STATS -->
-    <footer x-show="selectedBudget" class="fixed bottom-0 left-0 right-0 bg-card-tan border-t border-border-tan p-4 z-40 print:hidden">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
+    <!-- FOOTER STATS (positioned above bottom navigation bar) -->
+    <footer x-show="selectedBudget" class="fixed bottom-16 left-0 right-0 bg-card-tan border-t border-border-tan px-4 py-2 z-40 print:hidden">
+        <div class="max-w-7xl mx-auto flex justify-between items-center text-sm">
             <div>
                 <span class="opacity-60">Viewing: </span>
                 <span class="font-bold" x-text="selectedBudget?.name"></span>
@@ -1236,12 +1300,67 @@
                     <span> > <span class="font-bold" x-text="selectedSubBudget.name"></span></span>
                 </template>
             </div>
-            <div class="text-2xl">
-                <span class="text-sm opacity-60 mr-2">Total:</span>
+            <div class="text-lg font-bold">
+                <span class="text-xs opacity-60 mr-2 font-normal">Total:</span>
                 <span x-text="formatCurrency(selectedSubBudget ? getSubBudgetTotal(selectedSubBudget) : getBudgetTotal(selectedBudget))"></span>
             </div>
         </div>
     </footer>
+
+    <!-- BOTTOM OF THE APP NAVIGATION BAR WITH ICONS -->
+    <nav id="bottom-app-nav" aria-label="Bottom Navigation" class="fixed bottom-0 left-0 right-0 bg-card-tan border-t border-border-tan z-50 print:hidden shadow-2xl">
+        <div class="max-w-3xl mx-auto grid grid-cols-5 h-16 items-center">
+            <!-- Home -->
+            <button @click="goHome()"
+                    class="flex flex-col items-center justify-center py-1 px-2 !rounded-none transition-colors"
+                    :class="currentPage === 'home' ? 'text-light-tan font-bold' : 'opacity-60 hover:opacity-100'">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mb-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                </svg>
+                <span class="text-[11px] leading-tight">Home</span>
+            </button>
+
+            <!-- Banking -->
+            <button @click="currentPage = 'banking'; selectedBank = null; bankingSearchQuery = ''; bankingSelectedTags = []; bankingTagInput = ''"
+                    class="flex flex-col items-center justify-center py-1 px-2 !rounded-none transition-colors"
+                    :class="currentPage === 'banking' ? 'text-light-tan font-bold' : 'opacity-60 hover:opacity-100'">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mb-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" />
+                </svg>
+                <span class="text-[11px] leading-tight">Banking</span>
+            </button>
+
+            <!-- Paycheck -->
+            <button @click="currentPage = 'paycheck'; paycheckSelectedBudget = null; paycheckSelectedSubBudget = null"
+                    class="flex flex-col items-center justify-center py-1 px-2 !rounded-none transition-colors"
+                    :class="currentPage === 'paycheck' ? 'text-light-tan font-bold' : 'opacity-60 hover:opacity-100'">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mb-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span class="text-[11px] leading-tight">Paycheck</span>
+            </button>
+
+            <!-- Scan -->
+            <button @click="currentPage = 'scan'; scanCheckedTransactions = []; scanSearchQuery = ''; scanSelectedTags = []"
+                    class="flex flex-col items-center justify-center py-1 px-2 !rounded-none transition-colors"
+                    :class="currentPage === 'scan' ? 'text-light-tan font-bold' : 'opacity-60 hover:opacity-100'">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mb-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                <span class="text-[11px] leading-tight">Scan</span>
+            </button>
+
+            <!-- Report -->
+            <button @click="currentPage = 'report'"
+                    class="flex flex-col items-center justify-center py-1 px-2 !rounded-none transition-colors"
+                    :class="currentPage === 'report' ? 'text-light-tan font-bold' : 'opacity-60 hover:opacity-100'">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mb-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                <span class="text-[11px] leading-tight">Report</span>
+            </button>
+        </div>
+    </nav>
 
     <!-- MODAL SYSTEM -->
     <div x-show="modalOpen" 
@@ -1733,13 +1852,72 @@
                     </div>
                 </div>
             </template>
+
+            <!-- Railway Cloud Sync & Account Modal -->
+            <template x-if="modalType === 'railwaySync'">
+                <div>
+                    <h2 class="text-2xl font-bold mb-4">Railway Cloud &amp; Biometric Sync</h2>
+                    <div class="space-y-4 text-sm">
+                        <div class="bg-bg-tan border border-border-tan rounded-2xl p-4 space-y-1">
+                            <div class="flex justify-between">
+                                <span class="opacity-60">Logged-in User:</span>
+                                <span class="font-bold" x-text="authUser?.username || 'Not signed in'"></span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="opacity-60">First-Ever Login Priority:</span>
+                                <span class="font-bold text-green-400" x-text="'#' + (authUser?.firstLoginOrder || 1)"></span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="opacity-60">First-Ever User on Server:</span>
+                                <span class="font-bold" x-text="seniorMostUser?.username ? (seniorMostUser.username + ' (#1)') : (authUser?.username || 'You')"></span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="opacity-60">Phone Biometrics:</span>
+                                <span class="font-bold text-green-400" x-text="biometricEnabled ? 'Enabled' : 'Disabled'"></span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="opacity-60">Last Online Sync:</span>
+                                <span x-text="lastSyncedAt || 'Pending'"></span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block mb-1 text-sm opacity-60">Railway Database API URL</label>
+                            <input type="url" x-model="railwayApiUrl" class="w-full" placeholder="https://your-app.up.railway.app">
+                            <p class="text-[11px] opacity-60 mt-1">
+                                Changes are saved offline immediately and synced online to Railway when connected. If conflicts occur, the user who logged in first ever (#1) wins.
+                            </p>
+                        </div>
+
+                        <div class="flex justify-between items-center pt-4">
+                            <button @click="syncWithServer(false)" class="bg-bg-tan border border-border-tan px-4 py-2 rounded-full font-bold text-xs">
+                                Sync Now
+                            </button>
+                            <div class="flex space-x-3">
+                                <button @click="modalOpen = false">Cancel</button>
+                                <button @click="saveRailwaySettings()" class="bg-light-tan text-bg-tan px-6 py-2 rounded-xl font-bold">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </template>
         </div>
     </div>
 
-    <div class="fixed bottom-4 right-4 print:hidden" x-data="{ open: false }" @click.away="open = false">
-        <button @click="open = !open" class="bg-card-tan border border-border-tan p-2 rounded-full opacity-20 hover:opacity-100 transition-opacity">⚙️</button>
-        <div x-show="open" x-cloak class="absolute bottom-12 right-0 bg-card-tan border border-border-tan p-4 rounded-xl shadow-xl w-48 z-[70]">
-            <h4 class="font-bold mb-2 border-b border-border-tan pb-1">Data Settings</h4>
+    <div class="fixed bottom-20 right-4 print:hidden z-50" x-data="{ open: false }" @click.away="open = false">
+        <button @click="open = !open" class="bg-card-tan border border-border-tan p-2 rounded-full opacity-40 hover:opacity-100 transition-opacity shadow-lg">⚙️</button>
+        <div x-show="open" x-cloak class="absolute bottom-12 right-0 bg-card-tan border border-border-tan p-4 rounded-xl shadow-xl w-56 z-[70]">
+            <h4 class="font-bold mb-2 border-b border-border-tan pb-1">Data &amp; Cloud Settings</h4>
+
+            <button @click="openModal('railwaySync'); open = false" class="w-full text-left py-1 hover:text-light-tan flex items-center justify-between mb-2">
+                <span>Railway Sync</span>
+                <span class="text-xs" :class="isOnline && !pendingOnlineSync ? 'text-green-400' : 'text-yellow-400'">☁️</span>
+            </button>
+
+            <button @click="lockAppForBiometrics(); open = false" class="w-full text-left py-1 hover:text-light-tan flex items-center justify-between mb-2">
+                <span>Lock (Biometrics)</span>
+                <span class="text-xs opacity-50">🔒</span>
+            </button>
             
             <button @click="openEditColorsModal(); open = false" class="w-full text-left py-1 hover:text-light-tan flex items-center justify-between mb-2">
                 <span>Edit Colors</span>
